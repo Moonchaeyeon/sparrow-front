@@ -1,8 +1,12 @@
 ﻿# sparrow🐦
 힐링 명상 웹 프로젝트
 
+
 ## ✅ 프로젝트 소개
-sparrow는 지친 현대인들을 위한 명상 콘텐츠가 담긴 웹 프로젝트입니다. 눈을 감으면, 웹캠을 통한 eye tracking을 통해 명상이 시작됩니다. 귀여운 3D 캐릭터와 함께 다양한 힐링 음악을 들으며 마음의 안정을 취해보세요!
+sparrow는 지친 현대인들을 위한 명상 콘텐츠가 담긴 웹 프로젝트입니다. 
+눈을 감으면, 웹캠을 통한 eye tracking을 통해 명상이 시작됩니다.
+귀여운 3D 캐릭터와 함께 다양한 힐링 음악을 들으며 마음의 안정을 취해보세요!
+
 
 ## ✅ 팀원 소개
 | **profile** | [<img src="https://avatars.githubusercontent.com/u/49464171?v=4" width="200">](https://github.com/Moonchaeyeon) | [<img src="https://avatars.githubusercontent.com/u/69239151?v=4" width="200">](https://github.com/jjonggang) |
