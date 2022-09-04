@@ -3,6 +3,7 @@ import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
 import { Forest } from "./Forest";
 import { Cloud } from "./Cloud";
 import { MagicForest } from "./MagicForest";
+import { Sparrow } from "./Sparrow";
 
 function ThreeCanvas() {
     return (
@@ -24,6 +25,7 @@ function ThreeCanvas() {
             />
             <Forest />
             <Cloud/>
+            <Sparrow />
         </Canvas>
     )
 }
