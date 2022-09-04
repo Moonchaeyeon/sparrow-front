@@ -1,9 +1,9 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
-import { Forest } from "./Forest";
-import { Cloud } from "./Cloud";
-import { MagicForest } from "./MagicForest";
-import { Sparrow } from "./Sparrow";
+import { Forest } from "./objects/Forest";
+import { Cloud } from "./objects/Cloud";
+import { MagicForest } from "./objects/MagicForest";
+import { Sparrow } from "./objects/Sparrow";
 
 function ThreeCanvas() {
     return (
