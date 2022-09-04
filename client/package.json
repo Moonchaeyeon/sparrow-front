@@ -5,6 +5,7 @@
   "dependencies": {
     "@mediapipe/camera_utils": "^0.3.1640029074",
     "@mediapipe/face_mesh": "^0.4.1633559619",
+    "@react-three/drei": "^9.25.3",
     "@react-three/fiber": "^8.6.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",

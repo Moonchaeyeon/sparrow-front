@@ -1,12 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
+import { Suspense } from 'react';
 import EyeTracking from './EyeTracking';
+import ThreeCanvas from './canvas/index';
+
+import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <EyeTracking />
-    </div>
+    <Suspense fallback={null}>
+      <ThreeCanvas />
+    </Suspense>
   );
 }
 
