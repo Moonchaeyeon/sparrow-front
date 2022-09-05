@@ -1,0 +1,69 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+    font-family: Pretendard;
+}
+
+body {
+  background: white;
+}
+
+html, body, #root, canvas {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+button {
+  border: 0;
+  font-family: Pretendard;
+  cursor: pointer;
+  background: transparent;
+}
+button:focus-visible { outline: none; }
+
+::selection {
+  background-color: #4A46FF30;
+}
+
+ul {
+  list-style:none;
+  padding-left: 0px;
+  margin: 0;
+}
+
+pre { 
+  font-family: 'Pretendard'; 
+  margin: 0;
+}
+
+textarea {
+  resize: none;
+  border: 0;
+  font-family: 'Pretendard';
+
+  &:focus-visible { outline: none; }
+}
+
+input {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  font-family: 'Pretendard';
+}
+input:focus-visible {outline: none;}
+input[type=file] {display: none;}
