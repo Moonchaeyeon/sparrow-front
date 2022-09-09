@@ -52,28 +52,17 @@ function AudioHandler() {
     const fireVolume = useSelector(state=>state.sound.fireVolume);
     const waveVolume = useSelector(state=>state.sound.waveVolume);
     const rainVolume = useSelector(state=>state.sound.rainVolume);
-    let bird = new Audio(`${process.env.PUBLIC_URL}/assets/audio/bird.wav`);
-    let fire = new Audio(`${process.env.PUBLIC_URL}/assets/audio/firewood.wav`);
-    let wave = new Audio(`${process.env.PUBLIC_URL}/assets/audio/wind.wav`);
-    let rain = new Audio(`${process.env.PUBLIC_URL}/assets/audio/rain.wav`);
 
     let [birdPlaying, changeBirdVolume] = useAudio(`${process.env.PUBLIC_URL}/assets/audio/bird.wav`);
     let [firePlaying, changeFireVolume] = useAudio(`${process.env.PUBLIC_URL}/assets/audio/firewood.wav`);
     let [wavePlaying, changeWaveVolume] = useAudio(`${process.env.PUBLIC_URL}/assets/audio/wind.wav`);
     let [rainPlaying, changeRainVolume] = useAudio(`${process.env.PUBLIC_URL}/assets/audio/rain.wav`);
 
-    // const soundInfoList = [
-    //     { name: 'bird', sound: bird, volume: birdVolume, icon: <Bird/>, setVolume: function (e) {dispatch(setBirdVolume(e.currentTarget.value)); bird.volume = e.currentTarget.value / 100;} },
-    //     { name: 'fire', sound: fire, volume: fireVolume, icon: <Fire/>, setVolume: function (e) {dispatch(setFireVolume(e.currentTarget.value)); fire.volume = e.currentTarget.value / 100;} },
-    //     { name: 'wave', sound: wave, volume: waveVolume, icon: <Wave/>, setVolume: function(e){dispatch(setWaveVolume(e.currentTarget.value)); wave.volume = e.currentTarget.value / 100;} },
-    //     { name: 'rain', sound: rain, volume: rainVolume, icon: <Rain/>, setVolume: function(e){dispatch(setRainVolume(e.currentTarget.value)); rain.volume = e.currentTarget.value / 100;} }
-    // ]
-
     const soundInfoList = [
-        { name: 'bird', sound: bird, volume: birdVolume, icon: <Bird/>, setVolume: function (e) {dispatch(setBirdVolume(e.currentTarget.value)); changeBirdVolume(e.currentTarget.value/100)} },
-        { name: 'fire', sound: fire, volume: fireVolume, icon: <Fire/>, setVolume: function (e) {dispatch(setFireVolume(e.currentTarget.value)); changeFireVolume(e.currentTarget.value/100)} },
-        { name: 'wave', sound: wave, volume: waveVolume, icon: <Wave/>, setVolume: function(e){dispatch(setWaveVolume(e.currentTarget.value)); changeWaveVolume(e.currentTarget.value/100)} },
-        { name: 'rain', sound: rain, volume: rainVolume, icon: <Rain/>, setVolume: function(e){dispatch(setRainVolume(e.currentTarget.value)); changeRainVolume(e.currentTarget.value/100)} }
+        { name: 'bird', volume: birdVolume, icon: <Bird/>, setVolume: function (e) {dispatch(setBirdVolume(e.currentTarget.value)); changeBirdVolume(e.currentTarget.value/100)} },
+        { name: 'fire', volume: fireVolume, icon: <Fire/>, setVolume: function (e) {dispatch(setFireVolume(e.currentTarget.value)); changeFireVolume(e.currentTarget.value/100)} },
+        { name: 'wave', volume: waveVolume, icon: <Wave/>, setVolume: function(e){dispatch(setWaveVolume(e.currentTarget.value)); changeWaveVolume(e.currentTarget.value/100)} },
+        { name: 'rain', volume: rainVolume, icon: <Rain/>, setVolume: function(e){dispatch(setRainVolume(e.currentTarget.value)); changeRainVolume(e.currentTarget.value/100)} }
     ]
 
     useEffect(()=>{
@@ -82,14 +71,7 @@ function AudioHandler() {
         console.log("wave : ", waveVolume);
         console.log("rain : ", rainVolume);
     }, [birdVolume, fireVolume, rainVolume, waveVolume])
-
-    useEffect(()=> {
-        bird.loop = true;
-        fire.loop = true;
-        wave.loop = true;
-        rain.loop = true;
-    }, [])
-
+    
     return (
         <div className="audio-handler">
             <div className="header" onClick={()=>{setVolumePlay(true)}}>
