@@ -1,0 +1,39 @@
+@import '../../styles/var.scss';
+
+.webcam-container {
+    position: absolute;
+    top: 50px; right: 0;
+    transition: 0.3s;
+
+    .show-webcam-toggle {
+        width: 34px;
+        height: 88px;
+        position: absolute;
+        left: 0; top: 20px;
+        z-index: 10;
+        background: $WH-T;
+        backdrop-filter: blur(15px);
+        border-radius: 0px 20px 20px 0px;
+        cursor: pointer;
+        transition: 0.3s;
+        @include flexCenter;
+        @include lightShadow;
+
+        svg {
+            width: 19px;
+            height: 19px;
+            margin-left: 5px;
+            transform: rotate(-90deg);
+            fill: $BK;
+        }
+    }
+
+    &#hide {
+        right: -200px;
+
+        .show-webcam-toggle {
+            left: -34px;
+            transform: scaleX(-1);
+        }
+    }
+}
