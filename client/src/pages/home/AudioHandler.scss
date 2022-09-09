@@ -1,0 +1,68 @@
+@import '../../styles/var.scss';
+
+.audio-handler {
+    width: 250px;
+    padding: 25px;
+    position: absolute;
+    right: 30px; bottom: 50px;
+    border-radius: 20px;
+    cursor: default;
+    @include whiteBlur;
+    @include lightShadow;
+
+    .down-arrow {
+        width: 20px; height: 20px;
+        float: right;
+        cursor: pointer;
+        transition: 0.2s;
+
+        & > path { fill: $BK; }
+    }
+
+    .sound-setting-container {
+        display: flex;
+        flex-direction: column;
+        margin-top: 40px;
+
+        .sound-setting-elem {
+            margin-bottom: 15px;
+            flex-grow: 1;
+            @include flexCenter;
+            
+            svg {
+                width: 20px; height: 20px;
+                flex-shrink: 0;
+
+                & > path { fill: $BK; }
+            }
+
+            input[type=range] {
+                width: 100%;
+                height: 2px;
+                border-radius: 10px;
+                margin: 0 10px;
+                cursor: pointer;
+                background: $WH-T;
+
+                &::-webkit-slider-thumb {
+                    -webkit-appearance: none;
+                    appearance: none;
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    background: $WH;
+                    cursor: pointer;
+                }
+                
+                &::-moz-range-thumb {
+                    width: 25px;
+                    height: 25px;
+                    background: #04AA6D;
+                    cursor: pointer;
+                }
+            }
+
+            .sound-amount { flex-shrink: 0; color: $BK; font-size: 14px; }
+        }
+    }
+}

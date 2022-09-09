@@ -1,10 +1,11 @@
 import { ACTION_TYPES } from './soundTypes';
 
 const initialState = {
-    birdSound: 0,
-    windSound: 0,
-    fireSound: 0,
-    rainSound: 0,
+    birdVolume: 0,
+    windVolume: 0,
+    fireVolume: 0,
+    rainVolume: 0,
+    waveVolume: 0,
 }
 
 export const soundReducer = (state = initialState, action) => {
@@ -12,16 +13,19 @@ export const soundReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case ACTION_TYPES.SET_BIRD_SOUND:
-            resultState.birdSound = action.data;
+            resultState.birdVolume = action.data;
             break;
         case ACTION_TYPES.SET_WIND_SOUND:
-            resultState.birdSound = action.data;
+            resultState.windVolume = action.data;
             break;
         case ACTION_TYPES.SET_FIRE_SOUND:
-            resultState.birdSound = action.data;
+            resultState.fireVolume = action.data;
             break;
         case ACTION_TYPES.SET_RAIN_SOUND:
-            resultState.birdSound = action.data;
+            resultState.rainVolume = action.data;
+            break;
+        case ACTION_TYPES.SET_WAVE_SOUND:
+            resultState.waveVolume = action.data;
             break;
 
         default:

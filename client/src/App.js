@@ -22,7 +22,7 @@ function App() {
       </Router>
 
       <Navbar />
-      <Login />
+      {/* <Login /> */}
     </Suspense>
     // </Suspense>
   );
