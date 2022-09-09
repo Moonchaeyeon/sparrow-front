@@ -7,7 +7,7 @@ const initialState = {
     rainSound: 0,
 }
 
-export const contentReducer = (state = initialState, action) => {
+export const soundReducer = (state = initialState, action) => {
     let resultState = { ...state };
 
     switch (action.type) {
