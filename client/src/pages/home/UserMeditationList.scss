@@ -2,10 +2,55 @@
 
 .user-meditation-list.modal-wrapper {
     width: 705px; height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0 30px;
     position: absolute;
     left: 0;
     background: $WH-T;
     backdrop-filter: blur(15px);
     border-radius: 0px 30px 0px 0px;
+    cursor: default;
     @include shadow;
+
+    .modal-header {
+        padding-left: 30px;
+        margin-top: 90px;
+        margin-bottom: 23px;
+        font-weight: 300;
+        font-size: 15px;
+        color: $BK;
+
+        .user-total-duration {
+            font-weight: 600;
+            font-size: 35px;
+            color: $BK;
+            margin-top: 16px;
+        }
+    }
+
+    .modal-content {
+        width: 100%;
+        flex-grow: 1;
+        padding: 0 10px;
+        padding-top: 20px;
+        border-radius: 30px 30px 0px 0px;
+        background: rgba(255, 255, 255, 0.6);
+
+        .meditation-record-date {
+            font-weight: 600;
+            font-size: 20px;
+            color: $BK;
+            margin-top: 55px;
+        }
+
+        .meditation-wrapper {
+            width: 100%;
+            max-height: calc(100vh - 210px);
+            padding: 0 34px;
+            padding-bottom: 40px;
+            overflow: auto;
+            @include scrollBar(4px, $GR-2);
+        }
+    }
 }

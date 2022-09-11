@@ -20,6 +20,15 @@ $WH-T : rgba(255, 255, 255, 0.8);
     align-items: center;
 }
 
+@mixin overFlowText($maxLine: 1) {
+    overflow: hidden;
+    word-wrap: break-word;
+    -webkit-line-clamp: $maxLine;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    word-break: keep-all;
+}
+
 @mixin shadow { box-shadow: 0px 6px 6px 10px rgba(0, 0, 0, 0.15); }
 @mixin lightShadow { box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); }
 @mixin whiteBlur {

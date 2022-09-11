@@ -11,12 +11,14 @@ import Modal from "../modal/Modal";
 import Music from "../music/Music";
 import "./MeditationRecord.scss";
 
-function MeditationRecord({ editMode = true, recordInfo, setShowModal }) {
+function MeditationRecord({ editMode = true, recordInfo, setShowModal }) { 
+    const todayDate = new Date();
+    const today = `${todayDate.getFullYear()}-${todayDate.getMonth+1}-${todayDate.getDate}`;
     const birdVolume = useSelector(state=>state.sound.birdVolume);
     const fireVolume = useSelector(state=>state.sound.fireVolume);
     const waveVolume = useSelector(state=>state.sound.waveVolume);
     const rainVolume = useSelector(state=>state.sound.rainVolume);
-    const [date, setDate] = useState('2022-09-11');
+    const [date, setDate] = useState(editMode? today : recordInfo.createdDate);
     const [duration, setDuration] = useState(3453);
     const [title, setTitle] = useState('');
     const [diary, setDiary] = useState('');
