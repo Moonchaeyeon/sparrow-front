@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { timeToString, secToString } from "../../utils/toString";
+import tagInfoList from "../../utils/tagList";
 import { ReactComponent as Close } from "../../assets/svg/close.svg";
 import { ReactComponent as Bird } from "../../assets/svg/bird.svg";
 import { ReactComponent as Fire } from "../../assets/svg/fire.svg";
@@ -8,9 +9,9 @@ import { ReactComponent as Wave } from "../../assets/svg/wave.svg";
 import { ReactComponent as Rain } from "../../assets/svg/rain.svg";
 import Modal from "../modal/Modal";
 import Music from "../music/Music";
-import "./Record.scss";
+import "./MeditationRecord.scss";
 
-function Record({ editMode = true, recordInfo, setShowModal }) {
+function MeditationRecord({ editMode = true, recordInfo, setShowModal }) {
     const birdVolume = useSelector(state=>state.sound.birdVolume);
     const fireVolume = useSelector(state=>state.sound.fireVolume);
     const waveVolume = useSelector(state=>state.sound.waveVolume);
@@ -19,16 +20,7 @@ function Record({ editMode = true, recordInfo, setShowModal }) {
     const [duration, setDuration] = useState(3453);
     const [title, setTitle] = useState('');
     const [diary, setDiary] = useState('');
-    const [tagList, setTagList] = useState([]);
-
-    const tagInfoList = [
-        { tagId: 1, tagName: '휴식' },
-        { tagId: 2, tagName: '스트레스_해소' },
-        { tagId: 3, tagName: '행복' },
-        { tagId: 4, tagName: '지친_하루' },
-        { tagId: 5, tagName: '좋은_아침' },
-        { tagId: 6, tagName: '퇴근_후' },
-    ]
+    const [tagIdList, setTagIdLIst] = useState([]);
 
     const soundInfoList = [
         { icon: <Bird/>, value: (!editMode ? recordInfo.birdVolume : birdVolume) },
@@ -45,9 +37,9 @@ function Record({ editMode = true, recordInfo, setShowModal }) {
 
     const tagSelectHandler = (checked, tagId) => {
         if (checked) {
-            setTagList([...tagList, tagId]);
+            setTagIdLIst([...tagIdList, tagId]);
         } else {
-            setTagList(tagList.filter(el=>el.tagId!==tagId));
+            setTagIdLIst(tagIdList.filter(el=>el.tagId!==tagId));
         }
     }
 
@@ -105,6 +97,7 @@ function Record({ editMode = true, recordInfo, setShowModal }) {
                                         type="checkbox"
                                         id={`tag${tag.tagId}`}
                                         value={tag.tagId}
+                                        checked={tagIdList.includes(tag.tagId)}
                                         onChange={(e)=>{tagSelectHandler(e.currentTarget.checked, tag.tagId)}}
                                     />
                                     <label htmlFor={`tag${tag.tagId}`}>#{ tag.tagName }</label>
@@ -122,4 +115,4 @@ function Record({ editMode = true, recordInfo, setShowModal }) {
         </Modal>
     )
 }
-export default Record;
+export default MeditationRecord;

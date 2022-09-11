@@ -1,0 +1,11 @@
+@import '../../styles/var.scss';
+
+.user-meditation-list.modal-wrapper {
+    width: 705px; height: 100%;
+    position: absolute;
+    left: 0;
+    background: $WH-T;
+    backdrop-filter: blur(15px);
+    border-radius: 0px 30px 0px 0px;
+    @include shadow;
+}
