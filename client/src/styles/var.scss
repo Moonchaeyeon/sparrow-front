@@ -1,4 +1,5 @@
 $YE : #FFB62D;
+$YE-T : rgba(255, 226, 173, 0.2);
 $PU : #5A1DBD;
 $PU-1 : #876CB1;
 $BK : #595460;
@@ -24,6 +25,11 @@ $WH-T : rgba(255, 255, 255, 0.8);
 @mixin whiteBlur {
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(15px);
+}
+
+@mixin scrollBar($thickness : 3px, $thumb : $BK, $background : transparent) {
+    &::-webkit-scrollbar { width: $thickness; background: $background; border-radius: 10px; }
+    &::-webkit-scrollbar-thumb { width: $thickness; background: $thumb; border-radius: 10px; }
 }
 
 // hover

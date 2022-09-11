@@ -1,0 +1,181 @@
+@import '../../styles/var.scss';
+
+.record.modal-wrapper {
+    width: 770px;
+    height: 936px;
+    padding: 22px 27px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 30px 30px 0px 0px;
+    background: $WH-T;
+    backdrop-filter: blur(15px);
+    cursor: default;
+    @include shadow;   
+
+    .modal-title {
+        font-weight: 600;
+        font-size: 20px;
+        color: $PU-1;
+    }
+
+    #modal-close {
+        width: 35px; height: 35px;
+        position: absolute;
+        top: 20px; right: 26px;
+        cursor: pointer;
+        path { fill: $PU; }
+    }
+
+    .modal-contents {
+        width: 693px;
+        margin-top: 57px;
+        padding: 0 54px;
+        overflow: visible;
+        display: flex;
+        flex-direction: column;
+
+        .white-box {
+            width: 693px;
+            height: 672px;
+            border-radius: 30px 30px 0px 0px;
+            background: $WH-T;
+            backdrop-filter: blur(15px);
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .record-input-label {
+            font-weight: 600;
+            font-size: 20px;
+            color: $BK;
+            margin-top: 35px;
+        }
+        .record-input-label + .record-input-description {
+            font-weight: 300;
+            font-size: 15px;
+            color: $BK;
+            margin: 7px 0;
+        }
+    }
+
+    .meditation-info-wrapper {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 15px;
+
+        .time-info-wrapper {
+            text-align: right;
+            font-weight: 600;
+            color: $BK;
+            margin-right: 20px;
+            margin-top: 40px;
+
+            .date { font-size: 30px; margin-bottom: 35px; }
+            .time { font-size: 20px; }
+        }
+
+        .sound-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            margin-left: 20px;
+            margin-top: 30px;
+    
+            .sound-elem {
+                margin-bottom: 10px;
+                @include flexCenter;
+    
+                svg {
+                    width: 22px; height: 22px;
+                    margin-right: 10px;
+    
+                    path { fill: $BK; }
+                }
+    
+                span { 
+                    font-weight: 500;
+                    font-size: 15px; 
+                    color: $GR-1;
+                }
+            }
+        }
+    }
+
+    .record-title-input {
+        width: 100%;
+        font-weight: 500;
+        font-size: 30px;
+        border-bottom: 1px solid $BK;
+        padding: 18px 10px;
+
+        &::placeholder { color: $GR-2; }
+    }
+
+    .diary-wrapper {
+        width: 100%;
+        height: 120px;
+        border-radius: 20px;
+        background: $GR-3;
+        padding: 15px;
+        
+        textarea {
+            width: 100%; height: 100%;
+            color: $BK;
+            font-size: 14px;
+            line-height: 136%;
+            background: transparent;
+            @include scrollBar;
+        }
+    }
+
+    .tag-wrapper {
+        width: 80%;
+        display: flex;
+        flex-wrap: wrap;
+
+        .tag-elem {
+            height: fit-content;
+            margin-right: 12px;
+            margin-top: 10px;
+            margin-bottom: 14px;
+
+            input[type=checkbox] { display: none; }
+
+            input[type=checkbox] + label {
+                padding: 6px 10px;
+                border-radius: 30px;
+                border: 1px solid $GR-1;
+                font-weight: 400;
+                font-size: 15px;
+                color: $GR-1;
+                cursor: pointer;
+                transition: 0.2s;
+            }
+
+            input[type=checkbox]:checked + label {
+                border-color: $YE;
+                color: $YE;
+                background: $YE-T;
+            }
+        }
+    }
+
+    button.submit {
+        width: fit-content;
+        color: $WH;
+        background: $PU;
+        padding: 13px 35px;
+        border-radius: 30px;
+        transition: 0.2s;
+        font-weight: 600;
+        font-size: 16px;
+        margin-left: auto;
+        @include hoverDown;
+    }
+}

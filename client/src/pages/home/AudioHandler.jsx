@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import useAudio from "../../hooks/userAudio";
 import { setBirdVolume, setFireVolume, setRainVolume, setWaveVolume } from "../../redux/sound/soundAction";
 import { ReactComponent as DownArrow } from '../../assets/svg/down_arrow.svg';
 import { ReactComponent as Bird } from '../../assets/svg/bird.svg';
@@ -7,43 +8,6 @@ import { ReactComponent as Fire } from '../../assets/svg/fire.svg';
 import { ReactComponent as Wave } from '../../assets/svg/wave.svg';
 import { ReactComponent as Rain } from '../../assets/svg/rain.svg';
 import './AudioHandler.scss';
-
-const useAudio = url => {
-    const [audio] = useState(new Audio(url));
-    const [playing, setPlaying] = useState(false);
-    const [volume, setVolume] = useState(0);
-  
-    const toggle = () => setPlaying(!playing);
-    const changeVolume = (amount) => { setVolume(amount); console.log(amount); }
-    
-    useEffect(()=>{
-        audio.loop = true;
-        audio.pause();
-    }, [])
-
-    useEffect(() => {
-        playing ? audio.play() : audio.pause();
-      },
-      [playing]
-    );
-  
-    useEffect(()=> {
-        if (volume !== 0) {
-            if (!playing) setPlaying(true);
-            audio.volume = volume;
-            console.log("음악 들리는 중 : ", volume, playing)
-        } else {
-            setPlaying(false);
-            console.log("음악 멈췄음", playing)
-        }
-    }, [volume])
-
-    useEffect(() => {
-      audio.loop = true;
-    }, []);
-  
-    return [playing, changeVolume];
-};
 
 function AudioHandler() {
     const dispatch = useDispatch();
