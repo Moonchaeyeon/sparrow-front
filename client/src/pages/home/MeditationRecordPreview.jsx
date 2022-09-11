@@ -2,7 +2,7 @@ import tagInfoList from '../../utils/tagList';
 import Music from '../../components/music/Music';
 import './MeditationRecordPreview.scss';
 
-function MeditationRecordPreview({ recordInfo, setShowMeditationRecord }) {
+function MeditationRecordPreview({ recordInfo, openMeditationRecord }) {
 
     return (
         <div className="meditation-record-preview">
@@ -10,7 +10,7 @@ function MeditationRecordPreview({ recordInfo, setShowMeditationRecord }) {
 
             <div 
                 className="record-info-wrapper"
-                onClick={()=>{setShowMeditationRecord(true)}}
+                onClick={()=>{openMeditationRecord(recordInfo)}}
             >
                 <div className="record-info-title">{ recordInfo.title }</div>
                 <div className="record-into-diary">

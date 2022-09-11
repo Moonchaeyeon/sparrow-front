@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 import reportWebVitals from './reportWebVitals';
 import './styles/reset.scss';
+import './styles/animations.scss';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // root.render(

@@ -10,6 +10,11 @@ function UserMeditationList() {
     const [currMeditationRecord, setCurrMeditationRecord] = useState(null);
     const [showMeditationRecord, setShowMeditationRecord] = useState(false);
 
+    const openMeditationRecord = (record) => {
+        setCurrMeditationRecord(record);
+        setShowMeditationRecord(true);
+    }
+
     const userMeditationList = [
         {
             recordId: 10,
@@ -23,10 +28,10 @@ function UserMeditationList() {
             title: '나는 어떤 사람인가',
             diary: '세상에서 가장 대답하기 힘든 질문이 있다. "당신은 어떤 사람인가요?"라는 질문이다. 스스로 반문하자면 "나는 어떤 사람인가?"라는 질문이다. 지금은 작고하셨지만',
             tagIdList: [1, 2, 3, 4, 5],
-            birdSound: 20,
-            fireSound: 60,
-            waveSound: 0,
-            rainSound: 10,
+            birdVolume: 20,
+            fireVolume: 60,
+            waveVolume: 0,
+            rainVolume: 10,
         },
         { 
             recordId: 9,
@@ -40,10 +45,10 @@ function UserMeditationList() {
             title: '하루의 마무리',
             diary: '퇴근 후 잠자리에 눕기 전 핸드폰을 하는 대신, 명상을 하며 오늘 하루동안 있었던 복잡한 일들에 대한 마음을 정리하는 시간을 가졌다. ',
             tagIdList: [1, 2, 3, 4, 5],
-            birdSound: 20,
-            fireSound: 60,
-            waveSound: 0,
-            rainSound: 10,
+            birdVolume: 20,
+            fireVolume: 60,
+            waveVolume: 0,
+            rainVolume: 10,
         },
         { 
             recordId: 8,
@@ -57,10 +62,10 @@ function UserMeditationList() {
             title: '하루를 산뜻하게 시작하는 법',
             diary: '오늘 일을 시작하기 전에 명상을 하며 긍정적인 에너지를 충전했다.',
             tagIdList: [1, 2, 3, 4, 5, 6],
-            birdSound: 20,
-            fireSound: 60,
-            waveSound: 45,
-            rainSound: 10,
+            birdVolume: 20,
+            fireVolume: 60,
+            waveVolume: 0,
+            rainVolume: 10,
         },
         { 
             recordId: 7,
@@ -74,10 +79,10 @@ function UserMeditationList() {
             title: '첫 명상을 시작하며...',
             diary: '명상을 할 땐 무슨 생각을 해야 할까? 명상을 평소 하지 않았기에, 명상을 하기 전에는 막막한 느낌이 있었다. 하지만 막상 눈을 감고 편안한 음악을 들으니, 그 자체만으로도 차분해지고 따뜻해지는 시간이 되었던 것 같다.',
             tagIdList: [3, 5],
-            birdSound: 0,
-            fireSound: 10,
-            waveSound: 88,
-            rainSound: 10,
+            birdVolume: 20,
+            fireVolume: 60,
+            waveVolume: 0,
+            rainVolume: 10,
         }
     ]
 
@@ -102,9 +107,7 @@ function UserMeditationList() {
                                     }
                                     <MeditationRecordPreview 
                                         recordInfo={record} 
-                                        key={idx}
-                                        onClick={()=>{setCurrMeditationRecord(record); setShowMeditationRecord(true)}}
-                                        setShowMeditationRecord={setShowMeditationRecord}
+                                        openMeditationRecord={openMeditationRecord}
                                     />
                                     </>
                                 ))
@@ -116,8 +119,9 @@ function UserMeditationList() {
             {
                 showMeditationRecord &&
                 <MeditationRecord
-                    editMode={false}
+                    edit={false}
                     recordInfo={currMeditationRecord}
+                    setShowModal={setShowMeditationRecord}
                 />
             }
         </>
