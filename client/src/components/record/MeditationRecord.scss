@@ -1,18 +1,31 @@
 @import '../../styles/var.scss';
 
+button.show-record {
+    background: $WH-T;
+    backdrop-filter: blur(15px);
+    @include shadow;
+    position: absolute;
+    left: 30px;
+    top: 80px;
+    padding: 18px;
+    border-radius: 20px;
+
+    svg {
+        width: 26px; height: 26px;
+
+        path { fill: $BK; }
+    }
+}
+
 .record.modal-wrapper {
     width: 770px;
     height: 936px;
     padding: 22px 27px;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
     border-radius: 30px 30px 0px 0px;
     background: $WH-T;
     backdrop-filter: blur(15px);
     cursor: default;
-    animation: showModalUp 0.5s;
+    animation: showModalUp 1s;
     @include shadow;
 
     .modal-title {
@@ -83,6 +96,7 @@
         margin-bottom: 15px;
 
         .time-info-wrapper {
+            width: 160px;
             text-align: right;
             font-weight: 600;
             color: $BK;
@@ -94,6 +108,7 @@
         }
 
         .sound-wrapper {
+            width: 160px;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -120,14 +135,21 @@
         }
     }
 
-    .record-title-input {
+    .record-title-wrapper {
         width: 100%;
-        font-weight: 500;
-        font-size: 30px;
-        border-bottom: 1px solid $BK;
-        padding: 18px 10px;
+        display: relative;
 
-        &::placeholder { color: $GR-2; }
+        .record-title-input {
+            width: 100%;
+            font-weight: 500;
+            font-size: 30px;
+            border-bottom: 1px solid $BK;
+            padding: 18px 10px;
+    
+            &::placeholder { color: $GR-2; }
+        }
+
+        .quotes { display: none; }
     }
 
     .diary-wrapper {
@@ -210,28 +232,53 @@
             display: none;
         }
 
-        .record-title-input {
-            border: 0;
-            padding: 0;
-            margin-top: 30px;
+        .record-title-wrapper {
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            margin-top: 15px;
+
+            .record-title-input {
+                width: fit-content;
+                border: 0;
+                padding: 0;
+                margin-top: 30px;
+                background: transparent;
+                text-align: center;
+                text-shadow: 0 0 6px $GR-3;
+            }
+
+            .quotes {
+                width: 20px; height: 20px;
+                display: block;
+                position: absolute; 
+
+                path { fill: $GR-2; }
+
+                &:first-of-type { left: -10px; top: 10px; transform: scaleX(-1); }
+                &:last-of-type { right: -10px; top: 10px; }
+            }
         }
 
         .diary-wrapper {
-            min-height: 350px;
-            padding: 0 5px;
+            min-height: 370px;
+            padding: 0 35px;
             background: transparent;
             margin-top: 30px;
-            margin-bottom: 20px;
 
             textarea {
                 font-weight: 300;
                 font-size: 20px;
-                line-height: 150%;
+                line-height: 160%;
                 word-break: keep-all;
+                text-align: center;
             }
         }
 
         .tag-wrapper {
+            width: 100%;
+            margin-top: 50px;
             .tag-elem {
                 border: 0;
                 margin: 0;

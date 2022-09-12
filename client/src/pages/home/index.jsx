@@ -21,7 +21,9 @@ function Home() {
             </button>
             { 
                 showUserMeditationList &&
-                <UserMeditationList />
+                <UserMeditationList 
+                    setShowModal={setShowUserMeditationList}
+                />
             }
 
             {/* <MeditationRecord /> */}

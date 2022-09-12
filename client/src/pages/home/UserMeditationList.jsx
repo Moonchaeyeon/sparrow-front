@@ -5,7 +5,7 @@ import { secToString, timeToString } from "../../utils/toString";
 import MeditationRecordPreview from "./MeditationRecordPreview";
 import './UserMeditationList.scss';
 
-function UserMeditationList() {
+function UserMeditationList({ setShowModal }) {
     let totalMeditationDuration = 4698;
     const [currMeditationRecord, setCurrMeditationRecord] = useState(null);
     const [showMeditationRecord, setShowMeditationRecord] = useState(false);
@@ -88,7 +88,7 @@ function UserMeditationList() {
 
     return (
         <>
-            <Modal>
+            <Modal setShowModal={setShowModal} displayType="left">
                 <div className="user-meditation-list modal-wrapper">
                     <div className="modal-header">
                         <div>나의 총 명상 시간</div>

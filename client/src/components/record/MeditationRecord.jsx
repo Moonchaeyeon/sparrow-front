@@ -4,6 +4,7 @@ import { timeToString, secToString } from "../../utils/toString";
 import tagInfoList from "../../utils/tagList";
 import { ReactComponent as Close } from "../../assets/svg/close.svg";
 import { ReactComponent as Pencil } from "../../assets/svg/pencil.svg";
+import { ReactComponent as Quotes } from "../../assets/svg/quotes.svg";
 import { ReactComponent as Bird } from "../../assets/svg/bird.svg";
 import { ReactComponent as Fire } from "../../assets/svg/fire.svg";
 import { ReactComponent as Wave } from "../../assets/svg/wave.svg";
@@ -56,7 +57,7 @@ function MeditationRecord({ edit = true, recordInfo, setShowModal }) {
     }, [recordInfo, editMode])
 
     return (
-        <Modal>
+        <Modal setShowModal={setShowModal} displayType="bottom">
             <div className="record modal-wrapper" id={editMode?null:'view-mode'}>
                 <div className="modal-title">명상 기록</div>
                 <Close id="modal-close" onClick={()=>{setShowModal(false)}}/>
@@ -86,15 +87,17 @@ function MeditationRecord({ edit = true, recordInfo, setShowModal }) {
                             }
                         </ul>
                     </div>
-                    <input
-                        className="record-title-input"
-                        type="text"
-                        placeholder="제목을 입력하세요"
-                        value={title}
-                        disabled={!editMode}
-                        onChange={(e)=>{setTitle(e.currentTarget.value)}}
-                    />
-
+                    <div className="record-title-wrapper">
+                        <Quotes className="quotes"/> <Quotes className="quotes"/>
+                        <input
+                            className="record-title-input"
+                            type="text"
+                            placeholder="제목을 입력하세요"
+                            value={title}
+                            disabled={!editMode}
+                            onChange={(e)=>{setTitle(e.currentTarget.value)}}
+                        />
+                    </div>
                     <label className="record-input-label">일기</label>
                     <div className="record-input-description">명상하면서 정리한 생각을 남겨보세요</div>
                     <div className="diary-wrapper">

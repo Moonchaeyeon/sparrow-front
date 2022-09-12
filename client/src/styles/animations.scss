@@ -3,6 +3,15 @@
 }
 
 @keyframes showModalUp {
-    0% { transform: translate(-50%, 100%); }
-    80% { transform: translate(-50%, -10px); }
+    0% { transform: translateY(100%); }
+    70% { transform: translateY(-10px) scaleY(1.03); }
+}
+
+@keyframes showModalRight {
+    0% { transform: translateX(-100%); }
+    70% { transform: translateX(10px) scaleX(1.03); } 
+}
+
+@keyframes showModalOpacity {
+    0% { opacity: 0; }
 }
