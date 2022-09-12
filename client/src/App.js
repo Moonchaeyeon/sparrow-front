@@ -1,4 +1,4 @@
-import { Suspense } from 'react';
+import { Suspense, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import EyeTracking from './pages/home/EyeTracking';
 import Navbar from './components/header';
@@ -10,9 +10,9 @@ import Login from './components/login';
 import OAuthHandler from './pages/oauth';
 
 function App() {
+  const [showLoginModal, setShowLoginModal] = useState(false);
+
   return (
-    // <Suspense fallback={null}>
-    //   <ThreeCanvas />
     <Suspense fallback={null}>
       <Router>
         <Routes>
@@ -21,10 +21,9 @@ function App() {
         </Routes>
       </Router>
 
-      <Navbar />
-      {/* <Login /> */}
+      <Navbar setShowLoginModal={setShowLoginModal}/>
+      { showLoginModal && <Login setShowModal={setShowLoginModal}/> }
     </Suspense>
-    // </Suspense>
   );
 }
 

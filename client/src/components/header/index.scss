@@ -9,4 +9,9 @@
     position: absolute;
     left: 0; top: 0;
     @include flexCenter;
+
+    button.login-btn {
+        margin-left: auto;
+        color: $WH;
+    }
 }

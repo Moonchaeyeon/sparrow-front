@@ -15,7 +15,7 @@ function Login({ setShowModal }) {
     ]
 
     return (
-        <Modal setShowModal={setShowModal}>
+        <Modal setShowModal={setShowModal} displayType="center">
             <div className="modal-wrapper login">
                 <img src={colorfulObjects}/>
                 <LogoIcon style={{marginBottom: '40px'}}/>

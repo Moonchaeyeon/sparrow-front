@@ -2,6 +2,10 @@
     100% { transform: scale(1.1); }
 }
 
+@keyframes showModal {
+    70% { transform: scale(1.03) translateY(10px); }
+}
+
 @keyframes showModalUp {
     0% { transform: translateY(100%); }
     70% { transform: translateY(-10px) scaleY(1.03); }
