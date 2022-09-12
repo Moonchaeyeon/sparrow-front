@@ -1,12 +1,15 @@
 import { useState } from "react";
+import ratingInfoList from "../../utils/ratingList";
 import Modal from "../../components/modal/Modal";
 import MeditationRecord from "../../components/record/MeditationRecord";
 import { secToString, timeToString } from "../../utils/toString";
 import MeditationRecordPreview from "./MeditationRecordPreview";
+import { ReactComponent as Crown } from "../../assets/svg/crown.svg";
 import './UserMeditationList.scss';
 
 function UserMeditationList({ setShowModal }) {
     let totalMeditationDuration = 4698;
+    let myRanking = ratingInfoList[3];
     const [currMeditationRecord, setCurrMeditationRecord] = useState(null);
     const [showMeditationRecord, setShowMeditationRecord] = useState(false);
 
@@ -93,6 +96,11 @@ function UserMeditationList({ setShowModal }) {
                     <div className="modal-header">
                         <div>나의 총 명상 시간</div>
                         <div className="user-total-duration">{secToString(totalMeditationDuration)}</div>
+                        <div className="my-rate"
+                            style={{background: myRanking.color}}
+                        >
+                            <Crown/>
+                        </div>
                     </div>
 
                     <div className="modal-content">
