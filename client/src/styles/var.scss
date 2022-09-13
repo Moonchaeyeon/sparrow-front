@@ -9,6 +9,11 @@ $GR-3 : #E8E8E8;
 $WH : white;
 $WH-T : rgba(255, 255, 255, 0.8);
 
+$BIRD : #dfed4e;
+$FIRE : #CC6969;
+$WAVE : #6985CC;
+$RAIN : #33bdc7;
+
 @mixin flexCenter {
     display: flex;
     align-items: center;
@@ -32,7 +37,7 @@ $WH-T : rgba(255, 255, 255, 0.8);
 @mixin shadow { box-shadow: 0px 6px 6px 10px rgba(0, 0, 0, 0.15); }
 @mixin lightShadow { box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); }
 @mixin whiteBlur {
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(15px);
 }
 

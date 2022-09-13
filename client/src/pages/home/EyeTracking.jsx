@@ -71,10 +71,8 @@ let camera;
 //   el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
 // }
 
-function EyeTracking() {
+function EyeTracking({ setFaceDetected, setEyeClosed }) {
     const webcamRef = useRef();
-    const [faceDetected, setFaceDetected] = useState(false);
-    const [eyeClosed, setEyeClosed] = useState(false);
     const [hideCam, setHideCam] = useState(false);
 
     const getDistance = (p1, p2) => {
