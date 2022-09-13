@@ -10,6 +10,12 @@
     @include whiteBlur;
     @include lightShadow;
 
+    .header {
+        font-weight: 500;
+
+        svg { transition: 0.2s; }
+    }
+
     .down-arrow {
         width: 20px; height: 20px;
         float: right;
@@ -33,7 +39,7 @@
                 width: 20px; height: 20px;
                 flex-shrink: 0;
 
-                & > path { fill: $BK; }
+                path { fill: $BK; transition: 0.2s; }
             }
 
             input[type=range] {
@@ -42,7 +48,7 @@
                 border-radius: 10px;
                 margin: 0 10px;
                 cursor: pointer;
-                background: $WH-T;
+                background: $GR-3;
 
                 &::-webkit-slider-thumb {
                     -webkit-appearance: none;
@@ -50,19 +56,43 @@
                     width: 10px;
                     height: 10px;
                     border-radius: 50%;
-                    background: $WH;
+                    background: $BK;
                     cursor: pointer;
-                }
-                
-                &::-moz-range-thumb {
-                    width: 25px;
-                    height: 25px;
-                    background: #04AA6D;
-                    cursor: pointer;
+                    transition: 0.2s;
                 }
             }
 
-            .sound-amount { flex-shrink: 0; color: $BK; font-size: 14px; }
+            .sound-amount { 
+                width: 20px;
+                text-align: right;
+                flex-shrink: 0; 
+                color: $BK;
+                font-weight: 600; 
+                font-size: 14px; 
+            }
+
+            @mixin setActiveColor($color) {
+                svg path { fill: $color; }
+                input[type=range]::-webkit-slider-thumb { background: $color; }
+            }
+
+            &.active#bird {
+                @include setActiveColor($BIRD);
+            }
+            &.active#fire {
+                @include setActiveColor($FIRE);
+            }
+            &.active#wave {
+                @include setActiveColor($WAVE);
+            }
+            &.active#rain {
+                @include setActiveColor($RAIN);
+            }
         }
     }
+
+    &#small-view {
+        .header svg { transform: rotateZ(180deg); }
+    }
 }
+
