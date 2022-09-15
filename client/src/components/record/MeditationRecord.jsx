@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { timeToString, secToString } from "../../utils/action/toString";
+import MeditationRecordApi from "../../api/MeditationRecord";
 import tagInfoList from "../../utils/data/tagList";
 import { ReactComponent as Close } from "../../assets/svg/close.svg";
 import { ReactComponent as Pencil } from "../../assets/svg/pencil.svg";
@@ -13,6 +14,7 @@ import Music from "../music/Music";
 import "./MeditationRecord.scss";
 
 function MeditationRecord({ edit = true, recordInfo, setShowModal, editMeditationRecord }) { 
+    const meditationRecordApi = new MeditationRecordApi();
     const todayDate = new Date();
     const today = `${todayDate.getFullYear()}-${todayDate.getMonth()+1}-${todayDate.getDate()}`;
     const [ editMode, setEditMode ] = useState(edit);
@@ -36,6 +38,22 @@ function MeditationRecord({ edit = true, recordInfo, setShowModal, editMeditatio
         } else {
             setTagIdList(tagIdList.filter(el=>el.tagId!==tagId));
         }
+    }
+
+    const postRecord = async () => {
+        let newRecord = {
+            disclosure: 1,
+            title: title,
+            content: content,
+            musicId: recordInfo.music.musicId,
+            birdSound: recordInfo.birdSound,
+            oceanSound: recordInfo.oceanSound,
+            rainSound: recordInfo.rainSound,
+            fireSound: recordInfo.fireSound,
+            durationSec: durationSec,
+            tagIds: tagIdList
+        }
+        await meditationRecordApi.postRecord(newRecord);
     }
 
     const editRecord = async () => {
@@ -138,7 +156,7 @@ function MeditationRecord({ edit = true, recordInfo, setShowModal, editMeditatio
                                 <button className="modal-action" id="cancel" onClick={()=>{setEditMode(false)}}>취소</button>
                                 <button className="modal-action" onClick={()=>{editRecord()}}>수정하기</button>
                             </>
-                            : <button className="modal-action">기록하기</button>
+                            : <button className="modal-action" onClick={()=>{postRecord()}}>기록하기</button>
                         }
                         </div>
                     }
