@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import { timeToString, secToString } from "../../utils/action/toString";
 import tagInfoList from "../../utils/data/tagList";
 import { ReactComponent as Close } from "../../assets/svg/close.svg";
@@ -13,21 +12,13 @@ import Modal from "../modal/Modal";
 import Music from "../music/Music";
 import "./MeditationRecord.scss";
 
-function MeditationRecord({ edit = true, recordInfo, setShowModal }) { 
+function MeditationRecord({ edit = true, recordInfo, setShowModal, editMeditationRecord }) { 
     const todayDate = new Date();
     const today = `${todayDate.getFullYear()}-${todayDate.getMonth()+1}-${todayDate.getDate()}`;
     const [ editMode, setEditMode ] = useState(edit);
-    const birdSound = useSelector(state=>state.sound.birdSound);
-    const fireSound = useSelector(state=>state.sound.fireSound);
-    const oceanSound = useSelector(state=>state.sound.oceanSound);
-    const rainSound = useSelector(state=>state.sound.rainSound);
     const [date, setDate] = useState(today);
     const [durationSec, setDuration] = useState(recordInfo.durationSec);
-    const [music, setMusic] = useState({
-        musicName: 'Dream2',
-        musicImagePath: 'https://post-phinf.pstatic.net/MjAyMDA5MDRfMjY5/MDAxNTk5MjA3MjM5OTU0.06W0Vxag4mOp_3RUzKqnrCy3DhONXRwwCauNAHFcRXkg.r6a1UMHSnqnPQqhshDR2ANjFeVvXpGS5A90HJNSxPmsg.JPEG/98475567_678982502661201_3647491715844941249_n.jpg?type=w1200',
-        musicPath: `${process.env.PUBLIC_URL}/assets/audio/default.wav`
-    });
+    const [music, setMusic] = useState(recordInfo.music);
     const [title, setTitle] = useState('');
     const [content, setDiary] = useState('');
     const [tagIdList, setTagIdList] = useState([]);
@@ -47,13 +38,24 @@ function MeditationRecord({ edit = true, recordInfo, setShowModal }) {
         }
     }
 
+    const editRecord = async () => {
+        let newRecord = {
+            meditationRecordId: recordInfo.meditationRecordId,
+            disclosure: 1,
+            title: title,
+            content: content,
+            tagIds: tagIdList
+        }
+        editMeditationRecord(newRecord);
+        setEditMode(false);
+    }
+
     useEffect(()=>{
         setDate(recordInfo.createdDate);
         setDuration(recordInfo.durationSec);
         setTitle(recordInfo.title);
         setDiary(recordInfo.content);
         setTagIdList(recordInfo.tagIdList);
-        setMusic(recordInfo.music);
     }, [recordInfo, editMode])
 
     return (
@@ -134,7 +136,7 @@ function MeditationRecord({ edit = true, recordInfo, setShowModal }) {
                             recordInfo.meditationRecordId
                             ? <>
                                 <button className="modal-action" id="cancel" onClick={()=>{setEditMode(false)}}>취소</button>
-                                <button className="modal-action">수정하기</button>
+                                <button className="modal-action" onClick={()=>{editRecord()}}>수정하기</button>
                             </>
                             : <button className="modal-action">기록하기</button>
                         }

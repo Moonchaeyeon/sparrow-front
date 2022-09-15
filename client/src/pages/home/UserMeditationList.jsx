@@ -97,6 +97,17 @@ function UserMeditationList({ setShowModal }) {
         }
     ]
 
+    const editMeditationRecord = async (newRecord) => {
+        const res = await meditationRecordApi.postRecordList(newRecord);
+        let temp = {...meditationRecordList};
+        for (let el of temp) {
+            if (el.meditationRecordId === newRecord.meditationRecordId) {
+                el = res.data;
+            }
+        }
+        setMeditationRecordList(temp);
+    }
+
     useEffect(()=>{
         const getUserMeditationRecordList = async () => {
             const res = await meditationRecordApi.getRecordList();
@@ -157,6 +168,7 @@ function UserMeditationList({ setShowModal }) {
                     edit={false}
                     recordInfo={currMeditationRecord}
                     setShowModal={setShowMeditationRecord}
+                    editMeditationRecord={editMeditationRecord}
                 />
             }
         </>
