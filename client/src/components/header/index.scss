@@ -8,10 +8,59 @@
     padding: 20px;
     position: absolute;
     left: 0; top: 0;
+    justify-content: space-between;
     @include flexCenter;
 
     button.login-btn {
         margin-left: auto;
         color: $WH;
+    }
+
+    .user-profile-wrapper {
+        position: relative;
+
+        .user-profile-image {
+            width: 30px; height: 30px;
+            border-radius: 50%;
+            object-fit: cover;
+            cursor: pointer;
+            background: $PU;
+            flex-shrink: 0;
+        }
+        
+        .user-info-wrapper {
+            width: 100px;
+            position: absolute;
+            right: 0; top: calc(100% + 10px);
+            padding: 15px;
+            border-radius: 10px;
+            @include whiteBlur;
+            cursor: default;
+            display: none;
+            
+            .user-name {
+                font-size: 17px;
+                font-weight: 600;
+                color: $BK;
+            }
+
+            .logout-btn {
+                width: fit-content;
+                margin-left: auto;
+                margin-top: 15px;
+                cursor: pointer;
+                color: $GR-1;
+                border: 1px solid $GR-1;
+                padding: 5px 10px;
+                border-radius: 20px;
+                transition: 0.2s;
+                @include hoverDown(3px);
+
+                &:hover { color: $PU; border-color: $PU; background: $PU-T; }
+            }
+        }
+
+
+        &:focus { .user-info-wrapper { display: block; animation: showDown 0.3s; } }
     }
 }

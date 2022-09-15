@@ -20,8 +20,12 @@
     0% { opacity: 0; }
 }
 
+@keyframes showDown {
+    0% { opacity: 0; transform: translateY(-10px); } 
+    100% { opacity: 1; }
+}
+
 @keyframes showSlide {
     0% { max-height: 0; height: 0; overflow: hidden;}
     80% { margin-bottom: 10px; }
-    // 80% { transform: scale(1.1); }
 }

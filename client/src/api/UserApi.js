@@ -1,5 +1,5 @@
 import store from '../redux/store';
-import { setName, setProfileImage } from '../redux/userData/userDataAction';
+import { setAuth, setName, setProfileImage } from '../redux/userData/userDataAction';
 import { get, post, put, destroy } from './AxiosCreate';
 
 class UserApi {
