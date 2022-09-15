@@ -25,8 +25,8 @@ function MeditationRecord({ edit = true, recordInfo, setShowModal }) {
     const [duration, setDuration] = useState(recordInfo.duration);
     const [music, setMusic] = useState({
         musicName: 'Dream2',
-        coverImage: 'https://post-phinf.pstatic.net/MjAyMDA5MDRfMjY5/MDAxNTk5MjA3MjM5OTU0.06W0Vxag4mOp_3RUzKqnrCy3DhONXRwwCauNAHFcRXkg.r6a1UMHSnqnPQqhshDR2ANjFeVvXpGS5A90HJNSxPmsg.JPEG/98475567_678982502661201_3647491715844941249_n.jpg?type=w1200',
-        musicUrl: `${process.env.PUBLIC_URL}/assets/audio/default.wav`
+        musicImagePath: 'https://post-phinf.pstatic.net/MjAyMDA5MDRfMjY5/MDAxNTk5MjA3MjM5OTU0.06W0Vxag4mOp_3RUzKqnrCy3DhONXRwwCauNAHFcRXkg.r6a1UMHSnqnPQqhshDR2ANjFeVvXpGS5A90HJNSxPmsg.JPEG/98475567_678982502661201_3647491715844941249_n.jpg?type=w1200',
+        musicPath: `${process.env.PUBLIC_URL}/assets/audio/default.wav`
     });
     const [title, setTitle] = useState('');
     const [diary, setDiary] = useState('');
@@ -121,7 +121,7 @@ function MeditationRecord({ edit = true, recordInfo, setShowModal }) {
                                         onChange={(e)=>{tagSelectHandler(e.currentTarget.checked, tag.tagId)}}
                                         disabled={!editMode}
                                     />
-                                    <label htmlFor={`tag${tag.tagId}`}>#{ tag.tagName }</label>
+                                    <label htmlFor={`tag${tag.tagId}`}>#{ tag.tagNameKor }</label>
                                 </div>
                             ))
                         }

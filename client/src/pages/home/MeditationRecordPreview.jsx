@@ -19,7 +19,7 @@ function MeditationRecordPreview({ recordInfo, openMeditationRecord }) {
                 <div className="record-tag-wrapper">
                     {
                         recordInfo.tagIdList.map((tagId, idx)=>(
-                            <div className="record-tag-elem"># { tagInfoList.find(el=>el.tagId===tagId).tagName }</div>
+                            <div className="record-tag-elem"># { tagInfoList.find(el=>el.tagId===tagId).tagNameKor }</div>
                         ))
                     }
                 </div>

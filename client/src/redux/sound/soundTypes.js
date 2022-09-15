@@ -1,4 +1,5 @@
 export const DATA_TYPES = {
+    selectedMusic: 'selectedMusic',
     birdVolume: 'birdVolume',
     windVolume: 'windVolume',
     fireVolume: 'fireVolume',
@@ -7,6 +8,7 @@ export const DATA_TYPES = {
 }
 
 export const ACTION_TYPES = {
+    SET_SELECTED_MUSIC : 'SET_SELECTED_MUSIC',
     SET_BIRD_SOUND : 'SET_BIRD_SOUND',
     SET_WIND_SOUND : 'SET_WIND_SOUND',
     SET_FIRE_SOUND : 'SET_FIRE_SOUND',

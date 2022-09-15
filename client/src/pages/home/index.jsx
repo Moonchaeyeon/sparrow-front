@@ -130,7 +130,7 @@ function Home() {
                 setEyeClosed={setEyeClosed}
             />
             <button
-                className="show-record"
+                className="floating-btn show-record"
                 onClick={()=>{setShowUserMeditationList(true)}}
             >
                 <Pencil />

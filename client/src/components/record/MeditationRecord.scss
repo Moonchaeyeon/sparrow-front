@@ -1,22 +1,5 @@
 @import '../../styles/var.scss';
 
-button.show-record {
-    background: $WH-T;
-    backdrop-filter: blur(15px);
-    @include shadow;
-    position: absolute;
-    left: 30px;
-    top: 80px;
-    padding: 18px;
-    border-radius: 20px;
-
-    svg {
-        width: 26px; height: 26px;
-
-        path { fill: $BK; }
-    }
-}
-
 .record.modal-wrapper {
     width: 770px;
     height: 936px;

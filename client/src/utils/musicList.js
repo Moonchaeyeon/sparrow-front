@@ -1,27 +1,27 @@
 const tagInfoList = [
     {
         musicId: 1,
-        musicName: 'Dream2',
-        coverImage: 'https://post-phinf.pstatic.net/MjAyMDA5MDRfMjY5/MDAxNTk5MjA3MjM5OTU0.06W0Vxag4mOp_3RUzKqnrCy3DhONXRwwCauNAHFcRXkg.r6a1UMHSnqnPQqhshDR2ANjFeVvXpGS5A90HJNSxPmsg.JPEG/98475567_678982502661201_3647491715844941249_n.jpg?type=w1200',
-        musicUrl: `${process.env.PUBLIC_URL}/assets/audio/default.wav`
+        musicName: "dream1",
+        musicPath: `${process.env.PUBLIC_URL}/assets/audio/default.m4a`,
+        musicImagePath: "https://i1.sndcdn.com/artworks-iNoCtQtBunQqZyJx-I3y0JQ-t500x500.jpg",
+        musicDurationSec: "89",
+        composer: "jjong"
     },
     {
         musicId: 2,
-        musicName: 'Dream2',
-        coverImage: 'https://post-phinf.pstatic.net/MjAyMDA5MDRfMjY5/MDAxNTk5MjA3MjM5OTU0.06W0Vxag4mOp_3RUzKqnrCy3DhONXRwwCauNAHFcRXkg.r6a1UMHSnqnPQqhshDR2ANjFeVvXpGS5A90HJNSxPmsg.JPEG/98475567_678982502661201_3647491715844941249_n.jpg?type=w1200',
-        musicUrl: `${process.env.PUBLIC_URL}/assets/audio/default.wav`
+        musicName: "dream2",
+        musicPath: `${process.env.PUBLIC_URL}/assets/audio/default.m4a`,
+        musicImagePath: "https://i1.sndcdn.com/artworks-iNoCtQtBunQqZyJx-I3y0JQ-t500x500.jpg",
+        musicDurationSec: "112",
+        composer: "jjong"
     },
     {
         musicId: 3,
-        musicName: 'Dream2',
-        coverImage: 'https://post-phinf.pstatic.net/MjAyMDA5MDRfMjY5/MDAxNTk5MjA3MjM5OTU0.06W0Vxag4mOp_3RUzKqnrCy3DhONXRwwCauNAHFcRXkg.r6a1UMHSnqnPQqhshDR2ANjFeVvXpGS5A90HJNSxPmsg.JPEG/98475567_678982502661201_3647491715844941249_n.jpg?type=w1200',
-        musicUrl: `${process.env.PUBLIC_URL}/assets/audio/default.wav`
-    },
-    {
-        musicId: 4,
-        musicName: 'Dream2',
-        coverImage: 'https://post-phinf.pstatic.net/MjAyMDA5MDRfMjY5/MDAxNTk5MjA3MjM5OTU0.06W0Vxag4mOp_3RUzKqnrCy3DhONXRwwCauNAHFcRXkg.r6a1UMHSnqnPQqhshDR2ANjFeVvXpGS5A90HJNSxPmsg.JPEG/98475567_678982502661201_3647491715844941249_n.jpg?type=w1200',
-        musicUrl: `${process.env.PUBLIC_URL}/assets/audio/default.wav`
-    },
+        musicName: "when the flowers bloom",
+        musicPath: `${process.env.PUBLIC_URL}/assets/audio/default.m4a`,
+        musicImagePath: "https://i1.sndcdn.com/artworks-vjrwHdp6JAkhIsjE-nyVHHw-t500x500.jpg",
+        musicDurationSec: "98",
+        composer: "jjong"
+    }
 ]
 export default tagInfoList;

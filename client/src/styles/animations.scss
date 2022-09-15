@@ -19,3 +19,9 @@
 @keyframes showModalOpacity {
     0% { opacity: 0; }
 }
+
+@keyframes showSlide {
+    0% { max-height: 0; height: 0; overflow: hidden;}
+    80% { margin-bottom: 10px; }
+    // 80% { transform: scale(1.1); }
+}

@@ -1,5 +1,9 @@
 import { ACTION_TYPES } from "./soundTypes"
 
+export const setSelectedMusic = (music) => {
+    return {type: ACTION_TYPES.SET_SELECTED_MUSIC, data: music};
+}
+
 export const setBirdVolume = (amount) => {
     return {type: ACTION_TYPES.SET_BIRD_SOUND, data: amount};
 }

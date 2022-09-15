@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import useAudio from "../../hooks/userAudio";
+import useAudio from "../../hooks/useAudio";
 import { setBirdVolume, setFireVolume, setRainVolume, setWaveVolume } from "../../redux/sound/soundAction";
 import { ReactComponent as DownArrow } from '../../assets/svg/down_arrow.svg';
 import { ReactComponent as Bird } from '../../assets/svg/bird.svg';

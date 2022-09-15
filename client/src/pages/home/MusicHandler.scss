@@ -1,3 +1,89 @@
-.music-handler {
+@import '../../styles/var.scss';
+
+.music-selector {
+    width: 235px;
+
+    .show-selected-music {
+        display: flex;
+        align-items: center;
+
+        svg { width: 24px; height: 24px; flex-shrink: 0; }
+
+        .selected-music-name {
+            font-size: 20px;
+            font-weight: 600;
+            flex-grow: 1;
+            margin-left: 15px;
+            margin-right: 5px;
+            text-align: left;
+            @include overFlowText(1);
+            color: $BK;
+        }
+    }
+
+    .music-container {
+        width: 100%;
+        max-height: calc(100vh - 100px);
+        overflow: auto;
+        margin-top: 10px;
+        display: none;
+
+        .music-wrapper {
+            width: 100%;
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+
+            .music-elem {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+                padding: 10px;
+                border-radius: 20px;
+                background: $WH-T;
+                transition: 0.2s;
+                @include lightShadow;
+                @include hoverDown(-3px);
+
+                &#selected { background: $PU-1; }
+
+                .music-info {
+                    flex-shrink: 0;
+
+                    .music-name { display: none; }
+                    .play, .pause { margin-top: 0; }
+                }
+                
+                .music-info-wrapper {
+                    flex-grow: 1;
+                    margin-left: 10px;
+                    text-align: left;
+
+                    .music-name {
+                        font-size: 17px;
+                        font-weight: 600;
+                        margin-bottom: 5px;
+                        @include overFlowText(1);
+                    }
+
+                    .music-composer {
+                        font-size: 12px;
+                        color: $BK;
+                        @include overFlowText(1);
+                    }
+                }
+            }
+        }
+    }
     
+    &:focus {
+        .music-container {
+            // visibility: visible;
+            // pointer-events: all;
+            // height: fit-content;
+            display: block;
+            animation: showSlide 0.4s;
+        }
+    }
 }
