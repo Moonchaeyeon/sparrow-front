@@ -1,10 +1,10 @@
 export const DATA_TYPES = {
     selectedMusic: 'selectedMusic',
-    birdVolume: 'birdVolume',
+    birdSound: 'birdSound',
     windVolume: 'windVolume',
-    fireVolume: 'fireVolume',
-    rainVolume: 'rainVolume',
-    waveVolume: 'waveVolume',
+    fireSound: 'fireSound',
+    rainSound: 'rainSound',
+    oceanSound: 'oceanSound',
 }
 
 export const ACTION_TYPES = {

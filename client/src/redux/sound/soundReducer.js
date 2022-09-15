@@ -9,11 +9,11 @@ const initialState = {
         musicDurationSec: "89",
         composer: "jjong"
     },
-    birdVolume: 0,
+    birdSound: 0,
     windVolume: 0,
-    fireVolume: 0,
-    rainVolume: 0,
-    waveVolume: 0,
+    fireSound: 0,
+    rainSound: 0,
+    oceanSound: 0,
 }
 
 export const soundReducer = (state = initialState, action) => {
@@ -24,19 +24,19 @@ export const soundReducer = (state = initialState, action) => {
             resultState.selectedMusic = action.data;
             break;
         case ACTION_TYPES.SET_BIRD_SOUND:
-            resultState.birdVolume = action.data;
+            resultState.birdSound = action.data;
             break;
         case ACTION_TYPES.SET_WIND_SOUND:
             resultState.windVolume = action.data;
             break;
         case ACTION_TYPES.SET_FIRE_SOUND:
-            resultState.fireVolume = action.data;
+            resultState.fireSound = action.data;
             break;
         case ACTION_TYPES.SET_RAIN_SOUND:
-            resultState.rainVolume = action.data;
+            resultState.rainSound = action.data;
             break;
         case ACTION_TYPES.SET_WAVE_SOUND:
-            resultState.waveVolume = action.data;
+            resultState.oceanSound = action.data;
             break;
 
         default:

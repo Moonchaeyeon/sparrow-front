@@ -16,10 +16,6 @@ function Navbar({ setShowLoginModal }) {
         dispatch(setAuth(false));
     }
 
-    useEffect(()=>{
-        console.log('auth: ', auth);
-    }, [auth])
-
     return (
         <div className="navbar">
             <Logo />

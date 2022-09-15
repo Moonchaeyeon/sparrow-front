@@ -17,9 +17,9 @@ function Home() {
 
     const timer = useRef(null);
     const time = useRef(0);
-    const durationTime = useRef(0);
+    const durationSecTime = useRef(0);
     const [sec, setSec] = useState(0);
-    const [duration, setDuration] = useState(0);
+    const [durationSec, setDuration] = useState(0);
     const [faceDetected, setFaceDetected] = useState(false);
     const [eyeClosed, setEyeClosed] = useState(false);
     const [status, setStatus] = useState(NONE);
@@ -51,7 +51,7 @@ function Home() {
                 break;
             case END:
                 clearInterval(timer.current);
-                durationTime.current = 0;
+                durationSecTime.current = 0;
                 setSec(0);
                 time.current = 0;
                 setStatus(NONE);
@@ -64,8 +64,8 @@ function Home() {
                 break;
             case ING:
                 timer.current = setInterval(()=>{
-                    setDuration(durationTime.current);
-                    durationTime.current += 1;
+                    setDuration(durationSecTime.current);
+                    durationSecTime.current += 1;
                 }, 1000)
             default:
         }

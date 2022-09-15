@@ -4,7 +4,7 @@ const apiClient = axios.create({
     headers: {
         "Content-Type": 'application/json'
     },
-    baseURL: process.env.REACT_APP_TEST_SERVER
+    baseURL: `${process.env.REACT_APP_TEST_SERVER}/api/v1/`
 });
 
 // 요청 interceptor 정의

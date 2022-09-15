@@ -13,8 +13,8 @@ function MeditationRecordPreview({ recordInfo, openMeditationRecord }) {
                 onClick={()=>{openMeditationRecord(recordInfo)}}
             >
                 <div className="record-info-title">{ recordInfo.title }</div>
-                <div className="record-into-diary">
-                    { recordInfo.diary }
+                <div className="record-into-content">
+                    { recordInfo.content }
                 </div>
                 <div className="record-tag-wrapper">
                     {

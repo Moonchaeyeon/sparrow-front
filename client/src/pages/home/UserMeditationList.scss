@@ -1,7 +1,7 @@
 @import '../../styles/var.scss';
 
 .user-meditation-list.modal-wrapper {
-    width: 705px; height: 100%;
+    width: 705px; height: 100vh;
     display: flex;
     flex-direction: column;
     padding: 0 30px;
@@ -22,7 +22,7 @@
         font-size: 15px;
         color: $BK;
 
-        .user-total-duration {
+        .user-total-durationSec {
             font-weight: 600;
             font-size: 35px;
             color: $BK;

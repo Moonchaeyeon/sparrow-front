@@ -17,26 +17,26 @@ function MeditationRecord({ edit = true, recordInfo, setShowModal }) {
     const todayDate = new Date();
     const today = `${todayDate.getFullYear()}-${todayDate.getMonth()+1}-${todayDate.getDate()}`;
     const [ editMode, setEditMode ] = useState(edit);
-    const birdVolume = useSelector(state=>state.sound.birdVolume);
-    const fireVolume = useSelector(state=>state.sound.fireVolume);
-    const waveVolume = useSelector(state=>state.sound.waveVolume);
-    const rainVolume = useSelector(state=>state.sound.rainVolume);
+    const birdSound = useSelector(state=>state.sound.birdSound);
+    const fireSound = useSelector(state=>state.sound.fireSound);
+    const oceanSound = useSelector(state=>state.sound.oceanSound);
+    const rainSound = useSelector(state=>state.sound.rainSound);
     const [date, setDate] = useState(today);
-    const [duration, setDuration] = useState(recordInfo.duration);
+    const [durationSec, setDuration] = useState(recordInfo.durationSec);
     const [music, setMusic] = useState({
         musicName: 'Dream2',
         musicImagePath: 'https://post-phinf.pstatic.net/MjAyMDA5MDRfMjY5/MDAxNTk5MjA3MjM5OTU0.06W0Vxag4mOp_3RUzKqnrCy3DhONXRwwCauNAHFcRXkg.r6a1UMHSnqnPQqhshDR2ANjFeVvXpGS5A90HJNSxPmsg.JPEG/98475567_678982502661201_3647491715844941249_n.jpg?type=w1200',
         musicPath: `${process.env.PUBLIC_URL}/assets/audio/default.wav`
     });
     const [title, setTitle] = useState('');
-    const [diary, setDiary] = useState('');
+    const [content, setDiary] = useState('');
     const [tagIdList, setTagIdList] = useState([]);
 
     const soundInfoList = [
-        { icon: <Bird/>, value: recordInfo.birdVolume },
-        { icon: <Fire/>, value: recordInfo.fireVolume },
-        { icon: <Wave/>, value: recordInfo.waveVolume },
-        { icon: <Rain/>, value: recordInfo.rainVolume },
+        { icon: <Bird/>, value: recordInfo.birdSound },
+        { icon: <Fire/>, value: recordInfo.fireSound },
+        { icon: <Wave/>, value: recordInfo.oceanSound },
+        { icon: <Rain/>, value: recordInfo.rainSound },
     ]
 
     const tagSelectHandler = (checked, tagId) => {
@@ -49,9 +49,9 @@ function MeditationRecord({ edit = true, recordInfo, setShowModal }) {
 
     useEffect(()=>{
         setDate(recordInfo.createdDate);
-        setDuration(recordInfo.duration);
+        setDuration(recordInfo.durationSec);
         setTitle(recordInfo.title);
-        setDiary(recordInfo.diary);
+        setDiary(recordInfo.content);
         setTagIdList(recordInfo.tagIdList);
         setMusic(recordInfo.music);
     }, [recordInfo, editMode])
@@ -72,7 +72,7 @@ function MeditationRecord({ edit = true, recordInfo, setShowModal }) {
 
                         <div className="time-info-wrapper">
                             <div className="date">{ timeToString(date) }</div>
-                            <div className="time">{ secToString(duration) }</div>
+                            <div className="time">{ secToString(durationSec) }</div>
                         </div>
 
                         <Music music={music} width="246px" height="246px"/>
@@ -100,9 +100,9 @@ function MeditationRecord({ edit = true, recordInfo, setShowModal }) {
                     </div>
                     <label className="record-input-label">일기</label>
                     <div className="record-input-description">명상하면서 정리한 생각을 남겨보세요</div>
-                    <div className="diary-wrapper">
+                    <div className="content-wrapper">
                         <textarea
-                            value={diary}
+                            value={content}
                             onChange={(e)=>{setDiary(e.currentTarget.value)}}
                             disabled={!editMode}
                         />
@@ -131,7 +131,7 @@ function MeditationRecord({ edit = true, recordInfo, setShowModal }) {
                         editMode &&
                         <div className="modal-action-button-wrapper">
                         {
-                            recordInfo.recordId
+                            recordInfo.meditationRecordId
                             ? <>
                                 <button className="modal-action" id="cancel" onClick={()=>{setEditMode(false)}}>취소</button>
                                 <button className="modal-action">수정하기</button>
