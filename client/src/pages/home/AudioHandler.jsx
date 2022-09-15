@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import useAudio from "../../hooks/useAudio";
 import { setBirdVolume, setFireVolume, setRainVolume, setWaveVolume } from "../../redux/sound/soundAction";
+import { ReactComponent as SoundOn } from '../../assets/svg/sound_on.svg';
 import { ReactComponent as DownArrow } from '../../assets/svg/down_arrow.svg';
 import { ReactComponent as Bird } from '../../assets/svg/bird.svg';
 import { ReactComponent as Fire } from '../../assets/svg/fire.svg';
@@ -34,16 +35,16 @@ function AudioHandler() {
         <div className="audio-handler"
             id={smallView ? "small-view" : null}
         >
-            <div 
+            {/* <div 
                 className="header" 
                 onClick={()=>{setVolumePlay(true)}}
             >
-                사운드 설정 
+                <SoundOn className="sound-icon"/>
                 <DownArrow 
                     className="down-arrow"
                     onClick={()=>{setSmallView(!smallView)}}
                 />
-            </div>
+            </div> */}
             {
                 !smallView &&
                 <ul className="sound-setting-container">

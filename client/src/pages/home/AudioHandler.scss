@@ -1,8 +1,8 @@
 @import '../../styles/var.scss';
 
 .audio-handler {
-    width: 250px;
-    padding: 25px;
+    width: 260px;
+    padding: 40px;
     position: absolute;
     right: 30px; bottom: 50px;
     border-radius: 20px;
@@ -12,6 +12,11 @@
 
     .header {
         font-weight: 500;
+
+        .sound-icon {
+            width: 22px;
+            height: 22px;
+        }
 
         svg { transition: 0.2s; }
     }
@@ -28,15 +33,17 @@
     .sound-setting-container {
         display: flex;
         flex-direction: column;
-        margin-top: 40px;
+        // margin-top: 40px;
 
         .sound-setting-elem {
             margin-bottom: 15px;
             flex-grow: 1;
             @include flexCenter;
+
+            &:last-of-type { margin-bottom: 0; }
             
             svg {
-                width: 20px; height: 20px;
+                width: 23px; height: 23px;
                 flex-shrink: 0;
 
                 path { fill: $BK; transition: 0.2s; }
@@ -44,7 +51,7 @@
 
             input[type=range] {
                 width: 100%;
-                height: 2px;
+                height: 4px !important;
                 border-radius: 10px;
                 margin: 0 10px;
                 cursor: pointer;
@@ -68,7 +75,7 @@
                 flex-shrink: 0; 
                 color: $BK;
                 font-weight: 600; 
-                font-size: 14px; 
+                font-size: 16px; 
             }
 
             @mixin setActiveColor($color) {
@@ -92,7 +99,7 @@
     }
 
     &#small-view {
-        .header svg { transform: rotateZ(180deg); }
+        .header .down-arrow { transform: rotateZ(180deg); }
     }
 }
 
