@@ -5,7 +5,7 @@ const initialState = {
     myId : null,
     name : '',
     email : '',
-    profileImg : null,
+    profileImage : null,
 }
 
 export const userDataReducer = (state = initialState, action) => {
@@ -25,7 +25,7 @@ export const userDataReducer = (state = initialState, action) => {
             resultState.email = action.data;
             break;
         case ACTION_TYPES.SET_PROFILE_IMAGE:
-            resultState.profileImg = action.data;
+            resultState.profileImage = action.data;
             break;
         default:
     }

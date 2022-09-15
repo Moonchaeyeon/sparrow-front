@@ -1,4 +1,4 @@
-import tagInfoList from '../../utils/tagList';
+import tagInfoList from '../../utils/data/tagList';
 import Music from '../../components/music/Music';
 import './MeditationRecordPreview.scss';
 

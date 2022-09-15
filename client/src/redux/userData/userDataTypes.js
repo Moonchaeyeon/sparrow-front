@@ -3,7 +3,7 @@ export const DATA_TYPES = {
     myId : 'myId',
     name : 'name',
     email : 'email',
-    profileImg : 'profileImg',
+    profileImage : 'profileImage',
 }
 
 export const ACTION_TYPES = {

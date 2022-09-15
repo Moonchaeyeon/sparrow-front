@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import useAudio from "../../hooks/useAudio";
-import musicInfoList from '../../utils/musicList';
+import musicInfoList from '../../utils/data/musicList';
 import Music from "../../components/music/Music";
 import { ReactComponent as MusicIcon } from '../../assets/svg/music.svg';
 import './MusicHandler.scss';

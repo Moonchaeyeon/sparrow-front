@@ -1,8 +1,8 @@
 import { useState } from "react";
-import ratingInfoList from "../../utils/ratingList";
+import ratingInfoList from "../../utils/data/ratingList";
 import Modal from "../../components/modal/Modal";
 import MeditationRecord from "../../components/record/MeditationRecord";
-import { secToString, timeToString } from "../../utils/toString";
+import { secToString, timeToString } from "../../utils/action/toString";
 import MeditationRecordPreview from "./MeditationRecordPreview";
 import { ReactComponent as Crown } from "../../assets/svg/crown.svg";
 import './UserMeditationList.scss';

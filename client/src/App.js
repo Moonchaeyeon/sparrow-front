@@ -1,5 +1,6 @@
-import { Suspense, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import checkAuth from './utils/action/checkAuth';
 import Navbar from './components/header';
 import Home from './pages/home/index';
 import Login from './components/login';
@@ -8,6 +9,10 @@ import './App.css'
 
 function App() {
   const [showLoginModal, setShowLoginModal] = useState(false);
+
+  useEffect(()=>{
+    checkAuth();
+  }, [])
 
   return (
     <Suspense fallback={null}>

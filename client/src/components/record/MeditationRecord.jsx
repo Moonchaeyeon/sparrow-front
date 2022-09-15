@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { timeToString, secToString } from "../../utils/toString";
-import tagInfoList from "../../utils/tagList";
+import { timeToString, secToString } from "../../utils/action/toString";
+import tagInfoList from "../../utils/data/tagList";
 import { ReactComponent as Close } from "../../assets/svg/close.svg";
 import { ReactComponent as Pencil } from "../../assets/svg/pencil.svg";
 import { ReactComponent as Quotes } from "../../assets/svg/quotes.svg";
