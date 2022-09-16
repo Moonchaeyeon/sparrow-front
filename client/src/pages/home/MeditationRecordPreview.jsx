@@ -1,8 +1,9 @@
-import tagInfoList from '../../utils/data/tagList';
+import { useSelector } from 'react-redux';
 import Music from '../../components/music/Music';
 import './MeditationRecordPreview.scss';
 
 function MeditationRecordPreview({ recordInfo, openMeditationRecord }) {
+    const tagInfoList = useSelector(state=>state.data.tagInfoList);
 
     return (
         <div className="meditation-record-preview">

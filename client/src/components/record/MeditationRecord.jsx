@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { timeToString, secToString } from "../../utils/action/toString";
 import MeditationRecordApi from "../../api/MeditationRecordApi";
-import tagInfoList from "../../utils/data/tagList";
 import { ReactComponent as Close } from "../../assets/svg/close.svg";
 import { ReactComponent as Pencil } from "../../assets/svg/pencil.svg";
 import { ReactComponent as Trash } from "../../assets/svg/trash.svg";
@@ -13,9 +12,11 @@ import { ReactComponent as Rain } from "../../assets/svg/rain.svg";
 import Modal from "../modal/Modal";
 import Music from "../music/Music";
 import "./MeditationRecord.scss";
+import { useSelector } from "react-redux";
 
 function MeditationRecord({ edit = true, recordInfo, setShowModal, editMeditationRecord, deleteMeditationRecord }) { 
     const meditationRecordApi = new MeditationRecordApi();
+    const tagInfoList = useSelector(state=>state.data.tagInfoList);
     const todayDate = new Date();
     const today = `${todayDate.getFullYear()}-${todayDate.getMonth()+1}-${todayDate.getDate()}`;
     const [ editMode, setEditMode ] = useState(edit);

@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import useAudio from "../../hooks/useAudio";
-import musicInfoList from '../../utils/data/musicList';
 import Music from "../../components/music/Music";
 import { ReactComponent as MusicIcon } from '../../assets/svg/music.svg';
 import './MusicHandler.scss';
@@ -9,6 +8,7 @@ import './MusicHandler.scss';
 
 function MusicHandler({ status }) {
     const dispatch = useDispatch();
+    const musicInfoList = useSelector(state=>state.data.musicInfoList);
     const selectedMusic = useSelector(state=>state.sound.selectedMusic);
     let [playing,,setPlayingMusic] = useAudio(`${process.env.PUBLIC_URL}/assets/audio/default.wav`);
 
