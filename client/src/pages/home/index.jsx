@@ -9,6 +9,7 @@ import ShowStatus from './ShowStatus';
 import { ReactComponent as Pencil } from '../../assets/svg/pencil.svg';
 import './index.scss';
 import { useSelector } from 'react-redux';
+import useAudio from '../../hooks/useAudio';
 
 const START = 'START';
 const END = 'END';
@@ -21,6 +22,9 @@ function Home() {
     const oceanSound = useSelector(state=>state.sound.oceanSound);
     const rainSound = useSelector(state=>state.sound.rainSound);
     const selectedMusic = useSelector(state=>state.sound.selectedMusic);
+
+    let [,,setPlayDefaultMusic] = useAudio(`${process.env.PUBLIC_URL}/assets/audio/default.mp3`);
+    let [,,setPlayMeditationMusic] = useAudio(selectedMusic.musicPath);
 
     const timer = useRef(null);
     const time = useRef(0);
@@ -77,11 +81,12 @@ function Home() {
     }, [faceDetected])
 
     useEffect(()=>{
-        console.log(status);
         switch(status) {
             case NONE:
                 clearInterval(timer.current);
-                console.log("clear")
+                console.log("clear");
+                setPlayDefaultMusic(true);
+                setPlayMeditationMusic(false);
                 break;
             case END:
                 clearInterval(timer.current);
@@ -96,13 +101,18 @@ function Home() {
                 clearInterval(timer.current);
                 setDuration(0);
                 durationSecTime.current = 0;
+                setPlayDefaultMusic(false);
                 break;
             case ING:
+                setPlayMeditationMusic(true);
                 durationTimer.current = setInterval(()=>{
                     setDuration(durationSecTime.current);
                     durationSecTime.current += 1;
-                }, 1000)
+                }, 1000);
+                break;
             default:
+                setPlayDefaultMusic(true);
+                setPlayMeditationMusic(false);
         }
     }, [status])
 
@@ -180,7 +190,8 @@ function Home() {
             <AudioHandler status={status}/>
             <MusicHandler status={status}/>
 
-            { showWriteRecord && 
+            { 
+                showWriteRecord && 
                 <MeditationRecord 
                     recordInfo={recordInfo}
                     setShowModal={closeWriteRecord}

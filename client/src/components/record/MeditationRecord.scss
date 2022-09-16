@@ -25,16 +25,23 @@
         path { fill: $PU; }
     }
 
-    #change-to-edit-mode {
+    .action-button {
         width: 21px; height: 21px;
         position: absolute;
-        right: 80px;
         top: 300px;
         cursor: pointer;
         transition: 0.2s;
         @include hoverDown;
-
         path { fill: $PU; }
+
+        &#change-to-edit-mode {
+            right: 80px;    
+        }
+        &#delete-record {
+            width: 27px; height: 27px;
+            top: 297px; right: 130px;
+            path { fill: $GR-1; }
+        }
     }
 
     .modal-contents {

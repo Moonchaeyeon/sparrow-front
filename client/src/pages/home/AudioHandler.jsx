@@ -19,10 +19,10 @@ function AudioHandler() {
     const oceanSound = useSelector(state=>state.sound.oceanSound);
     const rainSound = useSelector(state=>state.sound.rainSound);
 
-    let [birdPlaying, changeBirdVolume] = useAudio(`${process.env.PUBLIC_URL}/assets/audio/bird.wav`);
-    let [firePlaying, changeFireVolume] = useAudio(`${process.env.PUBLIC_URL}/assets/audio/firewood.wav`);
-    let [wavePlaying, changeWaveVolume] = useAudio(`${process.env.PUBLIC_URL}/assets/audio/wind.wav`);
-    let [rainPlaying, changeRainVolume] = useAudio(`${process.env.PUBLIC_URL}/assets/audio/rain.wav`);
+    let [birdPlaying, changeBirdVolume] = useAudio(`${process.env.PUBLIC_URL}/assets/audio/bird.mp3`);
+    let [firePlaying, changeFireVolume] = useAudio(`${process.env.PUBLIC_URL}/assets/audio/firewood.mp3`);
+    let [wavePlaying, changeWaveVolume] = useAudio(`${process.env.PUBLIC_URL}/assets/audio/ocean.mp3`);
+    let [rainPlaying, changeRainVolume] = useAudio(`${process.env.PUBLIC_URL}/assets/audio/rain.mp3`);
 
     const soundInfoList = [
         { name: 'bird', volume: birdSound, icon: <Bird/>, setVolume: function (e) {dispatch(setBirdVolume(e.currentTarget.value)); changeBirdVolume(e.currentTarget.value/100)} },

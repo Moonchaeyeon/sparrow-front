@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { timeToString, secToString } from "../../utils/action/toString";
-import MeditationRecordApi from "../../api/MeditationRecord";
+import MeditationRecordApi from "../../api/MeditationRecordApi";
 import tagInfoList from "../../utils/data/tagList";
 import { ReactComponent as Close } from "../../assets/svg/close.svg";
 import { ReactComponent as Pencil } from "../../assets/svg/pencil.svg";
+import { ReactComponent as Trash } from "../../assets/svg/trash.svg";
 import { ReactComponent as Quotes } from "../../assets/svg/quotes.svg";
 import { ReactComponent as Bird } from "../../assets/svg/bird.svg";
 import { ReactComponent as Fire } from "../../assets/svg/fire.svg";
@@ -13,7 +14,7 @@ import Modal from "../modal/Modal";
 import Music from "../music/Music";
 import "./MeditationRecord.scss";
 
-function MeditationRecord({ edit = true, recordInfo, setShowModal, editMeditationRecord }) { 
+function MeditationRecord({ edit = true, recordInfo, setShowModal, editMeditationRecord, deleteMeditationRecord }) { 
     const meditationRecordApi = new MeditationRecordApi();
     const todayDate = new Date();
     const today = `${todayDate.getFullYear()}-${todayDate.getMonth()+1}-${todayDate.getDate()}`;
@@ -70,12 +71,20 @@ function MeditationRecord({ edit = true, recordInfo, setShowModal, editMeditatio
         setEditMode(false);
     }
 
+    const deleteRecord = async (id) => {
+        await meditationRecordApi.deleteRecord(id);
+        deleteMeditationRecord(id);
+        setShowModal(false);
+    }
+
     useEffect(()=>{
         setDate(recordInfo.createdDate);
         setDuration(recordInfo.duration);
-        setTitle(recordInfo.title);
-        setDiary(recordInfo.content);
-        recordInfo.meditationRecordId && setTagIdList(recordInfo.tagIds);
+        if (recordInfo.meditationRecordId) {
+            setTitle(recordInfo.title);
+            setDiary(recordInfo.content);
+            setTagIdList(recordInfo.tagIds);
+        } 
     }, [recordInfo, editMode])
 
     return (
@@ -87,8 +96,10 @@ function MeditationRecord({ edit = true, recordInfo, setShowModal, editMeditatio
                 <div className="modal-contents">
                     <div className="white-box"></div>
                     {
-                        !editMode &&
-                        <Pencil id="change-to-edit-mode" onClick={()=>{setEditMode(true)}}/>
+                        !editMode && <>
+                        <Pencil className="action-button" id="change-to-edit-mode" onClick={()=>{setEditMode(true)}}/>
+                        <Trash className="action-button" id="delete-record" onClick={()=>{(deleteRecord(recordInfo.meditationRecordId))}}/>
+                        </>
                     }
                     <div className="meditation-info-wrapper">
 
