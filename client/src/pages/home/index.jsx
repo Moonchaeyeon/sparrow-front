@@ -24,6 +24,7 @@ function Home() {
 
     const timer = useRef(null);
     const time = useRef(0);
+    const durationTimer = useRef(null);
     const durationSecTime = useRef(0);
     const [sec, setSec] = useState(0);
     const [durationSec, setDuration] = useState(0);
@@ -37,6 +38,10 @@ function Home() {
     const [recordInfo, setRecordInfo] = useState({});
 
     const finishMeditation = () => {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = today.getMonth() + 1;
+        const date = today.getDate();
         let recordInfo = {
             music: selectedMusic,
             birdSound: birdSound,
@@ -44,6 +49,7 @@ function Home() {
             oceanSound: oceanSound,
             rainSound: rainSound,
             duration: durationSec,
+            createdDate: `${year}-${month}-${date}`
         }
         setRecordInfo(recordInfo);
         setShowWriteRecord(true);
@@ -79,6 +85,7 @@ function Home() {
                 break;
             case END:
                 clearInterval(timer.current);
+                clearInterval(durationTimer.current);
                 durationSecTime.current = 0;
                 setSec(0);
                 time.current = 0;
@@ -87,9 +94,11 @@ function Home() {
                 setSec(0);
                 time.current = 0;
                 clearInterval(timer.current);
+                setDuration(0);
+                durationSecTime.current = 0;
                 break;
             case ING:
-                timer.current = setInterval(()=>{
+                durationTimer.current = setInterval(()=>{
                     setDuration(durationSecTime.current);
                     durationSecTime.current += 1;
                 }, 1000)

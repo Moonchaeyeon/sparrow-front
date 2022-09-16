@@ -1,0 +1,8 @@
+Model Information:
+* title:	Low Poly Island
+* source:	https://sketchfab.com/3d-models/low-poly-island-4680b5ee69b84fc2af5dcf70a8079b2a
+* author:	essimoon (https://sketchfab.com/essimoon)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works

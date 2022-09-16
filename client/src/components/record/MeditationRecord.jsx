@@ -23,7 +23,7 @@ function MeditationRecord({ edit = true, recordInfo, setShowModal, editMeditatio
     const [music, setMusic] = useState(recordInfo.music);
     const [title, setTitle] = useState('');
     const [content, setDiary] = useState('');
-    const [tagIdList, setTagIdList] = useState([]);
+    const [tagIds, setTagIdList] = useState([]);
 
     const soundInfoList = [
         { icon: <Bird/>, value: recordInfo.birdSound },
@@ -34,9 +34,9 @@ function MeditationRecord({ edit = true, recordInfo, setShowModal, editMeditatio
 
     const tagSelectHandler = (checked, tagId) => {
         if (checked) {
-            setTagIdList([...tagIdList, tagId]);
+            setTagIdList([...tagIds, tagId]);
         } else {
-            setTagIdList(tagIdList.filter(el=>el.tagId!==tagId));
+            setTagIdList(tagIds.filter(el=>el.tagId!==tagId));
         }
     }
 
@@ -51,9 +51,11 @@ function MeditationRecord({ edit = true, recordInfo, setShowModal, editMeditatio
             rainSound: recordInfo.rainSound,
             fireSound: recordInfo.fireSound,
             duration: duration,
-            tagIds: tagIdList
+            tagIds: tagIds
         }
+        console.log(newRecord);
         await meditationRecordApi.postRecord(newRecord);
+        setShowModal(false);
     }
 
     const editRecord = async () => {
@@ -62,7 +64,7 @@ function MeditationRecord({ edit = true, recordInfo, setShowModal, editMeditatio
             disclosure: 1,
             title: title,
             content: content,
-            tagIds: tagIdList
+            tagIds: tagIds
         }
         editMeditationRecord(newRecord);
         setEditMode(false);
@@ -73,7 +75,7 @@ function MeditationRecord({ edit = true, recordInfo, setShowModal, editMeditatio
         setDuration(recordInfo.duration);
         setTitle(recordInfo.title);
         setDiary(recordInfo.content);
-        setTagIdList(recordInfo.tagIdList);
+        recordInfo.meditationRecordId && setTagIdList(recordInfo.tagIds);
     }, [recordInfo, editMode])
 
     return (
@@ -137,7 +139,7 @@ function MeditationRecord({ edit = true, recordInfo, setShowModal, editMeditatio
                                     <input
                                         type="checkbox"
                                         id={`tag${tag.tagId}`}
-                                        checked={tagIdList.includes(tag.tagId)}
+                                        checked={tagIds.includes(tag.tagId)}
                                         onChange={(e)=>{tagSelectHandler(e.currentTarget.checked, tag.tagId)}}
                                         disabled={!editMode}
                                     />

@@ -1,3 +1,5 @@
+import store from '../redux/store';
+import { addDurationTime } from '../redux/userData/userDataAction';
 import { get, post, put, destroy } from './AxiosCreate';
 
 class MeditationRecordApi {
@@ -6,37 +8,18 @@ class MeditationRecordApi {
         return res.data;
     }
 
-    postRecordList = async (recordInfo) => {
-        // const res = await post(`meditation-record`, recordInfo);
-        // return res.data;
-        return         {
-            "meditationRecordId": 4,
-            "disclosure": true,
-            "title": "대박ssss",
-            "content": "대박",
-            "music": {
-                "musicId": 1,
-                "musicName": "dream1",
-                "musicPath": "",
-                "musicImagePath": "https://i1.sndcdn.com/artworks-iNoCtQtBunQqZyJx-I3y0JQ-t500x500.jpg",
-                "musicDuration": "89",
-                "composer": "jjong"
-            },
-            "birdSound": 30,
-            "oceanSound": 30,
-            "rainSound": 30,
-            "fireSound": 30,
-            "durationSec": 80,
-            "tagIdList": [1, 2, 3, 8]
-        };
+    postRecord = async (recordInfo) => {
+        const res = await post(`meditation-record`, recordInfo);
+        store.dispatch(addDurationTime(recordInfo.duration));
+        return res.data;
     }
 
-    editRecordList = async (recordInfo) => {
+    editRecord = async (recordInfo) => {
         const res = await put(`meditation-record`, recordInfo);
         return res.data;
     }
 
-    deleteRecordList = async (recordId) => {
+    deleteRecord = async (recordId) => {
         const res = await destroy(`meditation-record`, {
             meditationRecordId : recordId
         });

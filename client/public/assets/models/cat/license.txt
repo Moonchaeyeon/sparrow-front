@@ -1,0 +1,8 @@
+Model Information:
+* title:	Maya - the Birman Cat
+* source:	https://sketchfab.com/3d-models/maya-the-birman-cat-4a2b588be9dd43d2acdffdb981b4cb79
+* author:	Yann (https://sketchfab.com/Kokusho)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works

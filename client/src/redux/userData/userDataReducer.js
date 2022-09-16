@@ -31,6 +31,9 @@ export const userDataReducer = (state = initialState, action) => {
         case ACTION_TYPES.SET_TOTAL_DURATION:
             resultState.totalDuration = action.data;
             break;
+        case ACTION_TYPES.ADD_DURATION_TIME:
+            resultState.totalDuration += action.data;
+            break;
         default:
     }
 

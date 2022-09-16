@@ -1,5 +1,5 @@
 export const timeToString = (time) => {
-    const dateInfo = time.split('-');
+    const dateInfo = time.split('T')[0].split('-');
     return `${dateInfo[0]}.${dateInfo[1]}.${dateInfo[2]}`
 }
 

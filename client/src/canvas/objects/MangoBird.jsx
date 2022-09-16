@@ -1,49 +1,53 @@
 import { useEffect } from "react";
-import { useLoader, useFrame } from "@react-three/fiber"
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"
+import { useFrame } from "@react-three/fiber"
 import { Mesh } from "three";
+import { useAnimations, useGLTF } from "@react-three/drei";
 
 export function MangoBird({ status, setStatus, finishMeditation }) {
-    const gltf = useLoader(
-        GLTFLoader,
-        `${process.env.PUBLIC_URL}/assets/models/bird/mango_bird.glb`
+    const { scene, animations } = useGLTF(
+        `${process.env.PUBLIC_URL}/assets/models/cat/scene.gltf`    
     );
+    const { actions } = useAnimations(animations, scene);
+
+    useEffect(()=>{
+        actions.BeingCute.play();
+    }, [actions])
 
     useEffect(() => {
-        gltf.scene.scale.set(1,1,1);
-        gltf.scene.position.set(0, -3, 0);
-        gltf.scene.traverse((object) => {
+        scene.scale.set(0.05, 0.05, 0.05);
+        scene.position.set(0, 0, 0);
+        scene.traverse((object) => {
             if (object instanceof Mesh) {
                 object.castShadow = true;
                 object.receiveShadow = true;
                 object.material.envMapIntensity = 20;
             }
         });
-    }, [gltf])
+    }, [scene])
 
     useFrame(({ state, delta })=>{ 
         switch(status) {
             case 'START':
-                if (gltf.scene.position.y < 0) {
-                    gltf.scene.position.y += 0.05;
-                } else if (gltf.scene.position.y >= 0) {
+                if (scene.position.y < 2) {
+                    scene.position.y += 0.05;
+                } else if (scene.position.y >= 2) {
                     setStatus('ING');
                 }
                 break;
             case 'END':
-                if (gltf.scene.position.y > -3) {
-                    gltf.scene.position.y -= 0.05;
-                } else if (gltf.scene.position.y <= -3) {
+                if (scene.position.y > 0) {
+                    scene.position.y -= 0.05;
+                } else if (scene.position.y <= 0) {
                     finishMeditation();
                 }
                 break;
             case 'ING':
-                gltf.scene.position.y = 0;
+                scene.position.y = 0;
                 break;
             default:
-                gltf.scene.position.y = -3;
+                scene.position.y = -3;
         }
      })
 
-    return <primitive object={gltf.scene}/>
+    return <primitive object={scene}/>
 }

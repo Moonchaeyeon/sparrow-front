@@ -1,0 +1,8 @@
+Model Information:
+* title:	Nature Pack
+* source:	https://sketchfab.com/3d-models/nature-pack-07cc9bcb293746c88f9c216c65061a0e
+* author:	Stewart MacLean (https://sketchfab.com/stewartstm)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works

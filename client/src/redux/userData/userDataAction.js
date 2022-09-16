@@ -16,6 +16,10 @@ export const setTotalDuration = (sec) => {
     return {type: ACTION_TYPES.SET_TOTAL_DURATION, data: sec};
 }
 
+export const addDurationTime = (sec) => {
+    return {type: ACTION_TYPES.ADD_DURATION_TIME, data: sec};
+}
+
 export const setMeditating = (meditating) => {
     return {type: ACTION_TYPES.SET_MEDITATING, data: meditating};
 }
