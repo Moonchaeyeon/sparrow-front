@@ -4,7 +4,7 @@ const tagInfoList = [
         musicName: "dream1",
         musicPath: `${process.env.PUBLIC_URL}/assets/audio/default.m4a`,
         musicImagePath: "https://i1.sndcdn.com/artworks-iNoCtQtBunQqZyJx-I3y0JQ-t500x500.jpg",
-        musicDurationSec: "89",
+        musicDuration: "89",
         composer: "jjong"
     },
     {
@@ -12,7 +12,7 @@ const tagInfoList = [
         musicName: "dream2",
         musicPath: `${process.env.PUBLIC_URL}/assets/audio/default.m4a`,
         musicImagePath: "https://i1.sndcdn.com/artworks-iNoCtQtBunQqZyJx-I3y0JQ-t500x500.jpg",
-        musicDurationSec: "112",
+        musicDuration: "112",
         composer: "jjong"
     },
     {
@@ -20,7 +20,7 @@ const tagInfoList = [
         musicName: "when the flowers bloom",
         musicPath: `${process.env.PUBLIC_URL}/assets/audio/default.m4a`,
         musicImagePath: "https://i1.sndcdn.com/artworks-vjrwHdp6JAkhIsjE-nyVHHw-t500x500.jpg",
-        musicDurationSec: "98",
+        musicDuration: "98",
         composer: "jjong"
     }
 ]

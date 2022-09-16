@@ -4,10 +4,11 @@ import { Forest } from "./objects/Forest";
 import { Cloud } from "./objects/Cloud";
 import { MagicForest } from "./objects/MagicForest";
 import { Sparrow } from "./objects/Sparrow";
+import { MangoBird } from "./objects/MangoBird";
 
-function ThreeCanvas() {
+function ThreeCanvas({ status }) {
     const hour = new Date().getHours();
-    const isMorning = (hour > 18 && hour < 5);
+    const isMorning = (hour < 18 && hour > 5);
 
     return (
         <Canvas id="three-js-canvas" shadows>
@@ -36,7 +37,7 @@ function ThreeCanvas() {
                         intensity={0.05}
                     />
                     <spotLight 
-                        color={[0.486, 0.216, 0.961]}
+                        color={[0.961, 0.569, 0.106]}
                         intensity={1.0}
                         angle={1}
                         position={[0, 100, 0]}
@@ -47,7 +48,8 @@ function ThreeCanvas() {
             }
             <Forest />
             <Cloud/>
-            <Sparrow />
+            {/* <Sparrow status={status}/> */}
+            <MangoBird />
         </Canvas>
     )
 }

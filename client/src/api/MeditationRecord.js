@@ -19,7 +19,7 @@ class MeditationRecordApi {
                 "musicName": "dream1",
                 "musicPath": "",
                 "musicImagePath": "https://i1.sndcdn.com/artworks-iNoCtQtBunQqZyJx-I3y0JQ-t500x500.jpg",
-                "musicDurationSec": "89",
+                "musicDuration": "89",
                 "composer": "jjong"
             },
             "birdSound": 30,

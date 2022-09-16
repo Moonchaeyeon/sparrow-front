@@ -124,7 +124,7 @@ function Home() {
 
     return (
         <>
-            <ThreeCanvas />
+            <ThreeCanvas status={status}/>
             <EyeTracking 
                 setFaceDetected={setFaceDetected}
                 setEyeClosed={setEyeClosed}
