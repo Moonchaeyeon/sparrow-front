@@ -17,8 +17,8 @@ function Music({ music, width, height }) {
                 <div className="music-name">{ music.musicName }</div>
                 {
                     !playing
-                    ? <button className="play" onClick={()=>{setPlaying(true)}}><Play/></button>
-                    : <button className="pause" onClick={()=>{setPlaying(false)}}><Pause/></button>
+                    ? <div className="play" onClick={()=>{setPlaying(true)}}><Play/></div>
+                    : <div className="pause" onClick={()=>{setPlaying(false)}}><Pause/></div>
                 }
             </div>
         </div>

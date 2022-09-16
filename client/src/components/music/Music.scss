@@ -25,7 +25,8 @@
             position: absolute;
         }
 
-        button {
+        .play, .pause {
+            cursor: pointer;
             margin-top: 2em;
 
             svg {
