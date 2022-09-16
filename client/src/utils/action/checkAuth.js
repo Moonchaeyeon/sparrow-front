@@ -9,7 +9,11 @@ export const checkAuth = async () => {
         await userApi.getUserInfo();
         store.dispatch(setAuth(true));
     } catch(err) {
-        store.dispatch(setAuth(false));
+        if (err.status === 403) {
+            await userApi.getAccessToken();
+        } else {
+            store.dispatch(setAuth(false));
+        }
     }
 }
 

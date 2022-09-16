@@ -30,7 +30,7 @@ function UserMeditationList({ setShowModal }) {
         {
             meditationRecordId: 10,
             createdDate: '2022-09-11', 
-            durationSec: 230,
+            duration: 230,
             music: {
                 musicName: 'Dream2',
                 musicImagePath: 'https://post-phinf.pstatic.net/MjAyMDA5MDRfMjY5/MDAxNTk5MjA3MjM5OTU0.06W0Vxag4mOp_3RUzKqnrCy3DhONXRwwCauNAHFcRXkg.r6a1UMHSnqnPQqhshDR2ANjFeVvXpGS5A90HJNSxPmsg.JPEG/98475567_678982502661201_3647491715844941249_n.jpg?type=w1200',
@@ -47,7 +47,7 @@ function UserMeditationList({ setShowModal }) {
         { 
             meditationRecordId: 9,
             createdDate: '2022-09-10', 
-            durationSec: 20,
+            duration: 20,
             music: {
                 musicName: 'Meditation',
                 musicImagePath: 'https://t1.daumcdn.net/thumb/R720x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/248R/image/ROaVC_3cDfgEn_Wmmu0ew-6n0S8.jpg',
@@ -64,7 +64,7 @@ function UserMeditationList({ setShowModal }) {
         { 
             meditationRecordId: 8,
             createdDate: '2022-09-10', 
-            durationSec: 10,
+            duration: 10,
             music: {
                 musicName: 'Echo',
                 musicImagePath: 'https://cdn.smehost.net/sonymusiccokr-45pressprod/wp-content/uploads/2020/05/Album-Cover-KATIE_ECHO.jpg',
@@ -81,7 +81,7 @@ function UserMeditationList({ setShowModal }) {
         { 
             meditationRecordId: 7,
             createdDate: '2022-09-09',
-            durationSec: 80, 
+            duration: 80, 
             music: {
                 musicName: 'Dream2',
                 musicImagePath: 'https://post-phinf.pstatic.net/MjAyMDA5MDRfMjY5/MDAxNTk5MjA3MjM5OTU0.06W0Vxag4mOp_3RUzKqnrCy3DhONXRwwCauNAHFcRXkg.r6a1UMHSnqnPQqhshDR2ANjFeVvXpGS5A90HJNSxPmsg.JPEG/98475567_678982502661201_3647491715844941249_n.jpg?type=w1200',
@@ -133,7 +133,7 @@ function UserMeditationList({ setShowModal }) {
                 <div className="user-meditation-list modal-wrapper">
                     <div className="modal-header">
                         <div>나의 총 명상 시간</div>
-                        <div className="user-total-durationSec">{secToString(totalMeditationDuration)}</div>
+                        <div className="user-total-duration">{secToString(totalMeditationDuration)}</div>
                         <div className="my-rate"
                             style={{background: myRanking.color}}
                         >

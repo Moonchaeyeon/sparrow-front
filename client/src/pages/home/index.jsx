@@ -8,12 +8,19 @@ import EyeTracking from './EyeTracking';
 import ShowStatus from './ShowStatus';
 import { ReactComponent as Pencil } from '../../assets/svg/pencil.svg';
 import './index.scss';
+import { useSelector } from 'react-redux';
+
+const START = 'START';
+const END = 'END';
+const ING = 'ING';
+const NONE = 'NONE';
 
 function Home() {
-    const START = 'START';
-    const END = 'END';
-    const ING = 'ING';
-    const NONE = 'NONE';
+    const birdSound = useSelector(state=>state.sound.birdSound);
+    const fireSound = useSelector(state=>state.sound.fireSound);
+    const oceanSound = useSelector(state=>state.sound.oceanSound);
+    const rainSound = useSelector(state=>state.sound.rainSound);
+    const selectedMusic = useSelector(state=>state.sound.selectedMusic);
 
     const timer = useRef(null);
     const time = useRef(0);
@@ -25,6 +32,27 @@ function Home() {
     const [status, setStatus] = useState(NONE);
 
     const [showUserMeditationList, setShowUserMeditationList] = useState(false);
+
+    const [showWriteRecord, setShowWriteRecord] = useState(false);
+    const [recordInfo, setRecordInfo] = useState({});
+
+    const finishMeditation = () => {
+        let recordInfo = {
+            music: selectedMusic,
+            birdSound: birdSound,
+            fireSound: fireSound,
+            oceanSound: oceanSound,
+            rainSound: rainSound,
+            duration: durationSec,
+        }
+        setRecordInfo(recordInfo);
+        setShowWriteRecord(true);
+    }
+
+    const closeWriteRecord = () => {
+        setShowWriteRecord(false);
+        setStatus('NONE');
+    }
 
     useEffect(()=>{
         if (!faceDetected) {
@@ -54,13 +82,11 @@ function Home() {
                 durationSecTime.current = 0;
                 setSec(0);
                 time.current = 0;
-                setStatus(NONE);
                 break;
             case START:
                 setSec(0);
                 time.current = 0;
                 clearInterval(timer.current);
-                setStatus(ING);
                 break;
             case ING:
                 timer.current = setInterval(()=>{
@@ -74,7 +100,7 @@ function Home() {
     useEffect(()=>{
         switch(status) {
             case NONE:
-                if (sec >= 10) {
+                if (sec >= 5) {
                     setStatus(START);
                 }
                 break;
@@ -124,7 +150,7 @@ function Home() {
 
     return (
         <>
-            <ThreeCanvas status={status}/>
+            <ThreeCanvas status={status} setStatus={setStatus} finishMeditation={finishMeditation}/>
             <EyeTracking 
                 setFaceDetected={setFaceDetected}
                 setEyeClosed={setEyeClosed}
@@ -142,10 +168,16 @@ function Home() {
                 />
             }
             <ShowStatus faceDetected={faceDetected} status={status}/>
-
-            {/* <MeditationRecord /> */}
             <AudioHandler status={status}/>
             <MusicHandler status={status}/>
+
+            { showWriteRecord && 
+                <MeditationRecord 
+                    recordInfo={recordInfo}
+                    setShowModal={closeWriteRecord}
+                    setStatus={setStatus}
+                /> 
+            }
         </>
     )
 }

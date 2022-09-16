@@ -23,7 +23,7 @@ function OAuthHandler() {
       } else {
           
       }
-      // navigation('/');
+      navigation('/');
 
   }, [])
 

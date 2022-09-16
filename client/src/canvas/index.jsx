@@ -6,7 +6,7 @@ import { MagicForest } from "./objects/MagicForest";
 import { Sparrow } from "./objects/Sparrow";
 import { MangoBird } from "./objects/MangoBird";
 
-function ThreeCanvas({ status }) {
+function ThreeCanvas({ status, setStatus, finishMeditation }) {
     const hour = new Date().getHours();
     const isMorning = (hour < 18 && hour > 5);
 
@@ -49,7 +49,7 @@ function ThreeCanvas({ status }) {
             <Forest />
             <Cloud/>
             {/* <Sparrow status={status}/> */}
-            <MangoBird />
+            <MangoBird status={status} setStatus={setStatus} finishMeditation={finishMeditation}/>
         </Canvas>
     )
 }

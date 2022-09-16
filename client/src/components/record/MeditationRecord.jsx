@@ -19,7 +19,7 @@ function MeditationRecord({ edit = true, recordInfo, setShowModal, editMeditatio
     const today = `${todayDate.getFullYear()}-${todayDate.getMonth()+1}-${todayDate.getDate()}`;
     const [ editMode, setEditMode ] = useState(edit);
     const [date, setDate] = useState(today);
-    const [durationSec, setDuration] = useState(recordInfo.durationSec);
+    const [duration, setDuration] = useState(recordInfo.duration);
     const [music, setMusic] = useState(recordInfo.music);
     const [title, setTitle] = useState('');
     const [content, setDiary] = useState('');
@@ -50,7 +50,7 @@ function MeditationRecord({ edit = true, recordInfo, setShowModal, editMeditatio
             oceanSound: recordInfo.oceanSound,
             rainSound: recordInfo.rainSound,
             fireSound: recordInfo.fireSound,
-            durationSec: durationSec,
+            duration: duration,
             tagIds: tagIdList
         }
         await meditationRecordApi.postRecord(newRecord);
@@ -70,7 +70,7 @@ function MeditationRecord({ edit = true, recordInfo, setShowModal, editMeditatio
 
     useEffect(()=>{
         setDate(recordInfo.createdDate);
-        setDuration(recordInfo.durationSec);
+        setDuration(recordInfo.duration);
         setTitle(recordInfo.title);
         setDiary(recordInfo.content);
         setTagIdList(recordInfo.tagIdList);
@@ -92,7 +92,7 @@ function MeditationRecord({ edit = true, recordInfo, setShowModal, editMeditatio
 
                         <div className="time-info-wrapper">
                             <div className="date">{ timeToString(date) }</div>
-                            <div className="time">{ secToString(durationSec) }</div>
+                            <div className="time">{ secToString(duration) }</div>
                         </div>
 
                         <Music music={music} width="246px" height="246px"/>
