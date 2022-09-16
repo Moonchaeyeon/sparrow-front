@@ -34,7 +34,7 @@ function Home() {
     const [durationSec, setDuration] = useState(0);
     const [faceDetected, setFaceDetected] = useState(false);
     const [eyeClosed, setEyeClosed] = useState(false);
-    const [status, setStatus] = useState(NONE);
+    const [status, setStatus] = useState('');
 
     const [showUserMeditationList, setShowUserMeditationList] = useState(false);
 
@@ -60,7 +60,6 @@ function Home() {
     }
 
     const closeWriteRecord = () => {
-        setShowWriteRecord(false);
         setStatus('NONE');
     }
 
@@ -83,6 +82,7 @@ function Home() {
     useEffect(()=>{
         switch(status) {
             case NONE:
+                setShowWriteRecord(false);
                 clearInterval(timer.current);
                 console.log("clear");
                 setPlayDefaultMusic(true);
@@ -113,6 +113,7 @@ function Home() {
             default:
                 setPlayDefaultMusic(true);
                 setPlayMeditationMusic(false);
+                setStatus(NONE);
         }
     }, [status])
 
@@ -124,7 +125,7 @@ function Home() {
                 }
                 break;
             case ING:
-                if (sec >= 3) {
+                if (sec >= 2) {
                     setStatus(END);
                 }
                 break;

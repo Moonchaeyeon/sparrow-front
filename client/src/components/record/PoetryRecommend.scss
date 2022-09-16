@@ -1,0 +1,31 @@
+@import '../../styles//var.scss';
+
+.poetry-recommend.modal-wrapper {
+    width: 400px;
+    min-height: 400px;
+    padding: 20px;
+    text-align: center;
+    border-radius: 30px;
+    @include whiteBlur;
+
+    .modal-content {
+        @include flexColumnCenter;
+
+        .title {
+            font-size: 14px;
+            font-weight: 600;
+            color: $PU-1;
+            text-align: left;
+            margin-bottom: 10px;
+        }
+
+        .reco-poetry {
+            white-space: pre-wrap;
+            line-height: 136%;
+            font-size: 16px;
+            font-weight: 600;
+            color: $BK;
+            padding: 10px;
+        }
+    }
+}

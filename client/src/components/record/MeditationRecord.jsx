@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 import { timeToString, secToString } from "../../utils/action/toString";
 import MeditationRecordApi from "../../api/MeditationRecordApi";
 import { ReactComponent as Close } from "../../assets/svg/close.svg";
@@ -13,6 +14,7 @@ import Modal from "../modal/Modal";
 import Music from "../music/Music";
 import "./MeditationRecord.scss";
 import { useSelector } from "react-redux";
+import PoetryRecommend from "./PoetryRecommend";
 
 function MeditationRecord({ edit = true, recordInfo, setShowModal, editMeditationRecord, deleteMeditationRecord }) { 
     const meditationRecordApi = new MeditationRecordApi();
@@ -26,6 +28,7 @@ function MeditationRecord({ edit = true, recordInfo, setShowModal, editMeditatio
     const [title, setTitle] = useState('');
     const [content, setDiary] = useState('');
     const [tagIds, setTagIdList] = useState([]);
+    const [showPoetryRecommend, setShowPoetryRecommend] = useState(false);
 
     const soundInfoList = [
         { icon: <Bird/>, value: recordInfo.birdSound },
@@ -41,7 +44,7 @@ function MeditationRecord({ edit = true, recordInfo, setShowModal, editMeditatio
             setTagIdList(tagIds.filter(el=>el.tagId!==tagId));
         }
     }
-
+    
     const postRecord = async () => {
         let newRecord = {
             disclosure: 1,
@@ -57,7 +60,7 @@ function MeditationRecord({ edit = true, recordInfo, setShowModal, editMeditatio
         }
         console.log(newRecord);
         await meditationRecordApi.postRecord(newRecord);
-        setShowModal(false);
+        setShowPoetryRecommend(true);
     }
 
     const editRecord = async () => {
@@ -89,6 +92,7 @@ function MeditationRecord({ edit = true, recordInfo, setShowModal, editMeditatio
     }, [recordInfo, editMode])
 
     return (
+        <>
         <Modal setShowModal={setShowModal} displayType="bottom">
             <div className="record modal-wrapper" id={editMode?null:'view-mode'}>
                 <div className="modal-title">명상 기록</div>
@@ -177,6 +181,8 @@ function MeditationRecord({ edit = true, recordInfo, setShowModal, editMeditatio
                 </div>
             </div>
         </Modal>
+        { showPoetryRecommend && <PoetryRecommend content={content} setShowModal={setShowModal}/> }
+        </>
     )
 }
 export default MeditationRecord;
