@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, PerspectiveCamera, Sparkles, Stars } from '@react-three/drei';
 import { Forest } from "./objects/Forest";
@@ -8,8 +9,13 @@ import { SparklesStory } from "./objects/Sparkles";
 import { MeshReflectorMaterial } from "@react-three/drei";
 import { degToRad } from "three/src/math/MathUtils";
 import { Rain } from "./objects/Rain";
+import { Ocean } from "./objects/Ocean";
+import { Bird } from "./objects/Bird";
 
 function ThreeCanvas({ status, setStatus, finishMeditation }) {
+    const birdSound = useSelector(state=>state.sound.birdSound);
+    const rainSound = useSelector(state=>state.sound.rainSound);
+    const oceanSound = useSelector(state=>state.sound.oceanSound);
     const hour = new Date().getHours();
     const isMorning = (hour < 18 && hour > 5);
 
@@ -18,7 +24,7 @@ function ThreeCanvas({ status, setStatus, finishMeditation }) {
             style={isMorning?{backgroundImage: 'linear-gradient(135deg, #3fa5a6 0%, #7b80c9 100%)'}:{backgroundImage: 'linear-gradient(to top, #106c6d 0%, #202460 100%)'}}
         >
             <OrbitControls />
-            <PerspectiveCamera makeDefault fov={50} position={[3, 3, 3]}/>
+            <PerspectiveCamera makeDefault fov={50} position={[5, 0, 5]}/>
             {/* <color args={!isMorning ? [0.439, 0.776, 0.812] : [0.098, 0.043, 0.231]} attach="background"/> */}
             {
                 !isMorning 
@@ -61,7 +67,6 @@ function ThreeCanvas({ status, setStatus, finishMeditation }) {
                 <meshToonMaterial color="orange"/>
             </mesh>
             {/* <Background /> */}
-            <Island />
             <MangoBird status={status} setStatus={setStatus} finishMeditation={finishMeditation}/>
             <Sparkles 
                 color={"#d7fc79"}
@@ -74,7 +79,9 @@ function ThreeCanvas({ status, setStatus, finishMeditation }) {
                 scale={[5,5,5]}
             />
             {/* <Stars /> */}
-            <Rain />
+            { birdSound > 0 && <Bird /> }
+            { rainSound > 0 && <Rain /> }
+            { oceanSound > 0 ? <Ocean /> : <Island /> }
         </Canvas>
     )
 }
