@@ -1,14 +1,7 @@
 import { ACTION_TYPES } from './soundTypes';
 
 const initialState = {
-    selectedMusic: {
-        musicId: 1,
-        musicName: "dream1",
-        musicPath: `${process.env.PUBLIC_URL}/assets/audio/default.m4a`,
-        musicImagePath: "https://i1.sndcdn.com/artworks-iNoCtQtBunQqZyJx-I3y0JQ-t500x500.jpg",
-        musicDuration: "89",
-        composer: "jjong"
-    },
+    selectedMusic: {},
     birdSound: 0,
     windVolume: 0,
     fireSound: 0,

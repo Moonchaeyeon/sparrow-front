@@ -15,7 +15,7 @@ export function MangoBird({ status, setStatus, finishMeditation }) {
 
     useEffect(() => {
         scene.scale.set(0.05, 0.05, 0.05);
-        scene.position.set(0, 0, 0);
+        scene.position.set(0, -3, 0);
         scene.traverse((object) => {
             if (object instanceof Mesh) {
                 object.castShadow = true;
@@ -28,24 +28,26 @@ export function MangoBird({ status, setStatus, finishMeditation }) {
     useFrame(({ state, delta })=>{ 
         switch(status) {
             case 'START':
-                if (scene.position.y < 2) {
-                    scene.position.y += 0.05;
-                } else if (scene.position.y >= 2) {
-                    setStatus('ING');
-                }
+                // if (scene.position.y < 2) {
+                //     scene.position.y += 0.05;
+                // } else if (scene.position.y >= 2) {
+                //     setStatus('ING');
+                // }
+                setStatus('ING');
                 break;
             case 'END':
-                if (scene.position.y > 0) {
-                    scene.position.y -= 0.05;
-                } else if (scene.position.y <= 0) {
-                    finishMeditation();
-                }
+                // if (scene.position.y > 0) {
+                //     scene.position.y -= 0.05;
+                // } else if (scene.position.y <= 0) {
+                //     finishMeditation();
+                // }
+                finishMeditation();
                 break;
             case 'ING':
-                scene.position.y = 0;
+                // scene.position.y = 0;
                 break;
             default:
-                scene.position.y = -3;
+                // scene.position.y = -3;
         }
      })
 

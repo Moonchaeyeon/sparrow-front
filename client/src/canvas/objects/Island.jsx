@@ -17,7 +17,8 @@ export function Island() {
 
     useEffect(() => {
         scene.scale.set(3.5, 3.5, 3.5);
-        scene.position.set(3.5, -4, 0);
+        // scene.position.set(3.5, -4, 0);
+        scene.position.set(0.5, -4, -0.5);
         scene.rotation.y = degToRad(-110);
         scene.traverse((object) => {
             if (object instanceof Mesh) {
