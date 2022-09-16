@@ -12,9 +12,9 @@ import { ReactComponent as Crown } from "../../assets/svg/crown.svg";
 import './UserMeditationList.scss';
 
 function UserMeditationList({ setShowModal }) {
-    const auth = useSelector(state=>state.userData.auth);
     const meditationRecordApi = new MeditationRecordApi();
-    let totalMeditationDuration = 4698;
+    const auth = useSelector(state=>state.userData.auth);
+    const totalMeditationDuration = useSelector(state=>state.userData.totalDuration);
     let myRanking = ratingInfoList[3];
     const [currMeditationRecord, setCurrMeditationRecord] = useState(null);
     const [showMeditationRecord, setShowMeditationRecord] = useState(false);

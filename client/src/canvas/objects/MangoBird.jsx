@@ -25,17 +25,20 @@ export function MangoBird({ status, setStatus, finishMeditation }) {
         switch(status) {
             case 'START':
                 if (gltf.scene.position.y < 0) {
-                    gltf.scene.position.y += delta * 0.1;
-                } else if (gltf.scene.position.y === 0) {
+                    gltf.scene.position.y += 0.05;
+                } else if (gltf.scene.position.y >= 0) {
                     setStatus('ING');
                 }
                 break;
             case 'END':
                 if (gltf.scene.position.y > -3) {
-                    gltf.scene.position.y -= delta * 0.1;
-                } else if (gltf.scene.position.y === -3) {
+                    gltf.scene.position.y -= 0.05;
+                } else if (gltf.scene.position.y <= -3) {
                     finishMeditation();
                 }
+                break;
+            case 'ING':
+                gltf.scene.position.y = 0;
                 break;
             default:
                 gltf.scene.position.y = -3;
