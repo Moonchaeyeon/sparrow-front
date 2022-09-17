@@ -1,4 +1,5 @@
 import { Suspense, useState, useEffect, useRef } from 'react';
+import ReactAudioPlayer from 'react-audio-player';
 import ThreeCanvas from '../../canvas';
 import MeditationRecord from '../../components/record/MeditationRecord';
 import UserMeditationList from './UserMeditationList';
@@ -25,7 +26,17 @@ function Home() {
     const rainSound = useSelector(state=>state.sound.rainSound);
     const selectedMusic = useSelector(state=>state.sound.selectedMusic);
 
+    // const startAudioRef = useRef();
+    // const endAudioRef = useRef();
+    // const defaultAudioRef = useRef();
+    // const selectedAudioRef = useRef();
+
     // music source
+    const startMusic = new Audio(`${process.env.PUBLIC_URL}/assets/audio/meditation_start.m4a`);
+    const endMusic = new Audio(`${process.env.PUBLIC_URL}/assets/audio/meditation_end.mp3`);
+    const defaultMusic = new Audio(`${process.env.PUBLIC_URL}/assets/audio/default.m4a`);
+    const meditationMusic = new Audio(selectedMusic.musicPath);
+
     let [,,setPlayStartMusic] = useAudio(`${process.env.PUBLIC_URL}/assets/audio/meditation_start.m4a`);
     let [,,setPlayDefaultMusic] = useAudio(`${process.env.PUBLIC_URL}/assets/audio/default.mp3`);
     let [,,setPlayMeditationMusic] = useAudio(selectedMusic.musicPath);
@@ -65,7 +76,9 @@ function Home() {
     }
 
     const closeWriteRecord = () => {
-        setStatus('NONE');
+        setStatus(NONE);
+        setShowWriteRecord(false);
+        endMusic.pause();
     }
 
     useEffect(()=>{
@@ -85,14 +98,25 @@ function Home() {
     }, [faceDetected])
 
     useEffect(()=>{
+        defaultMusic.loop = true;
+        selectedMusic.loop = true;
+    }, [defaultMusic, selectedMusic])
+
+    useEffect(()=>{
         console.log(status);
         switch(status) {
             case NONE:
                 // music
-                setPlayStartMusic(false);
-                setPlayEndMusic(false);
-                setPlayDefaultMusic(true);
-                setPlayMeditationMusic(false);
+                defaultMusic.play();
+                endMusic.pause();
+
+                // setPlayStartMusic(false);
+                // setPlayEndMusic(false);
+                // setPlayDefaultMusic(true);
+                // setPlayMeditationMusic(false);
+
+                // defaultAudioRef.current.audioEl.current.play();
+                // endAudioRef.current.audioEl.current.pause();
 
                 // action
                 setShowWriteRecord(false);
@@ -101,9 +125,15 @@ function Home() {
                 break;
             case END:
                 // music
-                setPlayStartMusic(false);
-                setPlayEndMusic(true);
-                setPlayMeditationMusic(false);
+                meditationMusic.pause();
+                endMusic.play();
+                // setPlayStartMusic(false);
+                // setPlayEndMusic(true);
+                // endMusic.play();
+                // setPlayMeditationMusic(false);
+
+                // selectedAudioRef.current.audioEl.current.pause();
+                // endAudioRef.current.audioEl.current.play();
 
                 // action
                 clearInterval(timer.current);
@@ -119,16 +149,24 @@ function Home() {
                 clearInterval(timer.current);
                 setDuration(0);
                 durationSecTime.current = 0;
+                // startAudioRef.current.audioEl.current.play();
+                // console.log(startAudioRef.current.audioEl.current)
+                // startAudioRef.current.audioEl.current.play();
 
                 // music
-                setPlayStartMusic(true);
-                setPlayDefaultMusic(false);
-                setPlayMeditationMusic(false);
+                // setPlayStartMusic(true);
+                // startMusic.play();
+                // setPlayDefaultMusic(false);
+                // setPlayMeditationMusic(false);
+
+                // startAudioRef.current.audioEl.current.play();
                 break;
             case ING:
                 // music
-                setPlayStartMusic(false);
-                setPlayMeditationMusic(true);
+                // setPlayStartMusic(false);
+                // setPlayMeditationMusic(true);
+
+                // selectedAudioRef.current.audioEl.current.play();
 
                 // action
                 durationTimer.current = setInterval(()=>{
@@ -138,9 +176,11 @@ function Home() {
                 break;
             default:
                 // music
-                setPlayStartMusic(false);
-                setPlayDefaultMusic(true);
-                setPlayMeditationMusic(false);
+                // setPlayStartMusic(false);
+                // setPlayDefaultMusic(true);
+                // setPlayMeditationMusic(false);
+
+                // defaultAudioRef.current.audioEl.current.play();
 
                 // action
                 setStatus(NONE);
@@ -205,6 +245,41 @@ function Home() {
                 setFaceDetected={setFaceDetected}
                 setEyeClosed={setEyeClosed}
             />
+            {/* <ReactAudioPlayer
+                src={`${process.env.PUBLIC_URL}/assets/audio/meditation_start.m4a`}
+                ref={startAudioRef}
+            />
+            <ReactAudioPlayer
+                src={`${process.env.PUBLIC_URL}/assets/audio/meditation_end.m4a`}
+                ref={endAudioRef}
+            />
+            <ReactAudioPlayer
+                src={`${process.env.PUBLIC_URL}/assets/audio/default.m4a`}
+                ref={defaultAudioRef}
+            />
+            <ReactAudioPlayer
+                src={selectedMusic.musicPath}
+                ref={selectedAudioRef}
+            /> */}
+            {/* <audio
+                src={`${process.env.PUBLIC_URL}/assets/audio/meditation_start.m4a`}
+                ref={startAudioRef}
+            />
+            <audio
+                src={`${process.env.PUBLIC_URL}/assets/audio/meditation_end.m4a`}
+                ref={endAudioRef}
+                loop
+            />
+            <audio
+                src={`${process.env.PUBLIC_URL}/assets/audio/default.m4a`}
+                ref={defaultAudioRef}
+                loop
+            />
+            <audio
+                src={selectedMusic.musicPath}
+                ref={selectedAudioRef}
+                loop
+            /> */}
             <button
                 className="floating-btn show-record"
                 onClick={()=>{setShowUserMeditationList(true)}}
