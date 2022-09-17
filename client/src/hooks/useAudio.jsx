@@ -1,37 +1,37 @@
 import { useState, useEffect } from "react";
 
 const useAudio = url => {
-    const [audio] = useState(new Audio(url));
+    const [audio, setAudio] = useState(new Audio(url));
     const [playing, setPlaying] = useState(false);
     const [volume, setVolume] = useState(0);
   
     const toggle = () => setPlaying(!playing);
     const changeVolume = (amount) => { setVolume(amount) }
     
-    useEffect(()=>{
-        audio.loop = true;
-        audio.pause();
-    }, [])
+    useEffect(()=> {
+        if (!!audio) {
+            audio.loop = true;
+            audio.pause();
+        }
+    }, [audio])
 
     useEffect(() => {
-        playing ? audio.play() : audio.pause();
+        (!!audio && playing) ? audio.play() : audio.pause();
       },
-      [playing]
+      [audio, playing]
     );
   
     useEffect(()=> {
-        if (volume !== 0) {
-            if (!playing) setPlaying(true);
-            audio.volume = volume;
-        } else {
-            setPlaying(false);
+        if (!!audio) {
+            if (volume !== 0) {
+                if (!playing) setPlaying(true);
+                audio.volume = volume;
+            } else {
+                setPlaying(false);
+            }
         }
-    }, [volume])
+    }, [audio, volume])
 
-    useEffect(() => {
-      audio.loop = true;
-    }, []);
-  
     return [playing, changeVolume, setPlaying];
 };
 export default useAudio;

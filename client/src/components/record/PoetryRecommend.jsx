@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Modal from "../modal/Modal";
+import { ReactComponent as Check } from '../../assets/svg/check.svg';
 import './PoetryRecommend.scss';
 
 function PoetryRecommend({ content, setShowModal }) {
@@ -18,7 +19,6 @@ function PoetryRecommend({ content, setShowModal }) {
     useEffect(()=>{
         const getPoetryReco = async () => {
             try {
-                const token = localStorage.getItem('accessToken');
                 const res = await axios.post(`${process.env.REACT_APP_RECO_SERVER}/default/poetry-recommend`, {}, {
                     content: content
                 });
@@ -35,10 +35,18 @@ function PoetryRecommend({ content, setShowModal }) {
             <div className="modal-wrapper poetry-recommend">
                 <div className="modal-content">
                     <div className="title">오늘의 추천 글귀</div>
-                    <div className="reco-poetry">{ poetry ? poetry : "자신을 사랑해주세요." }</div>
+                    <div className="reco-poetry-wrapper">
+                        <div className="reco-poetry">
+                            {/* { poetry ? poetry : "자신을 사랑해주세요." } */}
+                            { poetry }
+                        </div>
+                    </div>
                 </div>
 
-                <button onClick={()=>{copyToClipboard()}}>복사하기</button>
+                <button onClick={(e)=>{copyToClipboard(); e.currentTarget.focus(); console.log("hihi")}} className="copy-reco">
+                    Copy to Clipboard
+                    <Check className="check-icon"/>
+                </button>
             </div>
         </Modal>
     )

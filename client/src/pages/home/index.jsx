@@ -11,20 +11,25 @@ import './index.scss';
 import { useSelector } from 'react-redux';
 import useAudio from '../../hooks/useAudio';
 
-const START = 'START';
-const END = 'END';
-const ING = 'ING';
+const INIT = 'INIT'; // 맨 처음 상태
+const START = 'START'; // meditation start
+const END = 'END'; // meditation end
+const ING = 'ING'; // meditiation ing
 const NONE = 'NONE';
 
 function Home() {
+    // sound info
     const birdSound = useSelector(state=>state.sound.birdSound);
     const fireSound = useSelector(state=>state.sound.fireSound);
     const oceanSound = useSelector(state=>state.sound.oceanSound);
     const rainSound = useSelector(state=>state.sound.rainSound);
     const selectedMusic = useSelector(state=>state.sound.selectedMusic);
 
+    // music source
+    let [,,setPlayStartMusic] = useAudio(`${process.env.PUBLIC_URL}/assets/audio/meditation_start.m4a`);
     let [,,setPlayDefaultMusic] = useAudio(`${process.env.PUBLIC_URL}/assets/audio/default.mp3`);
     let [,,setPlayMeditationMusic] = useAudio(selectedMusic.musicPath);
+    let [,,setPlayEndMusic] = useAudio(`${process.env.PUBLIC_URL}/assets/audio/meditation_end.mp3`);
 
     const timer = useRef(null);
     const time = useRef(0);
@@ -82,13 +87,21 @@ function Home() {
     useEffect(()=>{
         switch(status) {
             case NONE:
+                // music
+                setPlayEndMusic(false);
+                setPlayDefaultMusic(true);
+
+                // action
                 setShowWriteRecord(false);
                 clearInterval(timer.current);
                 console.log("clear");
-                setPlayDefaultMusic(true);
-                setPlayMeditationMusic(false);
                 break;
             case END:
+                // music
+                setPlayMeditationMusic(false);
+                setPlayEndMusic(true);
+
+                // action
                 clearInterval(timer.current);
                 clearInterval(durationTimer.current);
                 durationSecTime.current = 0;
@@ -96,23 +109,34 @@ function Home() {
                 time.current = 0;
                 break;
             case START:
+                // action
                 setSec(0);
                 time.current = 0;
                 clearInterval(timer.current);
                 setDuration(0);
                 durationSecTime.current = 0;
+
+                // music
                 setPlayDefaultMusic(false);
+                setPlayStartMusic(true);
                 break;
             case ING:
+                // music
+                setPlayStartMusic(false);
                 setPlayMeditationMusic(true);
+
+                // action
                 durationTimer.current = setInterval(()=>{
                     setDuration(durationSecTime.current);
                     durationSecTime.current += 1;
                 }, 1000);
                 break;
             default:
+                // music
                 setPlayDefaultMusic(true);
                 setPlayMeditationMusic(false);
+
+                // action
                 setStatus(NONE);
         }
     }, [status])
