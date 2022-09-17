@@ -85,11 +85,14 @@ function Home() {
     }, [faceDetected])
 
     useEffect(()=>{
+        console.log(status);
         switch(status) {
             case NONE:
                 // music
+                setPlayStartMusic(false);
                 setPlayEndMusic(false);
                 setPlayDefaultMusic(true);
+                setPlayMeditationMusic(false);
 
                 // action
                 setShowWriteRecord(false);
@@ -98,8 +101,9 @@ function Home() {
                 break;
             case END:
                 // music
-                setPlayMeditationMusic(false);
+                setPlayStartMusic(false);
                 setPlayEndMusic(true);
+                setPlayMeditationMusic(false);
 
                 // action
                 clearInterval(timer.current);
@@ -117,8 +121,9 @@ function Home() {
                 durationSecTime.current = 0;
 
                 // music
-                setPlayDefaultMusic(false);
                 setPlayStartMusic(true);
+                setPlayDefaultMusic(false);
+                setPlayMeditationMusic(false);
                 break;
             case ING:
                 // music
@@ -133,6 +138,7 @@ function Home() {
                 break;
             default:
                 // music
+                setPlayStartMusic(false);
                 setPlayDefaultMusic(true);
                 setPlayMeditationMusic(false);
 
