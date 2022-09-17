@@ -7,7 +7,7 @@ import { Rain } from "./objects/Rain";
 import { Ocean } from "./objects/Ocean";
 import { Bird } from "./objects/Bird";
 
-function ThreeCanvas({ status, setStatus, finishMeditation }) {
+function ThreeCanvas({ status, setStatus }) {
     const birdSound = useSelector(state=>state.sound.birdSound);
     const rainSound = useSelector(state=>state.sound.rainSound);
     const oceanSound = useSelector(state=>state.sound.oceanSound);
@@ -41,7 +41,7 @@ function ThreeCanvas({ status, setStatus, finishMeditation }) {
                 <sphereGeometry/>
                 <meshToonMaterial color="orange" transparent={true}/>
             </mesh>
-            <MangoBird status={status} setStatus={setStatus} finishMeditation={finishMeditation}/>
+            <MangoBird status={status} setStatus={setStatus}/>
             <Sparkles 
                 color={"#d7fc79"}
                 size={5}
