@@ -35,7 +35,7 @@ function Home() {
     const startMusic = new Audio(`${process.env.PUBLIC_URL}/assets/audio/meditation_start.m4a`);
     const endMusic = new Audio(`${process.env.PUBLIC_URL}/assets/audio/meditation_end.mp3`);
     const defaultMusic = new Audio(`${process.env.PUBLIC_URL}/assets/audio/default.m4a`);
-    const meditationMusic = new Audio(selectedMusic.musicPath);
+    let [meditationMusic, setMeditationMusic] = useState(null);
 
     let [,,setPlayStartMusic] = useAudio(`${process.env.PUBLIC_URL}/assets/audio/meditation_start.m4a`);
     let [,,setPlayDefaultMusic] = useAudio(`${process.env.PUBLIC_URL}/assets/audio/default.mp3`);
@@ -99,8 +99,12 @@ function Home() {
 
     useEffect(()=>{
         defaultMusic.loop = true;
-        selectedMusic.loop = true;
-    }, [defaultMusic, selectedMusic])
+        meditationMusic.loop = true;
+    }, [defaultMusic, meditationMusic])
+
+    useEffect(()=> {
+        setMeditationMusic(new Audio(selectedMusic.musicPath));
+    }, [selectedMusic])
 
     useEffect(()=>{
         console.log(status);
@@ -154,6 +158,7 @@ function Home() {
                 // startAudioRef.current.audioEl.current.play();
 
                 // music
+                startMusic.play();
                 // setPlayStartMusic(true);
                 // startMusic.play();
                 // setPlayDefaultMusic(false);
@@ -163,6 +168,9 @@ function Home() {
                 break;
             case ING:
                 // music
+                meditationMusic.play();
+                defaultMusic.pause();   
+
                 // setPlayStartMusic(false);
                 // setPlayMeditationMusic(true);
 
