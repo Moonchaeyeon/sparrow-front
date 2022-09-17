@@ -122,7 +122,7 @@ function EyeTracking({ setFaceDetected, setEyeClosed }) {
           });
           camera.start();
         }
-    }, [webcamRef.current]);
+    }, [webcamRef, webcamRef.current]);
 
     return (
       <div className="webcam-container"

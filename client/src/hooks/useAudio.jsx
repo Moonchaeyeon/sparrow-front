@@ -11,12 +11,16 @@ const useAudio = url => {
     useEffect(()=> {
         if (!!audio) {
             audio.loop = true;
-            audio.pause();
         }
     }, [audio])
 
     useEffect(() => {
-        (!!audio && playing) ? audio.play() : audio.pause();
+        if (!!audio && playing) {
+            setTimeout(()=>{
+                audio.play();
+            }, 3000)
+        } else
+            audio.pause();
       },
       [audio, playing]
     );

@@ -20,9 +20,7 @@ class MeditationRecordApi {
     }
 
     deleteRecord = async (recordId) => {
-        const res = await destroy(`meditation-record`, {
-            meditationRecordId : recordId
-        });
+        const res = await destroy(`meditation-record?recordId=${recordId}`);
         return res.data;
     }
 }

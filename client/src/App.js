@@ -1,4 +1,5 @@
 import { Suspense, useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import checkAuth from './utils/action/checkAuth';
 import Navbar from './components/header';
@@ -8,7 +9,16 @@ import OAuthHandler from './pages/oauth';
 import './App.css'
 
 function App() {
+  const auth = useSelector(state=>state.userData.auth);
   const [showLoginModal, setShowLoginModal] = useState(false);
+
+  useEffect(()=>{
+    if (!auth) {
+      setShowLoginModal(true);
+    } else {
+      setShowLoginModal(false);
+    }
+  }, [auth])
 
   useEffect(()=>{
     checkAuth();

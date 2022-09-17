@@ -71,7 +71,7 @@ function MeditationRecord({ edit = true, recordInfo, setShowModal, editMeditatio
             content: content,
             tagIds: tagIds
         }
-        editMeditationRecord(newRecord);
+        await editMeditationRecord(newRecord);
         setEditMode(false);
     }
 

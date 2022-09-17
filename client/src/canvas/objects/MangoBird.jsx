@@ -33,7 +33,9 @@ export function MangoBird({ status, setStatus, finishMeditation }) {
                 // } else if (scene.position.y >= 2) {
                 //     setStatus('ING');
                 // }
-                setStatus('ING');
+                setTimeout(()=>{
+                    setStatus('ING');
+                }, 9000)
                 break;
             case 'END':
                 // if (scene.position.y > 0) {
