@@ -99,7 +99,7 @@ function Home() {
 
     useEffect(()=>{
         defaultMusic.loop = true;
-        meditationMusic.loop = true;
+        if (meditationMusic) meditationMusic.loop = true;
     }, [defaultMusic, meditationMusic])
 
     useEffect(()=> {
@@ -129,7 +129,7 @@ function Home() {
                 break;
             case END:
                 // music
-                meditationMusic.pause();
+                meditationMusic?.pause();
                 endMusic.play();
                 // setPlayStartMusic(false);
                 // setPlayEndMusic(true);
@@ -168,7 +168,7 @@ function Home() {
                 break;
             case ING:
                 // music
-                meditationMusic.play();
+                meditationMusic?.play();
                 defaultMusic.pause();   
 
                 // setPlayStartMusic(false);
