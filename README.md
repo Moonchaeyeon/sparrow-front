@@ -12,6 +12,6 @@ sparrow는 지친 현대인들을 위한 명상 콘텐츠가 담긴 웹 프로�
 | **profile** | [<img src="https://avatars.githubusercontent.com/u/49464171?v=4" width="300">](https://github.com/Moonchaeyeon) | [<img src="https://avatars.githubusercontent.com/u/69239151?v=4" width="300">](https://github.com/jjonggang) |
 |:---:|:---:|:---:|
 | **name** | 문채연 | 박종경 |
-| **role** | <div style="">💻 프론트엔드 개발</div><div>:art: 디자인</div><div>:pencil: 기획</div> | <div>💻 백엔드 개발</div><div>:musical_score: 노래 콘텐즈 제작</div><div>:pencil: 기획</div> |
+| **role** | <div style="">💻 프론트엔드 개발</div><div>:art: 디자인</div><div>:pencil: 기획</div> | <div>💻 백엔드 개발</div><div>:musical_score: 노래 콘텐츠 제작</div><div>:pencil: 기획</div> |
 
 
