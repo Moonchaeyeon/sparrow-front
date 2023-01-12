@@ -16,6 +16,8 @@ $FIRE : #CC6969;
 $WAVE : #6985CC;
 $RAIN : #33bdc7;
 
+$navbar-height: 6vh;
+
 @mixin flexCenter {
     display: flex;
     align-items: center;
@@ -39,8 +41,11 @@ $RAIN : #33bdc7;
 @mixin shadow { box-shadow: 0px 6px 6px 20px 5px rgba(83, 83, 83, 0.15); }
 @mixin lightShadow { box-shadow: 0px 4px 20px 8px rgba(102, 98, 108, 0.15); }
 @mixin whiteBlur {
-    background: rgba(255, 255, 255, 0.6);
+    // background: rgba(255, 255, 255, 0.6);
+    background: rgba(188, 188, 188, 0.6);
     backdrop-filter: blur(15px);
+    border: 2px solid white;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5) !important;
 }
 
 @mixin scrollBar($thickness : 3px, $thumb : $BK, $background : transparent) {

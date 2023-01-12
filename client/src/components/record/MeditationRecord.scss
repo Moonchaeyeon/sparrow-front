@@ -73,9 +73,9 @@
             margin-top: 35px;
         }
         .record-input-label + .record-input-description {
-            font-weight: 300;
+            font-weight: 400;
             font-size: 15px;
-            color: $BK;
+            color: $GR-1;
             margin: 7px 0;
         }
     }
@@ -134,7 +134,8 @@
             font-weight: 500;
             font-size: 30px;
             border-bottom: 1px solid $BK;
-            padding: 18px 10px;
+            margin-top: 10px;
+            padding: 10px 10px;
     
             &::placeholder { color: $GR-2; }
         }

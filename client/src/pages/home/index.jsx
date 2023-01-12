@@ -7,7 +7,7 @@ import AudioHandler from './AudioHandler';
 import MusicHandler from './MusicHandler';
 import EyeTracking from './EyeTracking';
 import ShowStatus from './ShowStatus';
-import { ReactComponent as Pencil } from '../../assets/svg/pencil.svg';
+import { ReactComponent as Pencil } from '../../assets/svg/pencil2.svg';
 import './index.scss';
 import { useSelector } from 'react-redux';
 import useAudio from '../../hooks/useAudio';

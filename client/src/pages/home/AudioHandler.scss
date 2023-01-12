@@ -46,7 +46,7 @@
                 width: 23px; height: 23px;
                 flex-shrink: 0;
 
-                path { fill: $BK; transition: 0.2s; }
+                path { fill: $WH; transition: 0.2s; }
             }
 
             input[type=range] {
@@ -63,6 +63,7 @@
                     width: 10px;
                     height: 10px;
                     border-radius: 50%;
+                    // background: $BK;
                     background: $BK;
                     cursor: pointer;
                     transition: 0.2s;

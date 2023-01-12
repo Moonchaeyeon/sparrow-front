@@ -2,7 +2,7 @@
 
 .webcam-container {
     position: absolute;
-    top: 50px; right: 0;
+    top: $navbar-height; right: 0;
     transition: 0.3s;
 
     .show-webcam-toggle {

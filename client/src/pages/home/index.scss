@@ -26,6 +26,8 @@
 
     &.show-record {
         left: 280px;
+
+        svg path { fill: white; }
     }
     &.music-selector {
         left: 30px;

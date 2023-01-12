@@ -33,7 +33,7 @@
 
 @keyframes showSlide {
     0% { max-height: 0; height: 0; overflow: hidden;}
-    80% { margin-bottom: 10px; }
+    100% { height: fit-content; }
 }
 
 @keyframes gradient {
