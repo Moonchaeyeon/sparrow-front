@@ -18,6 +18,11 @@ const END = 'END'; // meditation end
 const ING = 'ING'; // meditiation ing
 const NONE = 'NONE';
 
+// music source
+const startMusic = new Audio(`${process.env.PUBLIC_URL}/assets/audio/meditation_start.m4a`);
+const endMusic = new Audio(`${process.env.PUBLIC_URL}/assets/audio/meditation_end.mp3`);
+const defaultMusic = new Audio(`${process.env.PUBLIC_URL}/assets/audio/default.mp3`);
+
 function Home() {
     // sound info
     const birdSound = useSelector(state=>state.sound.birdSound);
@@ -30,11 +35,6 @@ function Home() {
     // const endAudioRef = useRef();
     // const defaultAudioRef = useRef();
     // const selectedAudioRef = useRef();
-
-    // music source
-    const startMusic = new Audio(`${process.env.PUBLIC_URL}/assets/audio/meditation_start.m4a`);
-    const endMusic = new Audio(`${process.env.PUBLIC_URL}/assets/audio/meditation_end.mp3`);
-    const defaultMusic = new Audio(`${process.env.PUBLIC_URL}/assets/audio/default.mp3`);
     let [meditationMusic, setMeditationMusic] = useState(null);
 
     const timer = useRef(null);
@@ -154,9 +154,9 @@ function Home() {
                 break;
             default:
                 // music
-                // setTimeout(()=>{
-                //     defaultMusic.play();
-                // }, 1000)
+                setTimeout(()=>{
+                    defaultMusic.play();
+                }, 1000)
 
                 // action
                 setStatus(NONE);
