@@ -9,9 +9,9 @@ import './index.scss';
 
 function Login({ setShowModal }) {
     const socialLoginInfoList = [
-        { id: 'kakao', name: '카카오톡으로', color: '#FFE812', textColor: 'black', icon: <Kakao/>, loginURL: `${process.env.REACT_APP_TEST_SERVER}/oauth2/authorization/kakao` },
-        { id: 'google', name: '구글로', color: '#FFFFFF', textColor: 'black', icon: <Google/>, loginURL: `${process.env.REACT_APP_TEST_SERVER}/oauth2/authorization/google` },
-        { id: 'naver', name: '네이버로', color: '#2DB400', textColor: 'white', icon: <Naver/>, loginURL: `${process.env.REACT_APP_TEST_SERVER}/oauth2/authorization/naver` },
+        { id: 'kakao', name: '카카오톡으로', color: '#FFE812', textColor: 'black', icon: <Kakao/>, loginURL: `${process.env.REACT_APP_SERVER_HOST}/oauth2/authorization/kakao` },
+        { id: 'google', name: '구글로', color: '#FFFFFF', textColor: 'black', icon: <Google/>, loginURL: `${process.env.REACT_APP_SERVER_HOST}/oauth2/authorization/google` },
+        { id: 'naver', name: '네이버로', color: '#2DB400', textColor: 'white', icon: <Naver/>, loginURL: `${process.env.REACT_APP_SERVER_HOST}/oauth2/authorization/naver` },
     ]
 
     return (
