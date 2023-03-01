@@ -21,7 +21,7 @@ function Navbar({ setShowLoginModal }) {
         <div className="navbar">
             <Logo className="logo"/>
             {
-                !auth
+                auth
                 ? <button className="user-profile-wrapper">
                     <img className="user-profile-image" src={profileImage ? profileImage : defaultProfile} onError={(e)=>{this.src=defaultProfile}} alt="profile"/>
                     <div className="user-info-wrapper">

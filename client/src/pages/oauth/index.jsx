@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { setAuth } from "../../redux/userData/userDataAction";
+import checkAuth from "../../utils/action/checkAuth";
 
 function OAuthHandler() {
   const dispatch = useDispatch();
@@ -15,16 +16,14 @@ function OAuthHandler() {
   useEffect(()=> {
       const access = getParameter("access");
       const refresh = getParameter("refresh");
-
       if (access && refresh) { // 로그인 성공
           localStorage.setItem('accessToken', access);
           localStorage.setItem('refreshToken', refresh);
-          dispatch(setAuth(true));
+          checkAuth();
       } else {
           
       }
       navigation('/');
-
   }, [])
 
   return (

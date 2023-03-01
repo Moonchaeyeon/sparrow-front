@@ -28,6 +28,7 @@ function Login({ setShowModal }) {
                         <button 
                             className="login-button"
                             onClick={()=>{window.location.href = social.loginURL}}
+                            // onClick={()=>{console.log(social.loginURL);}}
                             style={{background: social.color, color: social.textColor}}
                         >
                             { social.icon }
