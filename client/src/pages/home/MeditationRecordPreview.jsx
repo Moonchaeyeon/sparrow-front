@@ -8,7 +8,7 @@ function MeditationRecordPreview({ recordInfo, openMeditationRecord }) {
     return (
         <div className="meditation-record-preview">
             <Music music={recordInfo.music} width="240px" height="240px"/>
-
+            
             <div 
                 className="record-info-wrapper"
                 onClick={()=>{openMeditationRecord(recordInfo)}}

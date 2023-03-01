@@ -1,5 +1,5 @@
-import { Suspense, useState, useEffect, useRef } from 'react';
-import ReactAudioPlayer from 'react-audio-player';
+import { useState, useEffect, useRef } from 'react';
+import { useSelector } from 'react-redux';
 import ThreeCanvas from '../../canvas';
 import MeditationRecord from '../../components/record/MeditationRecord';
 import UserMeditationList from './UserMeditationList';
@@ -9,8 +9,6 @@ import EyeTracking from './EyeTracking';
 import ShowStatus from './ShowStatus';
 import { ReactComponent as Pencil } from '../../assets/svg/pencil2.svg';
 import './index.scss';
-import { useSelector } from 'react-redux';
-import useAudio from '../../hooks/useAudio';
 
 const INIT = 'INIT'; // 맨 처음 상태
 const START = 'START'; // meditation start
@@ -31,10 +29,6 @@ function Home() {
     const rainSound = useSelector(state=>state.sound.rainSound);
     const selectedMusic = useSelector(state=>state.sound.selectedMusic);
 
-    // const startAudioRef = useRef();
-    // const endAudioRef = useRef();
-    // const defaultAudioRef = useRef();
-    // const selectedAudioRef = useRef();
     let [meditationMusic, setMeditationMusic] = useState(null);
 
     const timer = useRef(null);
@@ -51,6 +45,8 @@ function Home() {
 
     const [showWriteRecord, setShowWriteRecord] = useState(false);
     const [recordInfo, setRecordInfo] = useState({});
+
+    useEffect(()=>{setTimeout(()=>finishMeditation(),5000)},[])
 
     const finishMeditation = () => {
         const today = new Date();

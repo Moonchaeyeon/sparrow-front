@@ -1,0 +1,23 @@
+@use "sass:math";
+
+$vw-viewport: 1440;
+@function get-vw($px){
+    $vw-context: $vw-viewport * 0.01 * 1px;
+    @return math.div($px, $vw-context) * 1vw;
+}
+
+@mixin set-vw($property, $px){
+    @include DESKTOP {
+        #{$property}: get-vw($px);
+    }
+    #{$property}: $px;
+}
+
+@mixin set-pair-vw($property, $h-px, $v-px){
+    @include DESKTOP {
+        #{$property}: get-vw($h-px) get-vw($v-px);
+    }
+    #{$property}: $h-px $v-px;
+}
+
+@mixin DESKTOP{ @media (max-width: 1200px){ @content; } } // 데스크탑 화면

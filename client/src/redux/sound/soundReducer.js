@@ -1,7 +1,8 @@
 import { ACTION_TYPES } from './soundTypes';
+import musicInfoList from '../../utils/data/musicList';
 
 const initialState = {
-    selectedMusic: {},
+    selectedMusic: musicInfoList[0],
     birdSound: 0,
     windVolume: 0,
     fireSound: 0,

@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import useAudio from "../../hooks/useAudio";
 import Music from "../../components/music/Music";
 import musicInfoList from "../../utils/data/musicList";
-// import { ReactComponent as MusicIcon } from '../../assets/svg/music2.svg';
 import { IoMusicalNotes } from 'react-icons/io5';
 import './MusicHandler.scss';
 

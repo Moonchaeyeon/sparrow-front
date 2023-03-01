@@ -1,10 +1,16 @@
 @import '../../styles/var.scss';
+@import '../../styles/utils.scss';
 
 .record.modal-wrapper {
-    width: 770px;
-    height: 936px;
-    padding: 22px 27px;
-    border-radius: 30px 30px 0px 0px;
+    @include set-vw(width, 770px);
+    @include set-pair-vw(padding, 22px, 27px);
+    @include set-vw(border-top-left-radius, 30px);
+    @include set-vw(border-top-right-radius, 30px);
+    // width: 770px;
+    // height: 936px;
+    height: 95vh;
+    // padding: 22px 27px;
+    // border-radius: 30px 30px 0px 0px;
     background: $WH-T;
     backdrop-filter: blur(15px);
     cursor: default;
@@ -13,49 +19,66 @@
 
     .modal-title {
         font-weight: 600;
-        font-size: 20px;
+        // font-size: 20px;
+        @include set-vw(font-size, 20px);
         color: $PU-1;
     }
 
     #modal-close {
-        width: 35px; height: 35px;
+        // width: 35px; height: 35px;
+        // top: 20px; right: 26px;
+
+        @include set-vw(width, 35px);
+        @include set-vw(height, 35px);
+        @include set-vw(top, 20px);
+        @include set-vw(right, 26px);
         position: absolute;
-        top: 20px; right: 26px;
         cursor: pointer;
         path { fill: $PU; }
     }
 
     .action-button {
-        width: 21px; height: 21px;
+        // width: 21px; height: 21px;
+        @include set-vw(width, 21px);
+        @include set-vw(height, 21px);
+        @include set-vw(top, 300px);
         position: absolute;
-        top: 300px;
+        // top: 300px;
         cursor: pointer;
         transition: 0.2s;
         @include hoverDown;
         path { fill: $PU; }
 
         &#change-to-edit-mode {
-            right: 80px;    
+            // right: 80px;
+            @include set-vw(right, 80px);
         }
         &#delete-record {
-            width: 27px; height: 27px;
-            top: 297px; right: 130px;
+            // width: 27px; height: 27px;
+            // top: 297px; right: 130px;
+            @include set-vw(width, 27px);
+            @include set-vw(height, 27px);
+            @include set-vw(top, 297px);
+            @include set-vw(right, 130px);
             path { fill: $GR-1; }
         }
     }
 
     .modal-contents {
-        width: 693px;
-        margin-top: 57px;
-        padding: 0 54px;
+        // width: 693px;
+        // margin-top: 57px;
+        // padding: 0 54px;
         overflow: visible;
         display: flex;
         flex-direction: column;
+        @include set-vw(width, 693px);
+        @include set-vw(margin-top, 57px);
+        @include set-pair-vw(padding, 0px, 54px);
 
         .white-box {
-            width: 693px;
-            height: 672px;
-            border-radius: 30px 30px 0px 0px;
+            // width: 693px;
+            // height: 672px;
+            // border-radius: 30px 30px 0px 0px;
             background: rgba(255, 255, 255, 0.6);
             backdrop-filter: blur(15px);
             position: absolute;
@@ -64,6 +87,10 @@
             transform: translateX(-50%);
             pointer-events: none;
             z-index: -1;
+            @include set-vw(width, 693px);
+            @include set-vw(height, 672px);
+            @include set-vw(border-top-left-radius, 30px);
+            @include set-vw(border-top-right-radius, 30px);
         }
 
         .record-input-label {
