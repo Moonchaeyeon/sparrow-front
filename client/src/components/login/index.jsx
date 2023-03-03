@@ -18,8 +18,8 @@ function Login({ setShowModal }) {
         <Modal setShowModal={setShowModal} displayType="center">
             <div className="modal-wrapper login">
                 <img src={colorfulObjects}/>
-                <LogoIcon style={{marginBottom: '40px'}}/>
-                <LogoText />
+                <LogoIcon className="login-logo-icon"/>
+                <LogoText className="login-logo-text"/>
                 <span>
                     가입 후 다양한 명상 콘텐츠를 즐겨보세요!
                 </span>

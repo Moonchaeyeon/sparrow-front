@@ -113,7 +113,7 @@ function MeditationRecord({ edit = true, recordInfo, setShowModal, editMeditatio
                             <div className="time">{ secToString(duration) }</div>
                         </div>
 
-                        <Music music={music} width="246px" height="246px"/>
+                        <Music music={music} />
                         <ul className="sound-wrapper">
                             {
                                 soundInfoList.map((sound, idx)=>(
@@ -150,18 +150,18 @@ function MeditationRecord({ edit = true, recordInfo, setShowModal, editMeditatio
                     <div className="record-input-description">방금 한 명상에 대한 태그를 선택해주세요</div>
                     <div className="tag-wrapper">
                         {
-                            // tagInfoList?.map((tag, idx)=>(
-                            //     <div className="tag-elem">
-                            //         <input
-                            //             type="checkbox"
-                            //             id={`tag${tag.tagId}`}
-                            //             checked={tagIds.includes(tag.tagId)}
-                            //             onChange={(e)=>{tagSelectHandler(e.currentTarget.checked, tag.tagId)}}
-                            //             disabled={!editMode}
-                            //         />
-                            //         <label htmlFor={`tag${tag.tagId}`}>#{ tag.tagNameKor }</label>
-                            //     </div>
-                            // ))
+                            tagInfoList?.map((tag, idx)=>(
+                                <div className="tag-elem">
+                                    <input
+                                        type="checkbox"
+                                        id={`tag${tag.tagId}`}
+                                        checked={tagIds.includes(tag.tagId)}
+                                        onChange={(e)=>{tagSelectHandler(e.currentTarget.checked, tag.tagId)}}
+                                        disabled={!editMode}
+                                    />
+                                    <label htmlFor={`tag${tag.tagId}`}>#{ tag.tagNameKor }</label>
+                                </div>
+                            ))
                         }
                     </div>
 

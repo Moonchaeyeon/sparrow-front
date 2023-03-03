@@ -1,31 +1,30 @@
 @import '../../styles/var.scss';
+@import '../../styles/utils.scss';
 
 .music-selector {
-    width: 235px;
     transition: 0.3s;
+    @include set-vw(width, 235px);
 
     .show-selected-music {
         display: flex;
         align-items: center;
 
         svg { 
-            font-size: 24px;
-            // width: 20px; 
-            // height: 20px; 
             flex-shrink: 0;
-            // color: white;
+            @include set-vw(font-size, 24px);
+
             path { fill: white; }
         }
 
         .selected-music-name {
-            font-size: 20px;
             font-weight: 600;
             flex-grow: 1;
-            margin-left: 15px;
-            margin-right: 5px;
             text-align: left;
-            @include overFlowText(1);
             color: $BK;
+            @include overFlowText(1);
+            @include set-vw(font-size, 20px);
+            @include set-vw(margin-left, 15px);
+            @include set-vw(margin-right, 5px);
         }
     }
 

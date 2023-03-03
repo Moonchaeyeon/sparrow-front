@@ -1,18 +1,28 @@
 @import '../../styles/var.scss';
+@import '../../styles/utils.scss';
 
 .modal-wrapper.login {
-    width: 855px;
-    height: 544px;
     background: rgba(255, 255, 255, 0.95);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(15px);
-    border-radius: 30px;
-    @include flexColumnCenter;
     justify-content: center;
     overflow: hidden;
     animation: showModal 0.7s;
+    @include flexColumnCenter;
+    @include set-vw(width, 855px);
+    @include set-vw(height, 544px);
+    @include set-vw(border-radius, 30px);
+
+    .login-logo-icon {
+        @include set-vw(width, 100px);
+        @include set-vw(margin-bottom, 20px);
+    }
+    .login-logo-text {
+        @include set-vw(width, 200px);
+    }
 
     img {
+        width: 100%;
         position: absolute;
         left: 0; top: 0;
         pointer-events: none;
@@ -20,32 +30,32 @@
 
     span {
         font-weight: 300;
-        font-size: 18px;
         color: $GR-1;
-        margin-top: 13px;
-        margin-bottom: 35px;
+        @include set-vw(font-size, 18px);
+        @include set-vw(margin-top, 13px);
+        @include set-vw(margin-bottom, 35px);
     }
 
     .login-button {
-        width: 277px; height: 55px;
-        padding: 18px 30px;
-        padding-left: 50px;
         box-shadow: 0px 6px 15px rgba(175, 170, 182, 0.15);
-        border-radius: 30px;
         font-weight: 400;
-        font-size: 15px;
         transition: 0.2s;
-        margin-bottom: 15px;
-        // justify-content: space-between;
-        // @include flexCenter;
         text-align: center;
-        @include hoverDown();
         position: relative;
+        @include hoverDown();
+        @include set-vw(margin-bottom, 15px);
+        @include set-vw(width, 277px);
+        @include set-vw(height, 55px);
+        @include set-vw(font-size, 15px);
+        @include set-vw(border-radius, 30px);
+        @include set-vw(padding-left, 50px);
+        @include set-pair-vw(padding, 18px, 30px);
 
         svg {
-            width: 20px; height: 20px;
             position: absolute;
-            left: 30px;
+            @include set-vw(width, 20px);
+            @include set-vw(height, 20px);
+            @include set-vw(left, 30px);
         }
     }
 }
