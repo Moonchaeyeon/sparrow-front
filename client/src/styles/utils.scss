@@ -1,6 +1,6 @@
 @use "sass:math";
 
-$vw-viewport: 1440;
+$vw-viewport: 1800;
 @function get-vw($px){
     $vw-context: $vw-viewport * 0.01 * 1px;
     @return math.div($px, $vw-context) * 1vw;
@@ -20,4 +20,4 @@ $vw-viewport: 1440;
     #{$property}: $h-px $v-px;
 }
 
-@mixin DESKTOP{ @media (max-width: 1200px){ @content; } } // 데스크탑 화면
+@mixin DESKTOP{ @media (max-width: 1800px){ @content; } } // 모바일 화면

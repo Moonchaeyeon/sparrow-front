@@ -2,32 +2,25 @@
 @import '../../styles/utils.scss';
 
 .record.modal-wrapper {
-    @include set-vw(width, 770px);
-    @include set-pair-vw(padding, 22px, 27px);
-    @include set-vw(border-top-left-radius, 30px);
-    @include set-vw(border-top-right-radius, 30px);
-    // width: 770px;
-    // height: 936px;
-    height: 95vh;
-    // padding: 22px 27px;
-    // border-radius: 30px 30px 0px 0px;
     background: $WH-T;
     backdrop-filter: blur(15px);
     cursor: default;
     animation: showModalUp 1s;
     @include shadow;
+    @include set-vw(width, 770px);
+    // @include set-vw(height, 900px);
+    height: 95vh;
+    @include set-pair-vw(padding, 22px, 27px);
+    @include set-vw(border-top-left-radius, 30px);
+    @include set-vw(border-top-right-radius, 30px);
 
     .modal-title {
         font-weight: 600;
-        // font-size: 20px;
-        @include set-vw(font-size, 20px);
         color: $PU-1;
+        @include set-vw(font-size, 20px);
     }
 
     #modal-close {
-        // width: 35px; height: 35px;
-        // top: 20px; right: 26px;
-
         @include set-vw(width, 35px);
         @include set-vw(height, 35px);
         @include set-vw(top, 20px);
@@ -38,24 +31,20 @@
     }
 
     .action-button {
-        // width: 21px; height: 21px;
-        @include set-vw(width, 21px);
-        @include set-vw(height, 21px);
-        @include set-vw(top, 300px);
         position: absolute;
-        // top: 300px;
         cursor: pointer;
         transition: 0.2s;
         @include hoverDown;
+        @include set-vw(width, 21px);
+        @include set-vw(height, 21px);
+        @include set-vw(top, 300px);
+        
         path { fill: $PU; }
 
         &#change-to-edit-mode {
-            // right: 80px;
             @include set-vw(right, 80px);
         }
         &#delete-record {
-            // width: 27px; height: 27px;
-            // top: 297px; right: 130px;
             @include set-vw(width, 27px);
             @include set-vw(height, 27px);
             @include set-vw(top, 297px);
@@ -65,9 +54,6 @@
     }
 
     .modal-contents {
-        // width: 693px;
-        // margin-top: 57px;
-        // padding: 0 54px;
         overflow: visible;
         display: flex;
         flex-direction: column;
@@ -76,9 +62,7 @@
         @include set-pair-vw(padding, 0px, 54px);
 
         .white-box {
-            // width: 693px;
-            // height: 672px;
-            // border-radius: 30px 30px 0px 0px;
+            height: calc(95vh - 270px);
             background: rgba(255, 255, 255, 0.6);
             backdrop-filter: blur(15px);
             position: absolute;
@@ -88,65 +72,80 @@
             pointer-events: none;
             z-index: -1;
             @include set-vw(width, 693px);
-            @include set-vw(height, 672px);
+            // @include set-vw(height, 672px);
             @include set-vw(border-top-left-radius, 30px);
             @include set-vw(border-top-right-radius, 30px);
+
+            @include DESKTOP {
+                height: calc(95vh - get-vw(270px));
+            }
         }
 
         .record-input-label {
             font-weight: 600;
-            font-size: 20px;
             color: $BK;
-            margin-top: 35px;
+            @include set-vw(font-size, 20px);
+            @include set-vw(margin-top, 35px);
         }
         .record-input-label + .record-input-description {
             font-weight: 400;
-            font-size: 15px;
             color: $GR-1;
-            margin: 7px 0;
+            @include set-pair-vw(margin, 7px, 0px);
+            @include set-vw(font-size, 15px);
+        }
+
+        .music-info {
+            @include set-vw(width, 246px);
+            @include set-vw(height, 246px);
         }
     }
 
     .meditation-info-wrapper {
         display: flex;
         align-items: flex-start;
-        margin-bottom: 15px;
+        @include set-vw(margin-bottom, 15px);
 
         .time-info-wrapper {
-            width: 160px;
             text-align: right;
             font-weight: 600;
             color: $BK;
-            margin-right: 20px;
-            margin-top: 40px;
+            @include set-vw(width, 160px);
+            @include set-vw(margin-right, 20px);
+            @include set-vw(margin-top, 40px);
 
-            .date { font-size: 30px; margin-bottom: 35px; }
-            .time { font-size: 20px; }
+            .date { 
+                @include set-vw(font-size, 30px);
+                @include set-vw(margin-bottom, 35px);
+            }
+            .time { 
+                @include set-vw(font-size, 20px);
+            }
         }
 
         .sound-wrapper {
-            width: 160px;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            margin-left: 20px;
-            margin-top: 30px;
+            @include set-vw(width, 160px);
+            @include set-vw(margin-left, 20px);
+            @include set-vw(margin-top, 30px);
     
             .sound-elem {
-                margin-bottom: 10px;
                 @include flexCenter;
+                @include set-vw(margin-bottom, 10px);
     
                 svg {
-                    width: 22px; height: 22px;
-                    margin-right: 10px;
+                    @include set-vw(width, 22px);
+                    @include set-vw(height, 22px);
+                    @include set-vw(margin-right, 10px);
     
                     path { fill: $BK; }
                 }
     
                 span { 
                     font-weight: 500;
-                    font-size: 15px; 
                     color: $GR-1;
+                    @include set-vw(font-size, 15px);
                 }
             }
         }
@@ -159,10 +158,10 @@
         .record-title-input {
             width: 100%;
             font-weight: 500;
-            font-size: 30px;
             border-bottom: 1px solid $BK;
-            margin-top: 10px;
-            padding: 10px 10px;
+            @include set-vw(font-size, 30px);
+            @include set-vw(margin-top, 10px);
+            @include set-vw(padding, 10px);
     
             &::placeholder { color: $GR-2; }
         }
@@ -172,18 +171,18 @@
 
     .content-wrapper {
         width: 100%;
-        height: 120px;
-        border-radius: 20px;
         background: $GR-3;
-        padding: 15px;
+        @include set-vw(height, 120px);
+        @include set-vw(border-radius, 20px);
+        @include set-vw(padding, 15px);
         
         textarea {
             width: 100%; height: 100%;
             color: $BK;
-            font-size: 16px;
             line-height: 136%;
             background: transparent;
             @include scrollBar;
+            @include set-vw(font-size, 16px);
         }
     }
 
@@ -194,21 +193,21 @@
 
         .tag-elem {
             height: fit-content;
-            margin-right: 12px;
-            margin-top: 10px;
-            margin-bottom: 14px;
+            @include set-vw(margin-right, 12px);
+            @include set-vw(margin-top, 10px);
+            @include set-vw(margin-bottom, 14px);
 
             input[type=checkbox] { display: none; }
 
             input[type=checkbox] + label {
-                padding: 6px 10px;
-                border-radius: 30px;
                 border: 1px solid $GR-1;
                 font-weight: 400;
-                font-size: 15px;
                 color: $GR-1;
                 cursor: pointer;
                 transition: 0.2s;
+                @include set-pair-vw(padding, 6px, 10px);
+                @include set-vw(border-radius, 30px);
+                @include set-vw(font-size, 15px);
             }
 
             input[type=checkbox]:checked + label {
@@ -220,21 +219,21 @@
     }
 
     .modal-action-button-wrapper {
-        margin-top: 15px;
         justify-content: flex-end;
         @include flexCenter;
+        @include set-vw(margin-top, 15px);
 
         button.modal-action {
             width: fit-content;
             color: $WH;
             background: $PU;
-            padding: 13px 35px;
-            border-radius: 30px;
             transition: 0.2s;
             font-weight: 600;
-            font-size: 16px;
-            margin-left: 10px;
             @include hoverDown;
+            @include set-pair-vw(padding, 13px, 35px);
+            @include set-vw(border-radius, 30px);
+            @include set-vw(font-size, 16px);
+            @include set-vw(margin-left, 10px);
     
             &#cancel {
                 background: $GR-1;
@@ -255,48 +254,57 @@
             margin-left: auto;
             margin-right: auto;
             position: relative;
-            margin-top: 15px;
+            @include set-vw(margin-top, 15px);
 
             .record-title-input {
                 width: fit-content;
                 border: 0;
                 padding: 0;
-                margin-top: 30px;
                 background: transparent;
                 text-align: center;
                 text-shadow: 0 0 6px $GR-3;
+                @include set-vw(margin-top, 30px);
             }
 
             .quotes {
-                width: 20px; height: 20px;
                 display: block;
                 position: absolute; 
+                @include set-vw(width, 20px);
+                @include set-vw(height, 20px);
 
                 path { fill: $GR-2; }
 
-                &:first-of-type { left: -10px; top: 10px; transform: scaleX(-1); }
-                &:last-of-type { right: -10px; top: 10px; }
+                &:first-of-type { 
+                    transform: scaleX(-1); 
+                    @include set-vw(left, -10px);
+                    @include set-vw(top, 10px);
+                }
+                &:last-of-type { 
+                    @include set-vw(right, -10px);
+                    @include set-vw(top, 10px);
+                }
             }
         }
 
         .content-wrapper {
-            min-height: 370px;
-            padding: 0 35px;
             background: transparent;
-            margin-top: 30px;
+            @include set-vw(min-height, 370px);
+            @include set-pair-vw(padding, 0px, 35px);
+            @include set-vw(margin-top, 30px);
 
             textarea {
                 font-weight: 300;
-                font-size: 20px;
                 line-height: 160%;
                 word-break: keep-all;
                 text-align: center;
+                @include set-vw(font-size, 20px);
             }
         }
 
         .tag-wrapper {
             width: 100%;
-            margin-top: 50px;
+            @include set-vw(margin-top, 50px);
+
             .tag-elem {
                 border: 0;
                 margin: 0;
@@ -307,8 +315,8 @@
                     color: $PU-1;
                     border: 0;
                     padding: 0;
-                    margin-right: 10px;
                     font-weight: 400;
+                    @include set-vw(margin-right, 10px);
                 }
                 input[type=checkbox]:checked + label { display: block; }
             }

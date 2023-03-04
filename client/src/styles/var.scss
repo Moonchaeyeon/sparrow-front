@@ -1,3 +1,5 @@
+@import './utils.scss';
+
 $YE : #FFB62D;
 $YE-T : rgba(255, 226, 173, 0.2);
 $PU : #5A1DBD;
@@ -41,11 +43,11 @@ $navbar-height: 6vh;
 @mixin shadow { box-shadow: 0px 6px 6px 20px 5px rgba(83, 83, 83, 0.15); }
 @mixin lightShadow { box-shadow: 0px 4px 20px 8px rgba(102, 98, 108, 0.15); }
 @mixin whiteBlur {
-    // background: rgba(255, 255, 255, 0.6);
     background: rgba(188, 188, 188, 0.6);
     backdrop-filter: blur(15px);
     border: 2px solid white;
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.5) !important;
+    @include set-vw(border-width, 2px);
 }
 
 @mixin scrollBar($thickness : 3px, $thumb : $BK, $background : transparent) {

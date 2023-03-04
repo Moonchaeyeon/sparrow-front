@@ -40,8 +40,8 @@ function MusicHandler({ status }) {
                             >
                                 <Music 
                                     music={music}
-                                    width="50px"
-                                    height="50px"
+                                    // width="50px"
+                                    // height="50px"
                                 />
                                 <div className="music-info-wrapper"
                                     onClick={()=>{dispatch({ type: 'SET_SELECTED_MUSIC', data: music })}}
