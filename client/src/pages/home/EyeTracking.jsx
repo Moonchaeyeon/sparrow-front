@@ -135,7 +135,7 @@ function EyeTracking({ setFaceDetected, setEyeClosed }) {
         </div>
         <WebCam 
           autio={"false"}
-          height={150}
+          // height={150}
           ref={webcamRef}
           draggable={true}
           mirrored={true}

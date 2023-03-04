@@ -54,7 +54,7 @@ function UserMeditationList({ setShowModal }) {
             <Modal setShowModal={setShowModal} displayType="left">
                 <div className="user-meditation-list modal-wrapper">
                     <div className="modal-header">
-                        <div>나의 총 명상 시간</div>
+                        <div className="user-total-duration-title">나의 총 명상 시간</div>
                         <div className="user-total-duration">{secToString(totalMeditationDuration)}</div>
                         <div className="my-rate"
                             style={{background: myRanking.color}}

@@ -1,39 +1,45 @@
 @import '../../styles/var.scss';
+@import '../../styles/utils.scss';
 
 .webcam-container {
     position: absolute;
     top: $navbar-height; right: 0;
     transition: 0.3s;
 
+    video {
+        @include set-vw(height, 150px);
+    }
+
     .show-webcam-toggle {
-        width: 34px;
-        height: 88px;
         position: absolute;
-        left: 0; top: 20px;
+        left: 0;
         z-index: 10;
         background: $WH-T;
         backdrop-filter: blur(15px);
-        border-radius: 0px 20px 20px 0px;
         cursor: pointer;
         transition: 0.4s;
         transform-origin: left;
         @include flexCenter;
         @include lightShadow;
+        @include set-vw(width, 34px);
+        @include set-vw(height, 88px);
+        @include set-vw(top, 30px);
+        @include set-vw(border-top-right-radius, 20px);
+        @include set-vw(border-bottom-right-radius, 20px);
 
         svg {
-            width: 19px;
-            height: 19px;
-            margin-left: 5px;
             transform: rotate(-90deg);
             fill: $BK;
+            @include set-vw(width, 19px);
+            @include set-vw(height, 19px);
+            @include set-vw(margin-left, 5px);
         }
     }
 
     &#hide {
-        right: -200px;
+        @include set-vw(right, -200px);
 
         .show-webcam-toggle {
-            // transform: scaleX(-1);
             transform: rotateY(-180deg);
         }
     }
