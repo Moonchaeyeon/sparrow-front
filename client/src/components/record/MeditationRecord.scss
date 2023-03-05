@@ -81,6 +81,13 @@
             }
         }
 
+        .record-input-container {
+            max-height: 43vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
         .record-input-label {
             font-weight: 600;
             color: $BK;

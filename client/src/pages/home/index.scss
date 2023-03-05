@@ -1,37 +1,82 @@
 @import '../../styles/var.scss';
-@import '../../styles/utils.scss';
 
-.show-status {
-    position: absolute;
-    top: 15%;
-    left: 50%;
-    transform: translateX(-50%);
-    font-weight: 600;
-    color: #ffffffd4;
-    text-shadow: 0 0 20px white;
-    @include set-vw(font-size, 20px);
-}
+.sparrow-home {
+    height: 100vh;
+    background-color: black;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    @include set-vw(gap, 100px);
 
-.floating-btn {
-    position: absolute;
-    @include whiteBlur;
-    @include lightShadow;
-    @include set-vw(top, 80px);
-    @include set-vw(padding, 15px);
-    @include set-vw(border-radius, 20px);
-
-    & > svg {
-        @include set-vw(width, 22px);
-        @include set-vw(height, 22px);
+    .sparrow-home-title {
+        font-weight: 600;
+        color: white;
+        text-shadow: 0px 0px 20px #50476487;
+        @include set-vw(font-size, 30px);
     }
 
-    &.show-record {
-        @include set-vw(left, 280px);
+    .sparrow-home-button-wrapper {
+        display: flex;
+        @include set-vw(gap, 30px);
 
-        svg path { fill: white; }
-    }
-    &.music-selector {
-        @include set-vw(left, 30px);
+        .service-button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            background: rgba(253, 233, 254, 0.187);
+            background: rgba(140, 96, 143, 0.187);
+            backdrop-filter: blur(15px);
+            cursor: pointer;
+            transition: 0.3s;
+            border: solid white;
+            @include set-vw(width, 370px);
+            @include set-vw(gap, 15px);
+            @include set-vw(border-radius, 25px);
+            @include set-pair-vw(padding, 0px, 30px);
+            @include set-vw(padding-bottom, 35px);
+            @include set-vw(padding-top, 20px);
+
+            &:hover {
+                box-shadow: 0 0 15px rgba(255, 255, 255, 0.5) !important;
+                transform: translateY(-5px);
+            }
+
+            .service-summary {
+                width: 100%;
+                text-align: left;
+                // color: #d5c6ed;
+                // color: #ffffff;
+                color: #e1ecff;
+                font-weight: 600;
+                @include set-vw(font-size, 15px);
+                @include set-vw(margin-bottom, 15px);
+            }
+
+            .service-title {
+                font-weight: 600;
+                color: white;
+                width: 100%;
+                text-align: left;
+                text-shadow: 0px 0px 20px #50476487;
+                // color: black;
+                @include set-vw(font-size, 23px);
+            }
+
+            .service-description {
+                line-height: 160%;
+                // color: #d2d2d2;
+                width: 100%;
+                text-align: left;
+                color: #5e5959;
+                color: white;
+                @include set-vw(font-size, 15px);
+            }
+        }
     }
 }

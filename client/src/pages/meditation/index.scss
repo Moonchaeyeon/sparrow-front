@@ -1,0 +1,37 @@
+@import '../../styles/var.scss';
+@import '../../styles/utils.scss';
+
+.show-status {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: 600;
+    color: #ffffffd4;
+    text-shadow: 0 0 20px white;
+    @include set-vw(font-size, 20px);
+}
+
+
+.floating-btn {
+    position: absolute;
+    @include whiteBlur;
+    @include lightShadow;
+    @include set-vw(top, 80px);
+    @include set-vw(padding, 15px);
+    @include set-vw(border-radius, 20px);
+
+    & > svg {
+        @include set-vw(width, 22px);
+        @include set-vw(height, 22px);
+    }
+
+    &.show-record {
+        @include set-vw(left, 280px);
+
+        svg path { fill: white; }
+    }
+    &.music-selector {
+        @include set-vw(left, 30px);
+    }
+}

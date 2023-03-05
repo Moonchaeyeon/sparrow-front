@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { timeToString, secToString } from "../../utils/action/toString";
 import MeditationRecordApi from "../../api/MeditationRecordApi";
 import { ReactComponent as Close } from "../../assets/svg/close.svg";
@@ -125,6 +124,8 @@ function MeditationRecord({ edit = true, recordInfo, setShowModal, editMeditatio
                             }
                         </ul>
                     </div>
+
+                    <div className="record-input-container">
                     <div className="record-title-wrapper">
                         <Quotes className="quotes"/> <Quotes className="quotes"/>
                         <input
@@ -163,6 +164,7 @@ function MeditationRecord({ edit = true, recordInfo, setShowModal, editMeditatio
                                 </div>
                             ))
                         }
+                    </div>
                     </div>
 
                     {
