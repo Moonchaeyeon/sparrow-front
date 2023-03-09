@@ -1,0 +1,85 @@
+@import '../../styles/var.scss';
+@import '../../styles/utils.scss';
+
+.user-meditation-list.modal-wrapper {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    background: $WH-T;
+    backdrop-filter: blur(15px);
+    animation: showModalRight 0.7s;
+    cursor: default;
+    @include shadow;
+    @include set-vw(width, 705px);
+    @include set-vw(border-top-right-radius, 30px);
+    @include set-pair-vw(padding, 0px, 30px);
+
+    .modal-header {
+        padding-left: 30px;
+        margin-top: 90px;
+        margin-bottom: 23px;
+        font-weight: 300;
+        color: $BK;
+        @include set-vw(padding-left, 30px);
+        @include set-vw(margin-top, 90px);
+        @include set-vw(margin-bottom, 23px);
+
+        .user-total-duration-title {
+            @include set-vw(font-size, 15px);
+        }
+
+        .user-total-duration {
+            font-weight: 600;
+            font-size: 35px;
+            color: $BK;
+            margin-top: 16px;
+            @include set-vw(font-size, 35px);
+            @include set-vw(margin-top, 16px);
+        }
+
+        .my-rate {
+            position: absolute;
+            top: 0;
+            display: flex;
+            align-items: flex-end;
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+            @include set-vw(right, 40px);
+            @include set-vw(height, 160px);
+            @include set-pair-vw(padding, 20px, 30px);
+            @include set-vw(border-bottom-right-radius, 5px);
+            @include set-vw(border-bottom-left-radius, 5px);
+
+            svg {
+                @include set-vw(width, 40px);
+                @include set-vw(height, 40px);
+            }
+        }
+    }
+
+    .modal-content {
+        width: 100%;
+        flex-grow: 1;
+        background: rgba(255, 255, 255, 0.6);
+        @include set-pair-vw(padding, 0px, 10px);
+        @include set-vw(padding-top, 20px);
+        @include set-vw(border-top-left-radius, 30px);
+        @include set-vw(border-top-right-radius, 30px);
+
+        .meditation-record-date {
+            font-weight: 600;
+            color: $BK;
+            @include set-vw(margin-top, 55px);
+            @include set-vw(font-size, 20px);
+        }
+
+        .meditation-wrapper {
+            width: 100%;
+            max-height: calc(100vh - 210px);
+            overflow: auto;
+            @include scrollBar(4px, $GR-2);
+            @include set-pair-vw(padding, 0px, 34px);
+            @include set-vw(padding-bottom, 40px);
+        }
+    }
+}

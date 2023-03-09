@@ -1,0 +1,103 @@
+@import '../../styles/var.scss';
+@import '../../styles/utils.scss';
+
+.music-selector {
+    transition: 0.3s;
+    @include set-vw(width, 235px);
+
+    .show-selected-music {
+        display: flex;
+        align-items: center;
+
+        svg { 
+            flex-shrink: 0;
+            @include set-vw(font-size, 24px);
+
+            path { fill: white; }
+        }
+
+        .selected-music-name {
+            font-weight: 600;
+            flex-grow: 1;
+            text-align: left;
+            color: $BK;
+            @include overFlowText(1);
+            @include set-vw(font-size, 20px);
+            @include set-vw(margin-left, 15px);
+            @include set-vw(margin-right, 5px);
+        }
+    }
+
+    .music-container {
+        width: 100%;
+        max-height: 0;
+        overflow: scroll;
+        transition: 0.5s;
+
+        .music-wrapper {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            @include set-vw(margin-top, 10px);
+
+            .music-elem {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                background: $WH-T;
+                border: solid white;
+                transition: 0.2s;
+                @include lightShadow;
+                @include hoverDown(-3px);
+                @include set-vw(margin-bottom, 10px);
+                @include set-vw(padding, 10px);
+                @include set-vw(border-radius, 20px);
+                @include set-vw(border-width, 2px);
+
+                &#selected {
+                    background: $PU-1;
+
+                    .music-name { color: white; }
+                    .music-composer { color: $GR-2; }
+                }
+
+                .music-info {
+                    flex-shrink: 0;
+                    @include set-vw(width, 50px);
+                    @include set-vw(height, 50px);
+
+                    .music-name { display: none; }
+                    .play, .pause { margin-top: 0; }
+                }
+                
+                .music-info-wrapper {
+                    flex-grow: 1;
+                    text-align: left;
+                    @include set-vw(margin-left, 10px);
+
+                    .music-name {
+                        font-weight: 600;
+                        transition: 0.3s;
+                        @include overFlowText(1);
+                        @include set-vw(font-size, 17px);
+                        @include set-vw(margin-bottom, 5px);
+                    }
+
+                    .music-composer {
+                        color: $BK;
+                        transition: 0.3s;
+                        @include overFlowText(1);
+                        @include set-vw(font-size, 12px);
+                    }
+                }
+            }
+        }
+    }
+    
+    &:focus {
+        .music-container {
+            max-height: calc(100vh - 100px);
+            @include set-vw(margin-top, 10px);
+        }
+    }
+}

@@ -1,0 +1,73 @@
+@import '../../styles/var.scss';
+
+.meditation-record-preview {
+    margin-top: 20px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 0px 5px 20px rgba(175, 170, 182, 0.15);
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    cursor: pointer;
+    transition: 0.2s;
+    @include hoverDown;
+
+    .music-info { flex-shrink: 0; }
+
+    .record-info-wrapper {
+        flex-grow: 1;
+        margin: 0 25px;
+
+        .record-info-title {
+            margin-top: 30px;
+            margin-bottom: 19px;
+            font-weight: 600;
+            font-size: 20px;
+            color: $BK;
+        }
+
+        .record-into-content {
+            height: 60px;
+            overflow: hidden;
+            font-weight: 300;
+            font-size: 15px;
+            line-height: 20px;
+            margin-bottom: 20px;
+            color: $BK;
+            @include overFlowText(3);
+        }
+
+        .record-tag-wrapper {
+            width: 100%; height: 18px;
+            display: flex;
+            flex-wrap: wrap;
+            overflow: hidden;
+
+            .record-tag-elem {
+                font-weight: 400;
+                font-size: 15px;
+                color: $GR-2;
+                margin-right: 10px;
+            }
+        }
+
+        .replay-meditation {
+            padding: 8px 15px;
+            font-weight: 600;
+            font-size: 12px;
+            color: $GR-1;
+            border: 1px solid $GR-1;
+            border-radius: 30px;
+            float: right;
+            margin-top: 15px;
+            transition: 0.2s;
+            @include hoverDown;
+
+            &:hover {
+                color: $YE;
+                border-color: $YE;
+                background: $YE-T;
+            }
+        }
+    }
+}

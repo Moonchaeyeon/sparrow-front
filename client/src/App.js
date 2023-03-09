@@ -8,6 +8,7 @@ import Login from './components/login';
 import OAuthHandler from './pages/oauth';
 import './App.css'
 import Home from './pages/home';
+import Quest from './pages/quest';
 
 function App() {
   const auth = useSelector(state=>state.userData.auth);
@@ -31,6 +32,7 @@ function App() {
         <Routes>
           <Route path="/oauth2/redirect" element={<OAuthHandler/>} />
           <Route path="/meditation" element={<Meditation/>} />
+          <Route path="/quest" element={<Quest />} />
           <Route path="*" element={<Home />}/>
         </Routes>
       </Router>
