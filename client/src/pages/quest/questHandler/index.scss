@@ -1,0 +1,140 @@
+@import '../../../styles/var.scss';
+@import '../../../styles/utils.scss';
+
+.quest-handler {
+    position: absolute;
+    @include whiteBlur;
+    @include lightShadow;
+    @include set-vw(top, 80px);
+    @include set-vw(right, 30px);
+    @include set-vw(border-radius, 20px);
+    @include set-pair-vw(padding, 20px, 20px);
+
+    .quest-handler-header {
+        position: relative;
+    }
+    .quest-edit-icon {
+        position: absolute;
+        cursor: pointer;
+        transition: 0.3s;
+        @include hoverDown;
+        @include set-vw(top, 5px);
+        @include set-vw(right, 5px);
+        @include set-vw(width, 20px);
+        @include set-vw(height, 20px);
+        
+        path { fill: white; }
+    }
+
+    .quest-handler-title {
+        @include set-vw(font-size, 24px);
+        font-weight: 600;
+        color: #ffffffd4;
+        text-shadow: 0 0 20px white;
+        @include set-vw(margin-bottom, 20px);
+    }
+
+    input.quest-title-input {
+        background: transparent;
+        border-bottom: 1px solid white;
+        @include set-vw(font-size, 20px);
+
+        &:disabled {
+            border-color: transparent;
+        }
+    }
+
+    input {
+        color: white;
+        @include set-pair-vw(padding, 10px, 10px);
+
+        &::placeholder {
+            color: $GR-3;
+        }
+    }
+
+    .quest-form {
+        display: flex;
+        flex-direction: column;
+        @include set-vw(gap, 15px);
+    }
+
+    .quest-title {
+        @include set-vw(margin-bottom, 10px);
+        input {
+            @include set-vw(width, 300px);
+        }
+    }
+
+    .timer-input {
+        display: flex;
+        align-items: flex-end;
+        color: $BK;
+        font-weight: 600;
+        @include set-vw(font-size, 18px);
+        @include set-vw(gap, 5px);
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+
+        input[type=number] {
+            background-color: #ffffff50;
+            -webkit-appearance: none;
+            text-align: center;
+            font-weight: 600;
+            @include set-vw(width, 40px);
+            @include set-vw(border-radius, 10px);
+            @include set-vw(font-size, 16px);
+
+            // &:disabled {
+            //     background-color: transparent;
+            //     color: $BK;
+            //     @include set-vw(font-size, 18px);
+            //     @include set-pair-vw(padding, 5px, 0px);
+            // }
+        }
+
+        .time-text {
+            @include set-vw(margin-right, 20px);
+            @include set-vw(padding-bottom, 5px);
+        }
+    }
+
+    .quest-create-button {
+        @include set-vw(width, 100px);
+        @include set-vw(height, 40px);
+        @include set-vw(border-radius, 20px);
+        @include set-vw(font-size, 15px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 500;
+        margin-left: auto;
+        transition: 0.3s;
+        // background-color: linear-gradient(90deg, #ffffff 0%, $GR-2 100%);
+        background-color: black;
+        @include activeScale;
+        @include hoverDown;
+
+        &:disabled {
+            background-color: $GR-1;
+        }
+    }
+
+    .button-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        @include set-vw(gap, 10px);
+
+        button { margin: 0; }
+
+        .edit-cancel-button {
+            background-color: $BK;
+            @include set-vw(width, 70px);
+        }
+    }
+}

@@ -8,6 +8,8 @@ import MusicHandler from './MusicHandler';
 import ShowStatus from './ShowStatus';
 import { ReactComponent as Pencil } from '../../assets/svg/pencil2.svg';
 import './index.scss';
+import { useQuestState } from '../../hooks/useQuestState';
+import QuestHandler from './questHandler';
 
 const INIT = 'INIT'; // 맨 처음 상태
 const START = 'START'; // quest start
@@ -28,14 +30,16 @@ function Quest() {
     const rainSound = useSelector(state=>state.sound.rainSound);
     const selectedMusic = useSelector(state=>state.sound.selectedMusic);
 
+    const { questInfo, createQuest, finishQuest, editQuestTime, timer } = useQuestState();
+
     let [meditationMusic, setMeditationMusic] = useState(null);
 
-    const timer = useRef(null);
-    const time = useRef(0);
-    const durationTimer = useRef(null);
-    const durationSecTime = useRef(0);
-    const [sec, setSec] = useState(0);
-    const [durationSec, setDuration] = useState(0);
+    // const timer = useRef(null);
+    // const time = useRef(0);
+    // const durationTimer = useRef(null);
+    // const durationSecTime = useRef(0);
+    // const [sec, setSec] = useState(0);
+    // const [durationSec, setDuration] = useState(0);
     const [status, setStatus] = useState('');
 
     const [showUserMeditationList, setShowUserMeditationList] = useState(false);
@@ -54,7 +58,7 @@ function Quest() {
             fireSound: fireSound,
             oceanSound: oceanSound,
             rainSound: rainSound,
-            duration: durationSec,
+            // duration: durationSec,
             createdDate: `${year}-${month}-${date}`
         }
         setRecordInfo(recordInfo);
@@ -86,8 +90,7 @@ function Quest() {
 
                 // action
                 setShowWriteRecord(false);
-                clearInterval(timer.current);
-                console.log("clear");
+                // clearInterval(timer.current);
                 break;
             case END:
                 // music
@@ -95,20 +98,20 @@ function Quest() {
                 endMusic.play();
 
                 // action
-                clearInterval(timer.current);
-                clearInterval(durationTimer.current);
-                durationSecTime.current = 0;
-                setSec(0);
-                time.current = 0;
+                // clearInterval(timer.current);
+                // clearInterval(durationTimer.current);
+                // durationSecTime.current = 0;
+                // setSec(0);
+                // time.current = 0;
                 finishMeditation();
                 break;
             case START:
                 // action
-                setSec(0);
-                time.current = 0;
-                clearInterval(timer.current);
-                setDuration(0);
-                durationSecTime.current = 0;
+                // setSec(0);
+                // time.current = 0;
+                // clearInterval(timer.current);
+                // setDuration(0);
+                // durationSecTime.current = 0;
 
                 // music
                 defaultMusic.pause();
@@ -122,10 +125,10 @@ function Quest() {
                 meditationMusic?.play();
 
                 // action
-                durationTimer.current = setInterval(()=>{
-                    setDuration(durationSecTime.current);
-                    durationSecTime.current += 1;
-                }, 1000);
+                // durationTimer.current = setInterval(()=>{
+                //     setDuration(durationSecTime.current);
+                //     durationSecTime.current += 1;
+                // }, 1000);
                 break;
             default:
                 // music
@@ -142,26 +145,10 @@ function Quest() {
             defaultMusic.pause();
             meditationMusic?.pause();
             endMusic.pause();
-            clearInterval(timer.current);
-            clearInterval(durationTimer.current);
+            // clearInterval(timer.current);
+            // clearInterval(durationTimer.current);
         })
     }, [status])
-
-    useEffect(()=>{
-        switch(status) {
-            case NONE:
-                if (sec >= 5) {
-                    setStatus(START);
-                }
-                break;
-            case ING:
-                if (sec >= 2) {
-                    setStatus(END);
-                }
-                break;
-            default:
-        }
-    }, [sec])
 
     return (
         <>
@@ -182,6 +169,14 @@ function Quest() {
             <ShowStatus status={status}/>
             <AudioHandler status={status}/>
             <MusicHandler status={status}/>
+
+            <QuestHandler 
+                questInfo={questInfo}
+                timer={timer}
+                createQuest={createQuest}
+                finishQuest={finishQuest}
+                editQuestTime={editQuestTime}
+            />
 
             { 
                 showWriteRecord && 

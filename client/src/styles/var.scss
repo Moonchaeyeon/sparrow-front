@@ -59,3 +59,8 @@ $navbar-height: 6vh;
 @mixin hoverDown($px : 5px) {
     &:hover { transform: translateY($px); }
 }
+
+// active
+@mixin activeScale($scale : 0.95) {
+    &:active { transform: scale($scale); }
+}
