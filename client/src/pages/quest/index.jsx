@@ -1,15 +1,15 @@
 import { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import ThreeCanvas from '../../canvas';
-import MeditationRecord from '../../components/record/MeditationRecord';
 import UserMeditationList from './UserMeditationList';
 import AudioHandler from './AudioHandler';
 import MusicHandler from './MusicHandler';
 import ShowStatus from './ShowStatus';
 import { ReactComponent as Pencil } from '../../assets/svg/pencil2.svg';
-import './index.scss';
 import { useQuestState } from '../../hooks/useQuestState';
 import QuestHandler from './questHandler';
+import QuestRecord from '../../components/questRecord';
+import './index.scss';
 
 const INIT = 'INIT'; // 맨 처음 상태
 const START = 'START'; // quest start
@@ -30,7 +30,7 @@ function Quest() {
     const rainSound = useSelector(state=>state.sound.rainSound);
     const selectedMusic = useSelector(state=>state.sound.selectedMusic);
 
-    const { questInfo, createQuest, finishQuest, editQuestTime, timer } = useQuestState();
+    const { questInfo, createQuest, finishQuest, editQuestTime, timer, showQuestRecord, createQuestRecord } = useQuestState();
 
     let [meditationMusic, setMeditationMusic] = useState(null);
 
@@ -179,11 +179,12 @@ function Quest() {
             />
 
             { 
-                showWriteRecord && 
-                <MeditationRecord 
-                    recordInfo={recordInfo}
+                showQuestRecord && 
+                <QuestRecord 
+                    questInfo={questInfo}
                     setShowModal={closeWriteRecord}
-                    setStatus={setStatus}
+                    createQuestRecord={createQuestRecord}
+                    // setStatus={setStatus}
                 /> 
             }
         </>

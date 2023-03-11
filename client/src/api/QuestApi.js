@@ -30,5 +30,15 @@ class QuestApi {
         });
         return res.data;
     }
+
+    // record
+    createQuestRecord = async (title, content, tags) => {
+        const res = await post('quest-record', {
+            title: title,
+            content: content,
+            tags: tags
+        });
+        return res.data;
+    }
 }
 export default QuestApi;

@@ -5,8 +5,14 @@ import QuestApi from "../api/QuestApi"
 export const useQuestState = () => {
     const questApi = new QuestApi();
     const [questInfo, setQuestInfo] = useState(null);
+    const [showQuestRecord, setShowQuestRecord] = useState(false);
     const [timer, setTimer] = useState(0);
     const timerRef = useRef(null);
+
+    const createQuestRecord = async (title, content, tags) => {
+        await questApi.createQuestRecord(title, content, tags);
+        setShowQuestRecord(false);
+    }
 
     const editQuestTime = async (hour, min) => {
         await questApi.editQuestStateTimer(hour*60 + min);
@@ -25,7 +31,6 @@ export const useQuestState = () => {
         }
         const res = await questApi.createQuestState(newQuest);
         setQuestInfo(res);
-        setTimer(newQuest.timer * 60);
     }
 
     const finishQuest = async () => {
@@ -42,7 +47,7 @@ export const useQuestState = () => {
             if (now > questEndDate) {
                 // quest가 종료되었다면
                 setQuestInfo(null);
-                timer(0);
+                setTimer(0);
             } else {
                 // quest가 진행 중이라면
                 const diffSec = getDiffSec(questCreatedDate);
@@ -51,7 +56,7 @@ export const useQuestState = () => {
         } else {
             // 진행 중인 quest가 없다면
             setQuestInfo(null);
-            timer(0);
+            setTimer(0);
         }
     }
     
@@ -59,8 +64,13 @@ export const useQuestState = () => {
         // quest timer 제어
         if (questInfo) {
             timerRef.current = setInterval(()=>{
-                console.log(timer);
-                setTimer(timer-1);
+                // console.log(timer);
+                if (timer > 0) {
+                    setTimer(timer-1);
+                } else {
+                    setShowQuestRecord(true);
+                    clearInterval(timerRef.current);
+                }
             }, 1000);
         } else {
             clearInterval(timerRef.current);
@@ -75,33 +85,11 @@ export const useQuestState = () => {
     useEffect(()=>{
         const getUserCurrQuest = async () => {
             const res = await questApi.getQuestState();
-            res && setQuestInfo(res);
-
-            // 진행 중인 quest가 있다면
-            // if (!res?.isExpired) {
-            //     setQuestInfo(res);
-            //     const now = new Date();
-            //     const questCreatedDate = new Date(res.createdDate);
-            //     const questEndDate = new Date(questCreatedDate.setMinutes(questCreatedDate.getMinutes() + res.timer));
-            //     if (now > questEndDate) {
-            //         // quest가 종료되었다면
-            //         setQuestInfo(null);
-            //         timer(0);
-            //     } else {
-            //         // quest가 진행 중이라면
-            //         setQuestInfo(res);
-            //         const diffSec = getDiffSec(questCreatedDate);
-            //         setTimer(diffSec);
-            //         console.log(secToTime(diffSec));
-            //     }
-            // } else {
-            //     // 진행 중인 quest가 없다면
-            //     setQuestInfo(null);
-            //     timer(0);
-            // }
+            // 만료되지 않은 quest가 있다면 -> questInfo에 저장
+            !(res?.isExpired) && setQuestInfo(res);
         }
         getUserCurrQuest();
     }, [])
 
-    return { questInfo, timer, createQuest, finishQuest, editQuestTime };
+    return { questInfo, timer, createQuest, finishQuest, editQuestTime, showQuestRecord, createQuestRecord };
 }

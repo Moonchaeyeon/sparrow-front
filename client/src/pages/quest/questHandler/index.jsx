@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { secToString } from '../../../utils/action/toString';
 import { ReactComponent as Pencil } from "../../../assets/svg/pencil2.svg";
 import { ReactComponent as Close } from "../../../assets/svg/close.svg";
+import { BiStopwatch } from 'react-icons/bi';
 import './index.scss';
 
 function QuestHandler({ questInfo, timer, createQuest, finishQuest, editQuestTime }) {
@@ -109,7 +110,10 @@ function QuestHandler({ questInfo, timer, createQuest, finishQuest, editQuestTim
                             </button>
                         </div>
                         : <>
-                            <div className="quest-timer">{ secToString(timer) }</div>
+                            <div className="quest-timer-wrapper">
+                                <BiStopwatch className="icon" />
+                                <div className="quest-timer-text">{ secToString(timer) }</div>
+                            </div>
                             <button
                                 className="quest-create-button"
                                 type="button"
@@ -120,7 +124,6 @@ function QuestHandler({ questInfo, timer, createQuest, finishQuest, editQuestTim
                             </button>
                         </>
                     }
-
                 </form>
             }
         </div>

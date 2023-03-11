@@ -1,0 +1,72 @@
+@import '../../styles/var.scss';
+@import '../../styles/utils.scss';
+
+.modal-wrapper.record.quest-record-modal {
+    color: $BK;
+
+    .quest-tag-input-wrapper {
+        // background: $GR-3;
+        display: flex;
+        border-bottom: 1px solid $BK;
+        @include set-vw(width, 250px);
+        @include set-vw(font-size, 16px);
+        // @include set-vw(border-radius,15px);
+        @include set-pair-vw(padding, 5px, 5px);
+
+        .quest-tag-icon {
+            font-weight: 600;
+            @include set-vw(margin-right, 5px);
+        }
+
+        input {
+            color: $BK;
+            background-color: transparent;
+            flex-grow: 1;
+            @include set-vw(font-size, 16px);
+        }
+    }
+
+    .tag-wrapper {
+        display: flex;
+        flex-direction: column;
+
+        .quest-tag-submit {
+            .quest-tag-submit-icon {
+                cursor: pointer;
+                @include set-vw(font-size, 20px);
+                @include hoverDown;
+            }
+        }
+    }
+
+    .tag-list-wrapper {
+        @include set-vw(margin-top, 20px);
+        @include set-vw(gap, 10px);
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .quest-tag-elem {
+        display: flex;
+        align-items: center;
+        border: 1px solid $YE;
+        font-weight: 400;
+        color: $YE;
+        background: $YE-T;
+        transition: 0.2s;
+        @include set-pair-vw(padding, 6px, 10px);
+        @include set-vw(border-radius, 30px);
+        @include set-vw(font-size, 15px);
+
+        .tag-elem-delete { 
+            color: $GR-1;
+            cursor: pointer; 
+            transition: 0.3s; 
+            @include set-vw(font-size, 15px);
+            @include set-vw(margin-left, 5px);
+            &:hover {
+                color: $YE;
+            }
+        }
+    }
+}

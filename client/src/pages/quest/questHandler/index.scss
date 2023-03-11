@@ -103,6 +103,33 @@
         }
     }
 
+    .quest-timer-wrapper {
+        display: flex;
+        align-items: center;
+        background-color: #ffffff50;
+        @include set-vw(gap, 10px);
+        @include set-vw(border-radius, 15px);
+        @include set-vw(margin-bottom, 10px);
+        @include set-pair-vw(padding, 5px, 10px);
+
+        .quest-timer-text {
+            @include set-vw(height, 40px);
+            @include set-vw(border-radius, 20px);
+            @include set-vw(font-size, 15px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $BK;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .icon {
+            color: $BK;
+            @include set-vw(font-size, 23px);
+        }
+    }
+
     .quest-create-button {
         @include set-vw(width, 100px);
         @include set-vw(height, 40px);
