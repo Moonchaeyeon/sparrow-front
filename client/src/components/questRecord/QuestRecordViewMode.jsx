@@ -10,12 +10,25 @@ import Music from "../music/Music";
 import QuestTag from "./QuestTag";
 import './index.scss';
 
-function QuestRecord ({ questInfo, setShowModal, createQuestRecord }) {
-    const [editMode, setEditMode] = useState(true);
+function QuestRecordViewMode ({ questInfo, setShowModal, createQuestRecord, editRecord, deleteRecord }) {
+    const [editMode, setEditMode] = useState(false);
     const [title, setTitle] = useState(questInfo?.title);
-    const [content, setContent] = useState("");
+    const [content, setContent] = useState(questInfo?.content);
     const [tempTag, setTempTag] = useState("");
-    const [tagList, setTagList] = useState([]);
+    const [tagList, setTagList] = useState(questInfo?.tags);
+    console.log(questInfo)
+
+    const questRecordEditHandler = () => {
+        let newQuestInfo = { ...questInfo };
+        newQuestInfo.title = title;
+        newQuestInfo.content = content;
+        newQuestInfo.tags = tagList;
+
+        if (editMode) {
+            editRecord(newQuestInfo);
+        }
+        setEditMode(!editMode);
+    }
 
     const addTag = () => {
         if (tempTag.length && !tagList.find(el=>el===tempTag)) {
@@ -38,30 +51,20 @@ function QuestRecord ({ questInfo, setShowModal, createQuestRecord }) {
 
                 <div className="modal-contents">
                     <div className="white-box"></div>
-                    {/* {
+                    {
                         !editMode && <>
                         <Pencil className="action-button" id="change-to-edit-mode" onClick={()=>{setEditMode(true)}}/>
-                        <Trash className="action-button" id="delete-record" onClick={()=>{(deleteRecord(recordInfo.meditationRecordId))}}/>
+                        <Trash className="action-button" id="delete-record" onClick={()=>{(deleteRecord(questInfo?.questRecordId))}}/>
                         </>
-                    } */}
+                    }
                     <div className="meditation-info-wrapper">
 
                         <div className="time-info-wrapper">
                             <div className="date">{ timeToString(questInfo?.createdDate) }</div>
-                            <div className="time">{ secToString(questInfo?.timer * 60) }</div>
+                            <div className="time">{ secToString(questInfo?.timeSpent * 60) }</div>
                         </div>
 
                         <Music music={questInfo?.musicTheme.musics[0]} />
-                        {/* <ul className="sound-wrapper">
-                            {
-                                soundInfoList.map((sound, idx)=>(
-                                    <li className="sound-elem" key={idx}>
-                                        { sound.icon }
-                                        <span>{ sound.value }</span>
-                                    </li>
-                                ))
-                            }
-                        </ul> */}
                     </div>
 
                     <div className="record-input-container">
@@ -89,21 +92,25 @@ function QuestRecord ({ questInfo, setShowModal, createQuestRecord }) {
                     <label className="record-input-label">태그</label>
                     <div className="record-input-description">방금 한 일에 대한 태그를 작성해주세요</div>
                     <div className="tag-wrapper">
-                        <form
-                            className="quest-tag-input-wrapper"
-                            onSubmit={(e)=>{ e.preventDefault(); addTag() }}
-                        >
-                            <span className="quest-tag-icon">#</span>
-                            <input
-                                type="text" 
-                                placeholder="태그를 입력하세요" 
-                                value={tempTag}
-                                onChange={(e)=>{setTempTag(e.currentTarget.value)}}
-                            />
-                            <button type="quest-tag-submit">
-                                <MdOutlineSubdirectoryArrowLeft className="quest-tag-submit-icon" />
-                            </button>
-                        </form>
+                        {
+                            editMode &&
+                            <form
+                                className="quest-tag-input-wrapper"
+                                onSubmit={(e)=>{ e.preventDefault(); addTag() }}
+                            >
+                                <span className="quest-tag-icon">#</span>
+                                <input
+                                    type="text" 
+                                    placeholder="태그를 입력하세요" 
+                                    value={tempTag}
+                                    onChange={(e)=>{setTempTag(e.currentTarget.value)}}
+                                />
+                                <button type="quest-tag-submit">
+                                    <MdOutlineSubdirectoryArrowLeft className="quest-tag-submit-icon" />
+                                </button>
+                            </form>
+                        }
+
                         <div className="tag-list-wrapper">
                             {
                                 tagList?.map((tag, idx)=>(
@@ -115,21 +122,6 @@ function QuestRecord ({ questInfo, setShowModal, createQuestRecord }) {
                                 ))
                             }
                         </div>
-
-                        {/* {
-                            tagInfoList?.map((tag, idx)=>(
-                                <div className="tag-elem">
-                                    <input
-                                        type="checkbox"
-                                        id={`tag${tag.tagId}`}
-                                        checked={tagIds.includes(tag.tagId)}
-                                        onChange={(e)=>{tagSelectHandler(e.currentTarget.checked, tag.tagId)}}
-                                        disabled={!editMode}
-                                    />
-                                    <label htmlFor={`tag${tag.tagId}`}>#{ tag.tagNameKor }</label>
-                                </div>
-                            ))
-                        } */}
                     </div>
                     </div>
 
@@ -137,10 +129,10 @@ function QuestRecord ({ questInfo, setShowModal, createQuestRecord }) {
                         editMode &&
                         <div className="modal-action-button-wrapper">
                         {
-                            questInfo.questRecordId
+                            questInfo?.questRecordId
                             ? <>
                                 <button className="modal-action" id="cancel" onClick={()=>{setEditMode(false)}}>취소</button>
-                                {/* <button className="modal-action" onClick={()=>{editRecord()}}>수정하기</button> */}
+                                <button className="modal-action" onClick={()=>{questRecordEditHandler()}}>수정하기</button>
                             </>
                             : <button className="modal-action" onClick={()=>{createQuestRecord(title, content, tagList)}}>기록하기</button>
                         }
@@ -151,4 +143,4 @@ function QuestRecord ({ questInfo, setShowModal, createQuestRecord }) {
         </Modal>
     )
 }
-export default QuestRecord;
+export default QuestRecordViewMode;

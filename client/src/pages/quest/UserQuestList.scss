@@ -11,7 +11,7 @@
     animation: showModalRight 0.7s;
     cursor: default;
     @include shadow;
-    @include set-vw(width, 705px);
+    @include set-vw(width, 1200px);
     @include set-vw(border-top-right-radius, 30px);
     @include set-pair-vw(padding, 0px, 30px);
 

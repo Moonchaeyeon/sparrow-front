@@ -1,4 +1,4 @@
-import { get, post, put, destroy } from "./AxiosCreate";
+import { get, post, put, patch, destroy } from "./AxiosCreate";
 
 class QuestApi {
     getQuestState = async () => {
@@ -38,6 +38,28 @@ class QuestApi {
             content: content,
             tags: tags
         });
+        return res.data;
+    }
+
+    editQuestRecord = async (questInfo) => {
+        const res = await patch('quest-record', {
+            questRecordId: questInfo.questRecordId,
+            title: questInfo.title,
+            content: questInfo.content,
+            tags: questInfo.tags
+        });
+        return res.data;
+    }
+
+    deleteQuestRecord = async (questRecordId) => {
+        const res = await destroy(`quest-record`, {
+            questRecordId: questRecordId
+        });
+        return res.data;
+    }
+
+    getUserRecords = async () => {
+        const res = await get('quest-record/all');
         return res.data;
     }
 }

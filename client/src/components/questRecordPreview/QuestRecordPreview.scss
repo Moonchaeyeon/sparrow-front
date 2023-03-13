@@ -1,7 +1,7 @@
 @import '../../styles/var.scss';
 @import '../../styles/utils.scss';
 
-.meditation-record-preview {
+.quest-record-preview {
     width: 100%;
     background: rgba(255, 255, 255, 0.6);
     box-shadow: 0px 5px 20px rgba(175, 170, 182, 0.15);
@@ -12,8 +12,7 @@
     @include hoverDown;
     @include set-vw(margin-top, 20px);
     @include set-vw(border-radius, 20px);
-
-    .music-info { flex-shrink: 0; }
+    @include set-vw(padding-bottom, 20px);
 
     .record-info-wrapper {
         flex-grow: 1;
@@ -23,8 +22,14 @@
             font-weight: 600;
             color: $BK;
             @include set-vw(margin-top, 30px);
-            @include set-vw(margin-bottom, 19px);
+            @include set-vw(margin-bottom, 10px);
             @include set-vw(font-size, 20px);
+        }
+
+        .record-info-time {
+            font-weight: 300;
+            color: $BK;
+            @include set-vw(font-size, 15px);
         }
 
         .record-into-content {
@@ -49,25 +54,6 @@
                 color: $GR-2;
                 @include set-vw(font-size, 15px);
                 @include set-vw(margin-right, 10px);
-            }
-        }
-
-        .replay-meditation {
-            font-weight: 600;
-            color: $GR-1;
-            border: 1px solid $GR-1;
-            float: right;
-            transition: 0.2s;
-            @include hoverDown;
-            @include set-pair-vw(padding, 8px, 15px);
-            @include set-vw(font-size, 12px);
-            @include set-vw(border-radius, 30px);
-            @include set-vw(margin-top, 15px);
-
-            &:hover {
-                color: $YE;
-                border-color: $YE;
-                background: $YE-T;
             }
         }
     }

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import ThreeCanvas from '../../canvas';
-import UserMeditationList from './UserMeditationList';
+import UserMeditationList from './UserQuestList';
 import AudioHandler from './AudioHandler';
 import MusicHandler from './MusicHandler';
 import ShowStatus from './ShowStatus';

@@ -69,4 +69,15 @@
             }
         }
     }
+
+    &#view-mode {
+        .quest-tag-elem {
+            background-color: transparent;
+            border-color: transparent;
+
+            .tag-elem-delete {
+                display: none;
+            }
+        }
+    }
 }
