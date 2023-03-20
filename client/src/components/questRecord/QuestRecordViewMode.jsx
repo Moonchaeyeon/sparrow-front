@@ -10,13 +10,12 @@ import Music from "../music/Music";
 import QuestTag from "./QuestTag";
 import './index.scss';
 
-function QuestRecordViewMode ({ questInfo, setShowModal, createQuestRecord, editRecord, deleteRecord }) {
+function QuestRecordViewMode ({ questInfo, closeModal, createQuestRecord, editRecord, deleteRecord }) {
     const [editMode, setEditMode] = useState(false);
     const [title, setTitle] = useState(questInfo?.title);
     const [content, setContent] = useState(questInfo?.content);
     const [tempTag, setTempTag] = useState("");
     const [tagList, setTagList] = useState(questInfo?.tags);
-    console.log(questInfo)
 
     const questRecordEditHandler = () => {
         let newQuestInfo = { ...questInfo };
@@ -44,17 +43,17 @@ function QuestRecordViewMode ({ questInfo, setShowModal, createQuestRecord, edit
 
 
     return (
-        <Modal setShowModal={setShowModal} displayType="bottom">
+        <Modal closeModal={closeModal} displayType="bottom">
             <div className="record modal-wrapper quest-record-modal" id={editMode ? null : 'view-mode'}>
                 <div className="modal-title">Quest 기록</div>
-                <Close id="modal-close" onClick={()=>{setShowModal(false)}}/>
+                <Close id="modal-close" onClick={()=>{closeModal()}}/>
 
                 <div className="modal-contents">
                     <div className="white-box"></div>
                     {
                         !editMode && <>
                         <Pencil className="action-button" id="change-to-edit-mode" onClick={()=>{setEditMode(true)}}/>
-                        <Trash className="action-button" id="delete-record" onClick={()=>{(deleteRecord(questInfo?.questRecordId))}}/>
+                        <Trash className="action-button" id="delete-record" onClick={()=>{deleteRecord(questInfo?.questRecordId); closeModal()}}/>
                         </>
                     }
                     <div className="meditation-info-wrapper">

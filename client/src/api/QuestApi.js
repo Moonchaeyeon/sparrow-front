@@ -18,9 +18,7 @@ class QuestApi {
     }
 
     deleteQuestState = async (questId) => {
-        const res = await destroy(`quest-state`, {
-            questStateId: questId
-        });
+        const res = await destroy(`quest-state?questStateId=${questId}`);
         return res.data.data;
     }
 
@@ -52,9 +50,7 @@ class QuestApi {
     }
 
     deleteQuestRecord = async (questRecordId) => {
-        const res = await destroy(`quest-record`, {
-            questRecordId: questRecordId
-        });
+        const res = await destroy(`quest-record?questRecordId=${questRecordId}`);
         return res.data;
     }
 

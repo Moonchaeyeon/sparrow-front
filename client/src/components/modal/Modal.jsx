@@ -1,8 +1,8 @@
 import './Modal.scss';
 
-function Modal({ setShowModal, displayType, ...props }) {
+function Modal({ closeModal, displayType, ...props }) {
     return (
-        <div className="modal-background" onClick={()=>{setShowModal(false)}}
+        <div className="modal-background" onClick={()=>{closeModal()}}
             id={displayType}
         >
             <div onClick={(e)=>{e.stopPropagation()}}>

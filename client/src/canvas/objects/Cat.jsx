@@ -3,7 +3,7 @@ import { useFrame } from "@react-three/fiber"
 import { Mesh } from "three";
 import { useAnimations, useGLTF } from "@react-three/drei";
 
-export function MangoBird({ status, setStatus }) {
+export function Cat() {
     const { scene, animations } = useGLTF(
         `${process.env.PUBLIC_URL}/assets/models/cat/scene.gltf`    
     );

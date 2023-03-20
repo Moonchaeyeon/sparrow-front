@@ -15,7 +15,7 @@ import "./MeditationRecord.scss";
 import { useSelector } from "react-redux";
 import PoetryRecommend from "./PoetryRecommend";
 
-function MeditationRecord({ edit = true, recordInfo, setShowModal, editMeditationRecord, deleteMeditationRecord }) { 
+function MeditationRecord({ edit = true, recordInfo, closeModal, editMeditationRecord, deleteMeditationRecord }) { 
     const meditationRecordApi = new MeditationRecordApi();
     const tagInfoList = useSelector(state=>state.data.tagInfoList);
     const todayDate = new Date();
@@ -57,7 +57,6 @@ function MeditationRecord({ edit = true, recordInfo, setShowModal, editMeditatio
             duration: duration,
             tagIds: tagIds
         }
-        console.log(newRecord);
         await meditationRecordApi.postRecord(newRecord);
         setShowPoetryRecommend(true);
     }
@@ -77,7 +76,7 @@ function MeditationRecord({ edit = true, recordInfo, setShowModal, editMeditatio
     const deleteRecord = async (id) => {
         await meditationRecordApi.deleteRecord(id);
         deleteMeditationRecord(id);
-        setShowModal(false);
+        closeModal();
     }
 
     useEffect(()=>{
@@ -92,10 +91,10 @@ function MeditationRecord({ edit = true, recordInfo, setShowModal, editMeditatio
 
     return (
         <>
-        <Modal setShowModal={setShowModal} displayType="bottom">
+        <Modal closeModal={closeModal} displayType="bottom">
             <div className="record modal-wrapper" id={editMode ? null:'view-mode'}>
                 <div className="modal-title">명상 기록</div>
-                <Close id="modal-close" onClick={()=>{setShowModal(false)}}/>
+                <Close id="modal-close" onClick={()=>{closeModal()}}/>
 
                 <div className="modal-contents">
                     <div className="white-box"></div>
@@ -183,7 +182,7 @@ function MeditationRecord({ edit = true, recordInfo, setShowModal, editMeditatio
                 </div>
             </div>
         </Modal>
-        { showPoetryRecommend && <PoetryRecommend content={content} setShowModal={setShowModal}/> }
+        { showPoetryRecommend && <PoetryRecommend content={content} closeModal={closeModal}/> }
         </>
     )
 }

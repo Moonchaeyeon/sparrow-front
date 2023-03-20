@@ -1,11 +1,11 @@
 import Modal from "../../../components/modal/Modal";
 
-function QuestModal({ setShowModal }) {
+function QuestModal({ closeModal }) {
 
 
     return (
         <Modal
-            setShowModal={setShowModal}
+            closeModal={closeModal}
             displayType="center"
         >
             <div className="quest-modal modal">

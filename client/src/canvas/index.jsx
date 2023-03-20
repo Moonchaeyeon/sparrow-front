@@ -1,18 +1,19 @@
 import { useSelector } from "react-redux";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, PerspectiveCamera, Sparkles, Stars } from '@react-three/drei';
-import { MangoBird } from "./objects/MangoBird";
+import { Cat } from "./objects/Cat";
 import { Island } from "./objects/Island";
 import { Rain } from "./objects/Rain";
 import { Ocean } from "./objects/Ocean";
 import { Bird } from "./objects/Bird";
 
-function ThreeCanvas({ status, setStatus }) {
+function ThreeCanvas() {
     const birdSound = useSelector(state=>state.sound.birdSound);
     const rainSound = useSelector(state=>state.sound.rainSound);
     const oceanSound = useSelector(state=>state.sound.oceanSound);
     const hour = new Date().getHours();
     const isMorning = (hour < 18 && hour > 5);
+    console.log("rendering")
 
     return (
         <Canvas id="three-js-canvas" shadows
@@ -41,7 +42,7 @@ function ThreeCanvas({ status, setStatus }) {
                 <sphereGeometry/>
                 <meshToonMaterial color="orange" transparent={true}/>
             </mesh>
-            <MangoBird status={status} setStatus={setStatus}/>
+            <Cat />
             <Sparkles 
                 color={"#d7fc79"}
                 size={5}

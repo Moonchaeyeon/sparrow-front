@@ -7,7 +7,7 @@ import { ReactComponent as Naver } from "../../assets/svg/naver.svg";
 import colorfulObjects from "../../assets/images/colorful_objects.png";
 import './index.scss';
 
-function Login({ setShowModal }) {
+function Login({ closeModal }) {
     const socialLoginInfoList = [
         { id: 'kakao', name: '카카오톡으로', color: '#FFE812', textColor: 'black', icon: <Kakao/>, loginURL: `${process.env.REACT_APP_SERVER_HOST}/oauth2/authorization/kakao` },
         { id: 'google', name: '구글로', color: '#FFFFFF', textColor: 'black', icon: <Google/>, loginURL: `${process.env.REACT_APP_SERVER_HOST}/oauth2/authorization/google` },
@@ -15,7 +15,7 @@ function Login({ setShowModal }) {
     ]
 
     return (
-        <Modal setShowModal={setShowModal} displayType="center">
+        <Modal closeModal={closeModal} displayType="center">
             <div className="modal-wrapper login">
                 <img src={colorfulObjects}/>
                 <LogoIcon className="login-logo-icon"/>
@@ -28,7 +28,6 @@ function Login({ setShowModal }) {
                         <button 
                             className="login-button"
                             onClick={()=>{window.location.href = social.loginURL}}
-                            // onClick={()=>{console.log(social.loginURL);}}
                             style={{background: social.color, color: social.textColor}}
                         >
                             { social.icon }

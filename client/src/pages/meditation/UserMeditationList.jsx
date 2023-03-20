@@ -11,7 +11,7 @@ import MeditationRecordPreview from "./MeditationRecordPreview";
 import { ReactComponent as Crown } from "../../assets/svg/crown.svg";
 import './UserMeditationList.scss';
 
-function UserMeditationList({ setShowModal }) {
+function UserMeditationList({ closeModal }) {
     const meditationRecordApi = new MeditationRecordApi();
     const auth = useSelector(state=>state.userData.auth);
     const totalMeditationDuration = useSelector(state=>state.userData.totalDuration);
@@ -51,7 +51,7 @@ function UserMeditationList({ setShowModal }) {
 
     return (
         <>
-            <Modal setShowModal={setShowModal} displayType="left">
+            <Modal closeModal={closeModal} displayType="left">
                 <div className="user-meditation-list modal-wrapper">
                     <div className="modal-header">
                         <div className="user-total-duration-title">나의 총 명상 시간</div>
@@ -89,7 +89,7 @@ function UserMeditationList({ setShowModal }) {
                 <MeditationRecord
                     edit={false}
                     recordInfo={currMeditationRecord}
-                    setShowModal={setShowMeditationRecord}
+                    closeModal={()=>setShowMeditationRecord(false)}
                     editMeditationRecord={editMeditationRecord}
                     deleteMeditationRecord={deleteMeditationRecord}
                 />

@@ -38,7 +38,7 @@ function App() {
       </Router>
 
       <Navbar setShowLoginModal={setShowLoginModal}/>
-      { showLoginModal && <Login setShowModal={setShowLoginModal}/> }
+      { showLoginModal && <Login closeModal={()=>setShowLoginModal(false)}/> }
     </Suspense>
   );
 }

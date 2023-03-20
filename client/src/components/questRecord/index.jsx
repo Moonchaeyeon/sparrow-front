@@ -10,7 +10,7 @@ import Music from "../music/Music";
 import QuestTag from "./QuestTag";
 import './index.scss';
 
-function QuestRecord ({ questInfo, setShowModal, createQuestRecord }) {
+function QuestRecord ({ questInfo, closeModal, createQuestRecord }) {
     const [editMode, setEditMode] = useState(true);
     const [title, setTitle] = useState(questInfo?.title);
     const [content, setContent] = useState("");
@@ -31,10 +31,10 @@ function QuestRecord ({ questInfo, setShowModal, createQuestRecord }) {
 
 
     return (
-        <Modal setShowModal={setShowModal} displayType="bottom">
+        <Modal closeModal={closeModal} displayType="bottom">
             <div className="record modal-wrapper quest-record-modal" id={editMode ? null : 'view-mode'}>
                 <div className="modal-title">Quest 기록</div>
-                <Close id="modal-close" onClick={()=>{setShowModal(false)}}/>
+                <Close id="modal-close" onClick={()=>{closeModal()}}/>
 
                 <div className="modal-contents">
                     <div className="white-box"></div>

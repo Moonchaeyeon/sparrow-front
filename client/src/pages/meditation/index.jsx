@@ -106,7 +106,6 @@ function Meditation() {
                 // action
                 setShowWriteRecord(false);
                 clearInterval(timer.current);
-                console.log("clear");
                 break;
             case END:
                 // music
@@ -231,7 +230,7 @@ function Meditation() {
             { 
                 showUserMeditationList &&
                 <UserMeditationList 
-                    setShowModal={setShowUserMeditationList}
+                    closeModal={()=>setShowUserMeditationList(false)}
                 />
             }
             <ShowStatus faceDetected={faceDetected} status={status}/>
@@ -242,7 +241,7 @@ function Meditation() {
                 showWriteRecord && 
                 <MeditationRecord 
                     recordInfo={recordInfo}
-                    setShowModal={closeWriteRecord}
+                    closeModal={()=>closeWriteRecord(false)}
                     setStatus={setStatus}
                 /> 
             }

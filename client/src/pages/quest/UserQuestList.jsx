@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { secToString, timeToString } from "../../utils/action/toString";
-import QuestApi from "../../api/QuestApi";
+import { useQuestRecordList } from "../../hooks/useQuestRecordList";
 import ratingInfoList from "../../utils/data/ratingList";
 
 import Modal from "../../components/modal/Modal";
@@ -10,9 +10,8 @@ import QuestRecordPreview from "../../components/questRecordPreview/QuestRecordP
 import { ReactComponent as Crown } from "../../assets/svg/crown.svg";
 import './UserQuestList.scss';
 
-function UserMeditationList({ setShowModal }) {
-    const questApi = new QuestApi();
-    const auth = useSelector(state=>state.userData.auth);
+function UserMeditationList({ closeModal }) {
+    const { questRecordList, editQuestRecord, deleteQuestRecord } = useQuestRecordList();
     const totalMeditationDuration = useSelector(state=>state.userData.totalDuration);
     let myRanking = ratingInfoList[3];
     const [currQuestRecord, setCurrQuestRecord] = useState(null);
@@ -23,36 +22,9 @@ function UserMeditationList({ setShowModal }) {
         setShowQuestRecord(true);
     }
 
-    const [questRecordList, setQuestRecordList] = useState([]);
-
-    const editQuestRecord = async (newRecord) => {
-        const res = await questApi.editQuestRecord(newRecord);
-        let temp = [...questRecordList];
-        for (let el of temp) {
-            if (el.questRecordId === newRecord.questRecordId) {
-                el = res.data;
-            }
-        }
-        setQuestRecordList(temp);
-    }
-
-    const deleteQuestRecord = async (recordId) => {
-        await questApi.deleteQuestRecord(recordId);
-        setShowQuestRecord(false);
-        setQuestRecordList(questRecordList.filter(el=>el.questRecordId !== recordId));
-    }
-
-    useEffect(()=>{
-        const getUserMeditationRecordList = async () => {
-            const res = await questApi.getUserRecords();
-            setQuestRecordList(res);
-        }
-        getUserMeditationRecordList();
-    }, [auth])
-
     return (
         <>
-            <Modal setShowModal={setShowModal} displayType="left">
+            <Modal closeModal={closeModal} displayType="left">
                 <div className="user-meditation-list modal-wrapper">
                     <div className="modal-header">
                         <div className="user-total-duration-title">나의 총 퀘스트 수행 시간</div>
@@ -90,7 +62,7 @@ function UserMeditationList({ setShowModal }) {
                 <QuestRecordViewMode
                     edit={false}
                     questInfo={currQuestRecord}
-                    setShowModal={setShowQuestRecord}
+                    closeModal={()=>setShowQuestRecord(false)}
                     editRecord={editQuestRecord}
                     deleteRecord={deleteQuestRecord}
                 />
