@@ -4,8 +4,10 @@ import { setAuth } from '../../redux/userData/userDataAction';
 import defaultProfile from '../../assets/images/profile.png';
 import { ReactComponent as Logo } from '../../assets/svg/logo.svg';
 import './index.scss';
+import { useNavigate } from 'react-router-dom';
 
 function Navbar({ setShowLoginModal }) {
+    const navigation = useNavigate();
     const dispatch = useDispatch();
     const auth = useSelector(state=>state.userData.auth);
     const name = useSelector(state=>state.userData.name);
@@ -19,7 +21,7 @@ function Navbar({ setShowLoginModal }) {
 
     return (
         <div className="navbar">
-            <Logo className="logo"/>
+            <Logo className="logo" onClick={()=>navigation('/')}/>
             {
                 auth
                 ? <button className="user-profile-wrapper">
