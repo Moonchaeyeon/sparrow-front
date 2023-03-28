@@ -35,9 +35,8 @@ function App() {
           <Route path="/quest" element={<Quest />} />
           <Route path="*" element={<Home />}/>
         </Routes>
+        <Navbar setShowLoginModal={setShowLoginModal}/>
       </Router>
-
-      <Navbar setShowLoginModal={setShowLoginModal}/>
       { showLoginModal && <Login closeModal={()=>setShowLoginModal(false)}/> }
     </Suspense>
   );

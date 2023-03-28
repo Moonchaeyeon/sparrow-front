@@ -21,7 +21,10 @@ function Navbar({ setShowLoginModal }) {
 
     return (
         <div className="navbar">
-            <Logo className="logo" onClick={()=>navigation('/')}/>
+            <Logo 
+                className="logo" 
+                onClick={()=>navigation('/')}
+            />
             {
                 auth
                 ? <button className="user-profile-wrapper">
